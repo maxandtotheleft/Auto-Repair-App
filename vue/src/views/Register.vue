@@ -32,6 +32,7 @@
         v-model="user.confirmPassword"
         required
       />
+       <label for="username" class="sr-only">First Name</label>
       <input
         type="text"
         id="firstName"
@@ -40,6 +41,7 @@
         v-model="user.firstName"
         required
       />
+       <label for="username" class="sr-only">Last Name</label>
       <input
         type="text"
         id="lastName"
@@ -48,6 +50,7 @@
         v-model="user.lastName"
         required
       />
+       <label for="username" class="sr-only">Email Address</label>
       <input
         type="text"
         id="emailAddress"
@@ -56,6 +59,7 @@
         v-model="user.emailAddress"
         required
       />
+       <label for="username" class="sr-only">Phone Number</label>
       <input
         type="text"
         id="phoneNumber"
