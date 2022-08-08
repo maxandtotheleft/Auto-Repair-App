@@ -27,4 +27,5 @@ display: flex;
     width: 50%;
     margin: 10px 20px 10px 20px;
 }
+
 </style>
