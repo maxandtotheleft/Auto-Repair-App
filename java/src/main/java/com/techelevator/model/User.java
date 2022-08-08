@@ -22,6 +22,15 @@ public class User {
 
    public User() { }
 
+   public User(int id, String username, String password, String authorities) {
+      this.id = id;
+      this.username = username;
+      this.password = password;
+      if(authorities != null) this.setAuthorities(authorities);
+      this.activated = true;
+   }
+
+
    public User(int id, String username, String password, String authorities, String firstName, String lastName, String emailAddress, String phoneNumber) {
       this.id = id;
       this.username = username;

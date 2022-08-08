@@ -76,7 +76,7 @@ public class JdbcUserDao implements UserDao {
 
     @Override
     public boolean create(String username, String password, String role, String firstName, String lastName, String emailAddress, String phoneNumber) {
-        String insertUserSql = "insert into users (username,password_hash,role, first_name, last_name, " +
+        String insertUserSql = "insert into users (username, password_hash, role, first_name, last_name, " +
                 "email_address, phone_number) values (?,?,?,?,?,?,?)";
         String password_hash = new BCryptPasswordEncoder().encode(password);
         String ssRole = role.toUpperCase().startsWith("ROLE_") ? role.toUpperCase() : "ROLE_" + role.toUpperCase();
@@ -91,6 +91,10 @@ public class JdbcUserDao implements UserDao {
         user.setPassword(rs.getString("password_hash"));
         user.setAuthorities(Objects.requireNonNull(rs.getString("role")));
         user.setActivated(true);
+        user.setFirstName("first_name");
+        user.setLastName("last_name");
+        user.setEmailAddress("email_address");
+        user.setPhoneNumber("phone_number");
         return user;
     }
 }
