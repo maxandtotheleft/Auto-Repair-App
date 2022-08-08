@@ -32,6 +32,38 @@
         v-model="user.confirmPassword"
         required
       />
+      <input
+        type="text"
+        id="firstName"
+        class="form-control"
+        placeholder="First Name"
+        v-model="user.firstName"
+        required
+      />
+      <input
+        type="text"
+        id="lastName"
+        class="form-control"
+        placeholder="Last Name"
+        v-model="user.lastName"
+        required
+      />
+      <input
+        type="text"
+        id="emailAddress"
+        class="form-control"
+        placeholder="Email Address"
+        v-model="user.emailAddress"
+        required
+      />
+      <input
+        type="text"
+        id="phoneNumber"
+        class="form-control"
+        placeholder="Phone Number"
+        v-model="user.phoneNumber"
+        required
+      />
       <router-link :to="{ name: 'login' }">Have an account?</router-link>
       <button class="btn btn-lg btn-primary btn-block" type="submit">
         Create Account
@@ -52,6 +84,10 @@ export default {
         password: '',
         confirmPassword: '',
         role: 'user',
+        firstName: '',
+        lastName: '',
+        emailAddress: '',
+        phoneNumber: ''
       },
       registrationErrors: false,
       registrationErrorMsg: 'There were problems registering this user.',

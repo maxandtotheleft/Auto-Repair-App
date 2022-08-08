@@ -51,7 +51,8 @@ export default {
     return {
       user: {
         username: "",
-        password: ""
+        password: "",
+        role: ""
       },
       invalidCredentials: false
     };
@@ -64,7 +65,11 @@ export default {
           if (response.status == 200) {
             this.$store.commit("SET_AUTH_TOKEN", response.data.token);
             this.$store.commit("SET_USER", response.data.user);
-            this.$router.push("/");
+            if (this.user.role === "ROLE_EMPLOYEE") {
+              this.$router.push("/employee");
+            } else {
+              this.$router.push("/customer");
+            }
           }
         })
         .catch(error => {
