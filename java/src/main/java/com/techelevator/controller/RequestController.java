@@ -2,12 +2,10 @@ package com.techelevator.controller;
 
 import com.techelevator.dao.RequestDao;
 import com.techelevator.model.Request;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
+@CrossOrigin
 public class RequestController {
 
     private RequestDao requestDao;
