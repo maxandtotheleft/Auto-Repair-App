@@ -52,7 +52,8 @@ export default {
       user: {
         username: "",
         password: "",
-        role: ""
+        role: "",
+        userId: ""
       },
       invalidCredentials: false
     };

@@ -1,5 +1,6 @@
 package com.techelevator.dao;
 
+import com.techelevator.model.Customer;
 import com.techelevator.model.Request;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
@@ -47,6 +48,18 @@ public class JdbcRequestDao implements RequestDao {
         return id;
     }
 
+    @Override
+    public Customer getCustomerByUserId(int userId) {
+        Customer customer = new Customer();
+        String sql = "SELECT customer_id, user_id FROM customers WHERE user_id = ?";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, userId);
+        if (results.next()) {
+            customer.setCustomerId(results.getInt("customer_id"));
+            customer.setUserId(results.getInt("user_id"));
+        }
+        return customer;
+    }
+
     private Request mapRowToRequest(SqlRowSet rs) {
         Request request = new Request();
         request.setRequestId(rs.getInt("request_id"));
@@ -55,5 +68,6 @@ public class JdbcRequestDao implements RequestDao {
         request.setDescription(rs.getString("description"));
         return request;
     }
+
 
 }

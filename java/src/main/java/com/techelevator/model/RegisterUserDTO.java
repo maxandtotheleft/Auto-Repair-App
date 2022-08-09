@@ -4,6 +4,7 @@ import javax.validation.constraints.NotEmpty;
 
 public class RegisterUserDTO {
 
+    private int userId;
     @NotEmpty
     private String username;
     @NotEmpty
@@ -16,6 +17,14 @@ public class RegisterUserDTO {
     private String lastName;
     private String emailAddress;
     private String phoneNumber;
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
 
     public String getUsername() {
         return username;

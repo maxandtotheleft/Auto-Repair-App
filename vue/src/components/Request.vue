@@ -25,7 +25,7 @@ export default {
     // RequestService.getRequestById(1).then((response) => {
     //   this.request = response.data;
     // });
-    RequestService.getAllRequests(1).then((response) => {
+    RequestService.getAllRequests(this.$store.state.activeCustomer.customerId).then((response) => {
       this.requests = response.data;
     });
   },

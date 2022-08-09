@@ -19,5 +19,11 @@ export default {
             const request = response;
             return request;
         }))
+    },
+    getCustomerByUserId(userId) {
+        return axios.get(`/account/${userId}`).then((response => {
+            const customer = response;
+            return customer;
+        }))
     }
 }
