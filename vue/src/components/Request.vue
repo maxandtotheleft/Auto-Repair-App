@@ -1,5 +1,5 @@
 <template>
-  <div class="">
+  <div class="request">
     <div v-for="request in requests" v-bind:key="request.id" class="request">{{request.description}}
     </div>
   </div>
@@ -33,5 +33,12 @@ export default {
 </script>
 
 <style>
-
+.request {
+  display: flex;
+  flex-direction: column;
+  border: solid 1px black; 
+  width: 500px;
+  padding: 5px;
+  margin: 5px;
+} 
 </style>

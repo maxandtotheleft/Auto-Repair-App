@@ -1,23 +1,26 @@
 <template>
   <div>
+    <heading />
     <h1>Requests</h1>
     <request />
-
-
-    <submit-request /> 
-    
+    <submit-request />
   </div>
 </template>
 
 <script>
-import Request from '../components/Request.vue';
-import SubmitRequest from '../components/SubmitRequest.vue'; 
+import Heading from "../components/Heading.vue";
+import Request from "../components/Request.vue";
+import SubmitRequest from "../components/SubmitRequest.vue";
 
 export default {
- // name: '',
+  // name: '',
   components: {
     Request,
-    SubmitRequest
-  }
-}
+    SubmitRequest,
+    Heading,
+  },
+};
 </script>
+
+<style scoped>
+</style>
