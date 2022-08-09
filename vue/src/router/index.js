@@ -7,6 +7,7 @@ import Register from '../views/Register.vue'
 import store from '../store/index'
 import CustomerHome from '../views/CustomerHome.vue'
 import EmployeeHome from '../views/EmployeeHome.vue'
+import RequestView from '../views/RequestView.vue'
 
 Vue.use(Router)
 
@@ -67,6 +68,14 @@ const router = new Router({
       path: "/employee",
       name: "employee",
       component: EmployeeHome,
+      meta: {
+        requiresAuth: false
+      }
+    }, 
+    {
+      path: '/requests',
+      name: 'requests', 
+      component: RequestView,
       meta: {
         requiresAuth: false
       }

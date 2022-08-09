@@ -1,6 +1,6 @@
 <template>
   <div class="">
-    <div v-bind:key="request.id" class="request">{{this.request.description}}
+    <div v-for="request in requests" v-bind:key="request.id" class="request">{{request.description}}
     </div>
   </div>
 </template>
@@ -12,6 +12,7 @@ export default {
  name: "Request",
   data() {
     return {
+    requests: [],
     request: {
         requestId: "",
         customerId: "",
@@ -21,8 +22,11 @@ export default {
     };
   },
   created() {
-    RequestService.getRequestById(1).then((response) => {
-      this.request = response.data;
+    // RequestService.getRequestById(1).then((response) => {
+    //   this.request = response.data;
+    // });
+    RequestService.getAllRequests(1).then((response) => {
+      this.requests = response.data;
     });
   },
 };

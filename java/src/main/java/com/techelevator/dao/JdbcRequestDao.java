@@ -5,6 +5,9 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Component
 public class JdbcRequestDao implements RequestDao {
 
@@ -23,6 +26,25 @@ public class JdbcRequestDao implements RequestDao {
             request = mapRowToRequest(results);
         }
         return request;
+    }
+
+    @Override
+    public List<Request> getAllRequests(int customerId) {
+        List<Request> result = new ArrayList<>();
+        String sql = "SELECT request_id, customer_id, vehicle_id, description FROM requests WHERE customer_id = ?";
+        SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql, customerId);
+        while (rowSet.next()) {
+            Request request = mapRowToRequest(rowSet);
+            result.add(request);
+        }
+        return result;
+    }
+
+    @Override
+    public int addRequest(Request request) {
+        String sql = "INSERT INTO requests (customer_id, vehicle_id, description) VALUES (?, ?, ?) RETURNING request_id";
+        int id = jdbcTemplate.queryForObject(sql, Integer.class, request.getCustomerId(), request.getVehicleId(), request.getDescription());
+        return id;
     }
 
     private Request mapRowToRequest(SqlRowSet rs) {

@@ -19,7 +19,7 @@ export default {
 .big {
   display: flex;
   width: 100%;
-border-radius: 25% 10%;
+  border: solid 2px black;
 
 }
 .container {

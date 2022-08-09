@@ -2,6 +2,7 @@
   <div>
     <heading />
     <div>This is a customer page</div>
+    <router-link v-bind:to="{name : 'requests'}">View Requests</router-link>
   </div>
 </template>
 
