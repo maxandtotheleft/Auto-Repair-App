@@ -4,6 +4,8 @@ import com.techelevator.dao.VehicleDao;
 import com.techelevator.model.Vehicle;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @CrossOrigin
 public class VehicleController {
@@ -12,6 +14,6 @@ public class VehicleController {
     public VehicleController(VehicleDao vehicleDao) {this.vehicleDao = vehicleDao;}
 
     @RequestMapping(path = "/vehicle/{customerId}", method = RequestMethod.GET)
-    public Vehicle getVehicleByCustomerId(@PathVariable int customerId) {return vehicleDao.getVehicleByCustomerId(customerId);}
+    public List<Vehicle> getVehicleByCustomerId(@PathVariable int customerId) {return vehicleDao.getVehicleByCustomerId(customerId);}
 
 }

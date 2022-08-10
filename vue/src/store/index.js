@@ -23,7 +23,8 @@ export default new Vuex.Store({
     activeCustomer: {
       customerId: '',
       userId: ''
-    }
+    },
+    vehicles: []
   },
   mutations: {
     SET_AUTH_TOKEN(state, token) {
@@ -44,6 +45,9 @@ export default new Vuex.Store({
     },
     SET_CUSTOMER(state, customer) {
       state.activeCustomer = customer;
+    },
+    SET_VEHICLES(state, data) {
+      state.vehicles = data;
     }
   }
 })

@@ -6,6 +6,9 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Component
 public class JdbcVehicleDao implements VehicleDao{
 
@@ -16,14 +19,16 @@ public class JdbcVehicleDao implements VehicleDao{
     }
 
     @Override
-    public Vehicle getVehicleByCustomerId(int customerId) {
+    public List<Vehicle> getVehicleByCustomerId(int customerId) {
+        List<Vehicle> vehicles = new ArrayList<>();
         Vehicle vehicle = null;
         String sql = "SELECT vehicle_id, customer_id, make, model, year, color FROM vehicles WHERE customer_id = ?";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, customerId);
-        if (results.next()) {
+        while (results.next()) {
             vehicle = mapRowToVehicle(results);
+            vehicles.add(vehicle);
         }
-        return vehicle;    }
+        return vehicles;    }
 
     private Vehicle mapRowToVehicle(SqlRowSet results) {
         Vehicle vehicle = new Vehicle();

@@ -10,6 +10,7 @@ INSERT INTO customers(customer_id, user_id) VALUES (2, 2);
 
 
 INSERT INTO vehicles(vehicle_id, customer_id, make, model, year, color) VALUES (1, 1, 'Honda', 'Accord', 2012, 'blue');
+INSERT INTO vehicles(vehicle_id, customer_id, make, model, year, color) VALUES (3, 1, 'Ford', 'F150', 2018, 'black');
 INSERT INTO vehicles(vehicle_id, customer_id, make, model, year, color) VALUES (2, 2, 'Toyota', 'Hilux', 1990, 'tan');
 
 
