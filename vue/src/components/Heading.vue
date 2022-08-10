@@ -1,7 +1,7 @@
 <template>
   <div class="big">
     <div class="container">
-      <div class="logo"><img src="@/assets/BlueAAMK-modified.png" /></div>
+      <div class="logo"><img src="@/assets/AAMKLogoBlue.png" /></div>
     </div>
 
     <div class="container2">

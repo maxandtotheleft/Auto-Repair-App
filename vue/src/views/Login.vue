@@ -14,7 +14,7 @@
         role="alert"
         v-if="this.$route.query.registration"
       >Thank you for registering, please sign in.</div>
-      <label for="username" class="sr-only">Username</label>
+      <label id="label-login" for="username" class="sr-only">Username</label>
       <input
         type="text"
         id="username"
@@ -24,7 +24,7 @@
         required
         autofocus
       />
-      <label for="password" class="sr-only">Password</label>
+      <label id="label-login" for="password" class="sr-only">Password</label>
       <input
         type="password"
         id="password"
@@ -90,7 +90,7 @@ export default {
 <style>
 #login{  
         width: 250px;
-        height: 300px;  
+        height: 340px;  
         overflow: hidden;  
         /* margin: left;  */
         margin: auto;
@@ -100,32 +100,31 @@ export default {
         background:rgb(255, 255, 255);  
          /* background:grey; */
         /* border-radius: 15px 60px; */
-        border: 1px solid  rgb(184, 176, 176);
+        border: 1.5px solid  rgb(184, 176, 176);
         border-radius: 5px 35px;
         text-align: center;
         
 }
-
+/* 
 .password{
     width: 300px;  
     height: 30px;  
-    /* border: none;   */
+    border: none;  
     border-radius: 3px;  
     padding-left: 8px; 
     padding-top: 8px;
-    display: flex; 
-   
-}
+    display: flex;  
+ }  */
 
 .sr-only {
   display: flex;
   width: 300px;  
     height: 30px;  
     /* border: none;   */
-    border-radius: 3px;
-    padding-top: 8px;  
-    padding-left: 40px; 
-    text-align: center;
+  border-radius: 3px;
+  padding-top: 8px;  
+  padding-left: 70px; 
+  /* text-align: center; */
 }
 
 .sign-in{
@@ -139,11 +138,13 @@ export default {
   /* background-color: rgb(223, 240, 247); */
 }
 
-label{
+#label-login{
   font-size: 17px;
   color: #00008b;
   /* color: white; */
   font-weight: bold;
+  margin-left: 16px;
+
 }
 
 h1 {
