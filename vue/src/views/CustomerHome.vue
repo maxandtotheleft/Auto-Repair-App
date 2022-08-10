@@ -1,7 +1,8 @@
 <template>
   <div>
     <heading />
-    <div>This is a customer page. Hello {{this.$store.state.activeCustomer.customerId}}</div>
+    <div>This is a customer page. Hello</div>
+    <!-- <div>This is a customer page. Hello {{this.$store.state.activeCustomer.customerId}}</div> -->
     <router-link v-bind:to="{name : 'requests'}">View Requests</router-link>
   </div>
 </template>
