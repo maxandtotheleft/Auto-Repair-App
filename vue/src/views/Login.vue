@@ -68,7 +68,8 @@ export default {
           if (response.status == 200) {
             this.$store.commit("SET_AUTH_TOKEN", response.data.token);
             this.$store.commit("SET_USER", response.data.user);
-            if (this.$store.state.user.authorities.some(authority => authority.name === "ROLE_ADMIN")) {
+            if (this.$store.state.user.authorities.some(authority => authority.name === "ROLE_ADMIN") 
+              || this.$store.state.user.authorities.some(authority => authority.name === "ROLE_EMPLOYEE")) {
               this.$router.push("/employee");
             } else {
               this.$router.push("/customer");
