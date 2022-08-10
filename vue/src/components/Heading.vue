@@ -1,11 +1,18 @@
 <template>
   <div class="big">
     <div class="container">
-    
-      <div class="logo"><img src="@/assets/BlueAAMK-modified.png" /></div>
+       <div class="logo"><img src="@/assets/BlueAAMK-modified.png" /></div>
     </div>
 
-    <div class="container2"></div>
+    <div class="container2">
+      <div class="hours">
+      <p>Operating Hours</p>
+      <p>Monday-Friday | 8am-5pm  </p>
+      <p>Saturday | 10am-4pm  </p>
+      <p>Sunday | Closed  </p>
+      <p>Holiday Hours May Vary</p>
+      </div>
+      </div>
   </div>
 </template>
 <script>
@@ -19,13 +26,27 @@ export default {
 .big {
   display: flex;
   width: 100%;
-  border: solid 2px black;
+  border: solid 10px black;
 
+}
+.hours {
+  height: 200px;
+  width: 200px;
+  background-color: hotpink;
+  color: #fff;
+  padding: 10px;
+  border: solid 3px black;
+  margin: 40px 0px 0px 35px;
+  text-align: left;
+  white-space: pre-wrap;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  
 }
 .container {
   display: flex;
   background: linear-gradient(0deg, black, gray 40%, gray);
-  width: 50%;
+  width: 40%;
   float: left;
 }
 
@@ -33,12 +54,17 @@ export default {
   background-image: url("https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1332&q=80");
   background-repeat: no-repeat;
   display: flex;
-  width: 50%;
+  width: 60%;
   float: right;
 }
 
 .logo {
-  width: 50%;
-  margin: 10px 20px 10px 20px;
+  margin: 35px;
 }
+
+.text-center {
+ width: 200px;
+}
+
+
 </style>
