@@ -2,7 +2,7 @@
   <div class="big">
     <div class="container">
     
-      <div class="logo"><img src="@/assets/carlogo1.png" /></div>
+      <div class="logo"><img src="@/assets/BlueAAMK-modified.png" /></div>
     </div>
 
     <div class="container2"></div>

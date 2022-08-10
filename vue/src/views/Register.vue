@@ -68,10 +68,11 @@
         v-model="user.phoneNumber"
         required
       />
-      <router-link :to="{ name: 'login' }">Have an account?</router-link>
-      <button class="btn btn-lg btn-primary btn-block" type="submit">
+        <button id="create-account" class="btn btn-lg btn-primary btn-block" type="submit">
         Create Account
       </button>
+      <router-link :to="{ name: 'login' }" id="link-create-account">Have an account?</router-link>
+    
     </form>
   </div>
 </template>
@@ -130,4 +131,45 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+#register{  
+        width: 350px;
+        height: 600px;  
+        overflow: hidden;  
+        /* margin: left;  */
+        margin: auto;
+        /* margin: 20 0 0 450px;   */
+        padding: 12px;
+        margin-top: 25px;
+        background:rgb(255, 255, 255);  
+         /* background:grey; */
+        /* border-radius: 15px 60px; */
+        border: 1px solid  rgb(184, 176, 176);
+        border-radius: 5px 35px;
+        text-align: center;
+}
+
+#create-account {
+  padding: 10px;
+  margin-left: 111px;
+  margin-top: 20px;
+  margin-right: 108px;
+  margin-bottom: 10px;
+  font-weight: bold;
+  border-block: 2px;
+  
+}
+
+label {
+  margin-left: 42px;
+  margin-top: 10px;
+}
+
+#link-create-account{
+margin-left: 10px;
+
+
+}
+
+
+</style>

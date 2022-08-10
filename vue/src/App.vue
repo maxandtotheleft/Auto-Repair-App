@@ -7,3 +7,9 @@
     <router-view />
   </div>
 </template>
+
+<style>
+body {
+  background-image: url("https://mcdn.wallpapersafari.com/medium/51/78/dltnIv.jpg")
+}
+</style>

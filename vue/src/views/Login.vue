@@ -3,7 +3,7 @@
 <heading />
   <div id="login" class="text-center">
     <form class="form-signin" @submit.prevent="login">
-      <h1 class="h3 mb-3 font-weight-normal">Please Sign In</h1>
+      <h1 class="h3 mb-3 font-weight-normal">Sign In</h1>
       <div
         class="alert alert-danger"
         role="alert"
@@ -33,8 +33,10 @@
         v-model="user.password"
         required
       />
+       <button class="sign-in" type="submit">Sign in</button>
+
       <router-link :to="{ name: 'register' }">Need an account?</router-link>
-      <button type="submit">Sign in</button>
+      <!-- <button type="submit">Sign in</button> -->
     </form>
   </div>
   </div>
@@ -84,3 +86,69 @@ export default {
   }
 };
 </script>
+
+<style>
+#login{  
+        width: 250px;
+        height: 300px;  
+        overflow: hidden;  
+        /* margin: left;  */
+        margin: auto;
+        /* margin: 20 0 0 450px;   */
+        padding: 12px;
+        margin-top: 25px;
+        background:rgb(255, 255, 255);  
+         /* background:grey; */
+        /* border-radius: 15px 60px; */
+        border: 1px solid  rgb(184, 176, 176);
+        border-radius: 5px 35px;
+        text-align: center;
+        
+}
+
+.password{
+    width: 300px;  
+    height: 30px;  
+    /* border: none;   */
+    border-radius: 3px;  
+    padding-left: 8px; 
+    padding-top: 8px;
+    display: flex; 
+   
+}
+
+.sr-only {
+  display: flex;
+  width: 300px;  
+    height: 30px;  
+    /* border: none;   */
+    border-radius: 3px;
+    padding-top: 8px;  
+    padding-left: 40px; 
+    text-align: center;
+}
+
+.sign-in{
+  display: flex;
+  margin-top: 20px;
+  margin-left: 90px;
+  margin-bottom: 20px;
+  padding: 8px;
+  font-weight: bold;
+  border-block: 2px;
+  /* background-color: rgb(223, 240, 247); */
+}
+
+label{
+  font-size: 17px;
+  color: #00008b;
+  /* color: white; */
+  font-weight: bold;
+}
+
+h1 {
+  color: #00008b;
+  /* color: white; */
+}
+
+</style>
