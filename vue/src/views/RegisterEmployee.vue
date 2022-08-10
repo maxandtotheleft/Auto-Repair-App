@@ -134,29 +134,30 @@ export default {
 <style>
 #register{  
         width: 350px;
-        height: 600px;  
+        height: 750px;
         overflow: hidden;  
         /* margin: left;  */
         margin: auto;
         /* margin: 20 0 0 450px;   */
-        padding: 12px;
+        padding: 20px;
         margin-top: 25px;
         background:rgb(255, 255, 255);  
          /* background:grey; */
         /* border-radius: 15px 60px; */
         border: 1px solid  rgb(184, 176, 176);
-        border-radius: 5px 35px;
+        border-radius: 15px 35px;
         text-align: center;
 }
 
 #create-account {
-  padding: 10px;
+  padding: 15px;
   margin-left: 111px;
   margin-top: 20px;
   margin-right: 108px;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
   font-weight: bold;
-  border-block: 2px;
+  border: 1px solid silver;
+  border-radius: 10px;
   
 }
 
@@ -166,9 +167,7 @@ label {
 }
 
 #link-create-account{
-margin-left: 10px;
-
-
+margin-left: -2px;
 }
 
 

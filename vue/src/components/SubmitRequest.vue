@@ -7,7 +7,7 @@
 
       <input class="input" v-model="request.vehicleId" />
       <label class="request-form-label">Description</label>
-      <input class="input" v-model="request.description" />
+      <textarea class="input-text-area" v-model="request.description"></textarea>
 
       <input class="submitB" type="submit" value="Save" />
     </form>
@@ -46,18 +46,18 @@ export default {
 <style>
 .submitForm {
     width: 400px;
-    height: 200px;  
+    height: 300px;  
     overflow: hidden;  
-    margin: left; 
-    /* margin: auto; */
+    /* margin: left;  */
+    margin: auto;
     /* margin: 20 0 0 450px;   */
-    padding: 12px;
+    padding: 25px;
     margin-top: 25px;
     background:rgb(255, 255, 255);  
     /* background:grey; */
     /* border-radius: 15px 60px; */
     border: 1px solid  rgb(184, 176, 176);
-    border-radius: 5px 35px;
+    border-radius: 15px 35px;
     text-align: center;
   /* display: flex;
   flex-direction: column;
@@ -71,11 +71,13 @@ export default {
 }
 
 .request-form-label{
-  margin-right: 280px;
-  margin-top: 10px;
-  padding-top: 10px;
-
-}
+  margin-right: 24px;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  font-size: 17px;
+  color: #00008b;
+  font-weight: bold;
+  }
 
 .submitB{
   margin-left: 10px;
@@ -89,12 +91,26 @@ export default {
 .input {
   display: flex;
   width: 95%;
+  height: 25px;
   margin-right: 10px;
   margin-left: 5px;
-  margin-top: 10px;
-  margin-bottom: 10px;
+  margin-top: 20px;
+  margin-bottom: 15px;
   /* flex-direction: column; */
 }
+
+.input-text-area{
+  display: flex;
+  width: 95%;
+  height: 100px;
+  margin-right: 10px;
+  margin-left: 5px;
+  margin-top: 20px;
+  margin-bottom: 15px;
+  border: 2px solid silver;
+  border-radius: 10px;
+}
+
 .text {
   font-family: Arial, Helvetica, sans-serif;
 } 

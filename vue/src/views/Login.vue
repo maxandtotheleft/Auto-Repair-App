@@ -35,7 +35,7 @@
       />
        <button class="sign-in" type="submit">Sign in</button>
 
-      <router-link :to="{ name: 'register' }">Need an account?</router-link>
+      <router-link :to="{ name: 'register' }" class="link-need-account">Need an account?</router-link>
       <!-- <button type="submit">Sign in</button> -->
     </form>
   </div>
@@ -91,23 +91,19 @@ export default {
 <style>
 #login{  
         width: 250px;
-        height: 340px;  
+        height: 350px;  
         overflow: hidden;  
-        /* margin: left;  */
         margin: auto;
-        /* margin: 20 0 0 450px;   */
-        padding: 12px;
+        padding-bottom: 12px;
         margin-top: 25px;
         background:rgb(255, 255, 255);  
-         /* background:grey; */
-        /* border-radius: 15px 60px; */
         border: 1.5px solid  rgb(184, 176, 176);
-        border-radius: 5px 35px;
+        border-radius: 15px 35px;
         text-align: center;
         
 }
-/* 
-.password{
+
+/* .password{
     width: 300px;  
     height: 30px;  
     border: none;  
@@ -120,23 +116,21 @@ export default {
 .sr-only {
   display: flex;
   width: 300px;  
-    height: 30px;  
-    /* border: none;   */
+  height: 30px;  
   border-radius: 3px;
   padding-top: 8px;  
   padding-left: 70px; 
-  /* text-align: center; */
 }
 
 .sign-in{
   display: flex;
   margin-top: 20px;
   margin-left: 90px;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
   padding: 8px;
   font-weight: bold;
-  border-block: 2px;
-  /* background-color: rgb(223, 240, 247); */
+  border: 1px solid silver;
+  border-radius: 10px;
 }
 
 #label-login{
@@ -152,5 +146,6 @@ h1 {
   color: #00008b;
   /* color: white; */
 }
+
 
 </style>
