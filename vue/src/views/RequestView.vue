@@ -18,6 +18,7 @@ export default {
     Request,
     SubmitRequest,
     Heading,
+  
   },
 };
 </script>

@@ -9,8 +9,8 @@ INSERT INTO customers(customer_id, user_id) VALUES (1, 1);
 INSERT INTO customers(customer_id, user_id) VALUES (2, 2);
 
 
-INSERT INTO vehicles(vehicle_id, customer_id, make, model, year, color) VALUES (1, 1, 'Honda', 'Accord', '2012', 'blue');
-INSERT INTO vehicles(vehicle_id, customer_id, make, model, year, color) VALUES (2, 2, 'Toyota', 'Hilux', '1990', 'tan');
+INSERT INTO vehicles(vehicle_id, customer_id, make, model, year, color) VALUES (1, 1, 'Honda', 'Accord', 2012, 'blue');
+INSERT INTO vehicles(vehicle_id, customer_id, make, model, year, color) VALUES (2, 2, 'Toyota', 'Hilux', 1990, 'tan');
 
 
 INSERT INTO requests (request_id, customer_id, vehicle_id, description) VALUES (1, 1, 1, 'my car is broke');

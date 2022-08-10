@@ -13,12 +13,12 @@ export default {
   data() {
     return {
     requests: [],
-    request: {
-        requestId: "",
-        customerId: "",
-        vehicleId: "",
-        description: ""    
-    } 
+    // request: {
+    //     requestId: "",
+    //     customerId: "",
+    //     vehicleId: "",
+    //     description: ""    
+    // } 
     };
   },
   created() {
