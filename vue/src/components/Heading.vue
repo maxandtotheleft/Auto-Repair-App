@@ -1,18 +1,18 @@
 <template>
   <div class="big">
     <div class="container">
-       <div class="logo"><img src="@/assets/BlueAAMK-modified.png" /></div>
+      <div class="logo"><img src="@/assets/BlueAAMK-modified.png" /></div>
     </div>
 
     <div class="container2">
       <div class="hours">
-      <p>Operating Hours</p>
-      <p>Monday-Friday | 8am-5pm  </p>
-      <p>Saturday | 10am-4pm  </p>
-      <p>Sunday | Closed  </p>
-      <p>Holiday Hours May Vary</p>
+        <p>Operating Hours</p>
+        <p>Monday-Friday | 8am-5pm</p>
+        <p>Saturday | 10am-4pm</p>
+        <p>Sunday | Closed</p>
+        <p>Holiday Hours May Vary</p>
       </div>
-      </div>
+    </div>
   </div>
 </template>
 <script>
@@ -26,22 +26,31 @@ export default {
 .big {
   display: flex;
   width: 100%;
-  border: solid 10px black;
-
+  /* border: solid 2px black; */
 }
 .hours {
   height: 200px;
-  width: 200px;
-  background-color: hotpink;
+  width: 400px;
+  background: linear-gradient(
+    45deg,
+    black,
+    gray 80%,
+    gray,
+    grey 80%,
+    black
+  );
   color: #fff;
-  padding: 10px;
-  border: solid 3px black;
+  padding: 10px 0px 0px 10px;
+
   margin: 40px 0px 0px 35px;
-  text-align: left;
+  text-align: center;
+  /* text-align: left;
   white-space: pre-wrap;
+    */
+  border: solid 0px black;
+  border-radius: 5px;
   font-family: Arial, Helvetica, sans-serif;
   font-weight: bold;
-  
 }
 .container {
   display: flex;
@@ -56,6 +65,7 @@ export default {
   display: flex;
   width: 60%;
   float: right;
+  justify-content: center;
 }
 
 .logo {
@@ -63,8 +73,6 @@ export default {
 }
 
 .text-center {
- width: 200px;
+  width: 200px;
 }
-
-
 </style>
