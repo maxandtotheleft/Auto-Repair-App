@@ -2,6 +2,7 @@
   <div>
     <heading />
     <div>This is an employee page</div>
+    <router-link :to="{ name: 'registerEmployee'}" v-if="this.$store.state.user.authorities.some(authority => authority.name === 'ROLE_ADMIN')">Register an Employee</router-link>
   </div>
 </template>
 
