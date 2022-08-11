@@ -5,7 +5,7 @@
       <div class="alert alert-danger" role="alert" v-if="registrationErrors">
         {{ registrationErrorMsg }}
       </div>
-      <label for="username" class="sr-only">Username</label>
+      <label id="account-label" for="username" class="sr-only">Username</label>
       <input
         type="text"
         id="username"
@@ -15,7 +15,7 @@
         required
         autofocus
       />
-      <label for="password" class="sr-only">Password</label>
+      <label id="account-label" for="password" class="sr-only">Password</label>
       <input
         type="password"
         id="password"
@@ -32,7 +32,7 @@
         v-model="user.confirmPassword"
         required
       />
-       <label for="username" class="sr-only">First Name</label>
+       <label id="account-label" for="username" class="sr-only">First Name</label>
       <input
         type="text"
         id="firstName"
@@ -41,7 +41,7 @@
         v-model="user.firstName"
         required
       />
-       <label for="username" class="sr-only">Last Name</label>
+       <label id="account-label" for="username" class="sr-only">Last Name</label>
       <input
         type="text"
         id="lastName"
@@ -50,7 +50,7 @@
         v-model="user.lastName"
         required
       />
-       <label for="username" class="sr-only">Email Address</label>
+       <label id="account-label" for="username" class="sr-only">Email Address</label>
       <input
         type="text"
         id="emailAddress"
@@ -59,7 +59,7 @@
         v-model="user.emailAddress"
         required
       />
-       <label for="username" class="sr-only">Phone Number</label>
+       <label id="account-label" for="username" class="sr-only">Phone Number</label>
       <input
         type="text"
         id="phoneNumber"
@@ -134,7 +134,7 @@ export default {
 <style>
 #register{  
         width: 350px;
-        height: 750px;
+        height: 785px;
         overflow: hidden;  
         /* margin: left;  */
         margin: auto;
@@ -159,6 +159,16 @@ export default {
   border: 1px solid silver;
   border-radius: 10px;
   
+}
+
+#account-label {
+  margin-left: 58px;
+  margin-top: 10px;
+  text-align: center;
+  font-size: 17px;
+  color: #00008b;
+  /* color: white; */
+  font-weight: bold;
 }
 
 label {
