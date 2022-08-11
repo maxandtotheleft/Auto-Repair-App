@@ -1,28 +1,31 @@
 <template>
   <div class="big">
     <!-- <div class="container"> -->
-           <div class="nav-center">
-           <ul class="navigation-bar">
-      <router-link v-bind:to="{ name: 'customer' }" class="hov">Home</router-link>
-      <router-link v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''" class="hov">Logout</router-link>
-           </ul>
-           </div>
-    
-      <div class="logo"><img src="@/assets/AAMKLogoBlue.png" />
-          <div class="hours">
-        <p>Operating Hours</p>
-        <p>Monday-Friday | 8am-5pm</p>
-        <p>Saturday | 10am-4pm</p>
-        <p>Sunday | Closed</p>
-        <p>Holiday Hours May Vary</p>
+       <div class="logo"><img src="@/assets/AAMKLogoBlue.png" /></div>
+  <div class="nav-and-hours">    
+  <div class="hours">
+            <p>Operating Hours</p>
+            <p>Monday-Friday | 8am-5pm</p>
+            <p>Saturday | 10am-4pm</p>
+            <p>Sunday | Closed</p>
+            <p>Holiday Hours May Vary</p>
+          </div>
+
+      <div class="nav-center">
+          <ul class="navigation-bar">
+            <router-link v-bind:to="{ name: 'customer' }" class="hov">Home</router-link>
+            <router-link v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''" class="hov">Logout</router-link>
+          </ul>
       </div>
+   </div>
+        
          <!-- <div class="loginout" id="nav">
            <ul class="navigation-bar">
       <router-link v-bind:to="{ name: 'customer' }">Home</router-link>
       <router-link v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link>
            </ul>
     </div> -->
-    </div>
+   
   </div>
 </template>
 <script>
@@ -40,29 +43,23 @@ export default {
   background-size: cover;
   background-image: url("https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1332&q=80");
   background-repeat: no-repeat;
+  column-count: 3;
+  column-rule-style: solid;
+  column-gap: 40px;
+  justify-content: space-around;
+  align-items: center;
   /* border: solid 2px black; */
 }
 .hours {
   height: 200px;
   width: 400px;
-  background: linear-gradient(
-    45deg,
-    black,
-    gray 80%,
-    gray,
-    grey 80%,
-    black
-  );
+  background: #00008b;
+  border: 2px solid black;
+  border-radius: 30px;
   color: #fff;
-  padding: 10px 0px 0px 10px;
-
-  margin: 40px 0px 0px 35px;
+  /* padding: 10px 0px 0px 10px;
+  margin: 60px 0px 0px 0px; */
   text-align: center;
-  /* text-align: left;
-  white-space: pre-wrap;
-    */
-  border: solid 0px black;
-  border-radius: 5px;
   font-family: Arial, Helvetica, sans-serif;
   font-weight: bold;
 }
@@ -90,9 +87,7 @@ export default {
 
 .logo {
   margin: 35px;
-   position: absolute;
-   
-  
+  /* position: absolute; */
 }
 
 .text-center {
@@ -115,11 +110,12 @@ export default {
 }
 
 .nav-center{
-  float: left;
+  /* float: left; */
   display: block;
   text-align: center;
   padding: 16px;
   text-decoration: none;
+
 }
 
 .hov:hover{
@@ -129,7 +125,13 @@ export default {
 .hov{
   color: white;
   padding: 20px;
+  float: left;
+  border: 1px solid black;
 
+}
+
+.nav-and-hours{
+  margin: auto;
 }
 
 </style>
