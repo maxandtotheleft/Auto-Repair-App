@@ -2,6 +2,7 @@ package com.techelevator.controller;
 
 import com.techelevator.dao.RequestDao;
 import com.techelevator.model.Customer;
+import com.techelevator.model.Employee;
 import com.techelevator.model.Request;
 import org.springframework.web.bind.annotation.*;
 
@@ -32,4 +33,7 @@ public class RequestController {
 
     @RequestMapping(path = "/account/{userId}", method = RequestMethod.GET)
     public Customer getCustomerByUserId(@PathVariable int userId){ return requestDao.getCustomerByUserId(userId); }
+
+    @RequestMapping(path = "/employeeAccount/{userId}", method = RequestMethod.GET)
+    public Employee getEmployeeByUserId(@PathVariable int userId){ return requestDao.getEmployeeByUserId(userId); }
 }

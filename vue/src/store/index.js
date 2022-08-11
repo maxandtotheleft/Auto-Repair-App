@@ -24,6 +24,10 @@ export default new Vuex.Store({
       customerId: '',
       userId: ''
     },
+    activeEmployee: {
+      employeeId: '',
+      userId: ''
+    },
     vehicles: []
   },
   mutations: {
@@ -45,6 +49,9 @@ export default new Vuex.Store({
     },
     SET_CUSTOMER(state, customer) {
       state.activeCustomer = customer;
+    },
+    SET_EMPLOYEE(state, employee){
+      state.activeEmployee = employee;
     },
     SET_VEHICLES(state, data) {
       state.vehicles = data;

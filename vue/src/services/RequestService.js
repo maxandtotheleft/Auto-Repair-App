@@ -25,5 +25,11 @@ export default {
             const customer = response;
             return customer;
         }))
+    },
+    getEmployeeByUserId(userId){
+        return axios.get(`/employeeAccount/${userId}`).then((response => {
+            const employee = response;
+            return employee;
+        }))
     }
 }

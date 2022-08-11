@@ -1,6 +1,7 @@
 package com.techelevator.dao;
 
 import com.techelevator.model.Customer;
+import com.techelevator.model.Employee;
 import com.techelevator.model.Request;
 
 import java.util.List;
@@ -13,5 +14,6 @@ public interface RequestDao {
     public int addRequest(Request request);
 
     public Customer getCustomerByUserId(int userId);
+    public Employee getEmployeeByUserId(int userId);
 
 }
