@@ -68,7 +68,7 @@ public class JdbcRequestDao implements RequestDao {
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, userId);
         if (results.next()) {
             employee.setEmployeeId(results.getInt("employee_id"));
-            employee.setEmployeeId(results.getInt("user_id"));
+            employee.setUserId(results.getInt("user_id"));
         }
         return employee;
     }
