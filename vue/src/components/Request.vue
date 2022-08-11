@@ -33,17 +33,11 @@ export default {
 </script>
 
 <style>
-.requests {
-  display: flex;
-  flex-direction: column;
-  width: 500px;
-  padding: 5px;
-  margin: 5px;
-} 
 
-.individual{
+/* .individual{
   border: 1px solid black; 
   padding: auto;
   margin: 1%;
-}
+} */
+
 </style>

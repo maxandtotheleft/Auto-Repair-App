@@ -45,6 +45,7 @@ export default {
 
 <style>
 .submitForm {
+    font-family: Arial, Helvetica, sans-serif;
     width: 400px;
     height: 300px;  
     overflow: hidden;  
