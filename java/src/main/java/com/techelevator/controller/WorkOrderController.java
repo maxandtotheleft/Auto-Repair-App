@@ -34,4 +34,14 @@ public class WorkOrderController {
         return workOrderDao.createRepair(repair);
     }
 
+    @RequestMapping(path = "/changeorder/{workOrderId}", method = RequestMethod.PUT)
+    public void updateWorkOrder(@PathVariable int workOrderId, @RequestBody WorkOrder workOrder){
+        workOrderDao.updateWorkOrder(workOrder);
+    }
+
+    @RequestMapping(path="/changerepair/{repairItemId}", method = RequestMethod.PUT)
+    public void updateRepair(@PathVariable int repairItemId, @RequestBody Repair repair){
+    workOrderDao.updateRepair(repair);
+    }
+
 }

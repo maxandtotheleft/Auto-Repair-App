@@ -5,16 +5,24 @@
   <h1>Your Work Orders</h1>
   <work-orders />
   </div>
+  <div class="submit">
+   <work-order-request />
+   <repair-request />
+   </div>
   </div>
 </template>
 
 <script>
 import Heading from '../components/Heading.vue'
+import RepairRequest from '../components/RepairRequest.vue'
+import WorkOrderRequest from '../components/WorkOrderRequest.vue'
 import WorkOrders from '../components/WorkOrders.vue'
 export default {
   components: { 
       WorkOrders,
-    Heading
+    Heading,
+    WorkOrderRequest,
+    RepairRequest
       },
 
 }
@@ -40,4 +48,20 @@ text-align: center;
     padding: 25px;
     margin-top: 25px;
 } 
+
+.submit {
+   font-family: Arial, Helvetica, sans-serif;
+  background: rgb(255, 255, 255);
+  border: 0px solid rgb(184, 176, 176);
+  border-radius: 15px 35px;
+  text-align: center;
+  width: 400px;
+    height: auto;  
+    overflow: hidden;  
+    /* margin: left;  */
+    margin: auto;
+    /* margin: 20 0 0 450px;   */
+    padding: 25px;
+    margin-top: 25px;
+}
 </style>

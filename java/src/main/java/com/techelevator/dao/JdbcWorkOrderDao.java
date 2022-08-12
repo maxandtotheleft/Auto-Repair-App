@@ -76,7 +76,8 @@ public class JdbcWorkOrderDao implements WorkOrderDao {
 
     @Override
     public void updateWorkOrder(WorkOrder workOrder) {
-
+        String sql = "UPDATE public.work_orders SET work_order_id=?, employee_id=?, all_completed=?, time_completed=? WHERE work_order_id = ?";
+        jdbcTemplate.update(sql, workOrder.getWorkOrderId(), workOrder.getEmployeeId(), workOrder.isAllCompleted(), workOrder.getTimeCompleted(), workOrder.getWorkOrderId());
     }
 
     @Override
@@ -96,7 +97,8 @@ public class JdbcWorkOrderDao implements WorkOrderDao {
 
     @Override
     public void updateRepair(Repair repair) {
-
+        String sql = "UPDATE public.repair_items SET repair_id=?, work_order_id=?, repair_name=?, parts_cost=?, labor_cost=?, completed=? WHERE repair_id=?;";
+        jdbcTemplate.update(sql, repair.getRepairItemId(), repair.getWorkOrderId(), repair.getRepairName(), repair.getPartsCost(), repair.getLaborCost(), repair.isCompleted(), repair.getRepairItemId());
     }
 
     private WorkOrder mapRowToWorkOrder(SqlRowSet rowSet) {
