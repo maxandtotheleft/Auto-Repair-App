@@ -6,9 +6,9 @@ import java.util.Date;
 public class WorkOrder {
 
     private int workOrderId;
-    private int employeeId;
     private boolean allCompleted;
     private LocalDateTime timeCompleted;
+    private boolean paid;
 
     public WorkOrder() {
     }
@@ -19,14 +19,6 @@ public class WorkOrder {
 
     public void setWorkOrderId(int workOrderId) {
         this.workOrderId = workOrderId;
-    }
-
-    public int getEmployeeId() {
-        return employeeId;
-    }
-
-    public void setEmployeeId(int employeeId) {
-        this.employeeId = employeeId;
     }
 
     public boolean isAllCompleted() {
@@ -43,5 +35,13 @@ public class WorkOrder {
 
     public void setTimeCompleted(LocalDateTime timeCompleted) {
         this.timeCompleted = timeCompleted;
+    }
+
+    public boolean isPaid() {
+        return paid;
+    }
+
+    public void setPaid(boolean paid) {
+        this.paid = paid;
     }
 }

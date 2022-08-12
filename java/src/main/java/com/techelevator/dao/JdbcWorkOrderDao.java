@@ -24,7 +24,7 @@ public class JdbcWorkOrderDao implements WorkOrderDao {
     @Override
     public List<WorkOrder> getWorkOrders() {
         List<WorkOrder> result = new ArrayList<>();
-        String sql = "SELECT work_order_id, employee_id, all_completed, time_completed FROM work_orders";
+        String sql = "SELECT work_order_id, all_completed, time_completed, paid FROM work_orders";
         SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql);
         while (rowSet.next()) {
             WorkOrder workOrder = mapRowToWorkOrder(rowSet);
@@ -33,19 +33,19 @@ public class JdbcWorkOrderDao implements WorkOrderDao {
         return result;
     }
 
-    @Override
-    public List<WorkOrder> getWorkOrdersByUserId(int userId) {
-        List<WorkOrder> result = new ArrayList<>();
-        String sql = "SELECT work_order_id, employees.employee_id, all_completed, time_completed\n" +
-                "\tFROM work_orders \n" +
-                "\tJoin employees on \n" +
-                "\temployees.employee_id = work_orders.employee_id where user_id = ?";
-        SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql, userId);
-        while (rowSet.next()) {
-            WorkOrder workOrder = mapRowToWorkOrder(rowSet);
-            result.add(workOrder);
-        }
-        return result;    }
+//    @Override
+//    public List<WorkOrder> getWorkOrdersByUserId(int userId) {
+//        List<WorkOrder> result = new ArrayList<>();
+//        String sql = "SELECT work_order_id, employees.employee_id, all_completed, time_completed\n" +
+//                "\tFROM work_orders \n" +
+//                "\tJoin employees on \n" +
+//                "\temployees.employee_id = work_orders.employee_id where user_id = ?";
+//        SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql, userId);
+//        while (rowSet.next()) {
+//            WorkOrder workOrder = mapRowToWorkOrder(rowSet);
+//            result.add(workOrder);
+//        }
+//        return result;    }
 
     @Override
     public List<Repair> getRepairsByWorkOrderId(int workOrderId) {
@@ -61,12 +61,12 @@ public class JdbcWorkOrderDao implements WorkOrderDao {
 
     @Override
     public boolean createWorkOrder(WorkOrder workOrder) {
-        String sql = "INSERT INTO work_orders (employee_id, all_completed, time_completed) VALUES (?, ?, ?) " +
+        String sql = "INSERT INTO work_orders (all_completed, time_completed, paid) VALUES (?, ?, ?) " +
                 "RETURNING work_order_id;";
         Integer workOrderId;
 
         try {
-            workOrderId = jdbcTemplate.queryForObject(sql, Integer.class, workOrder.getEmployeeId(), workOrder.isAllCompleted(), workOrder.getTimeCompleted());
+            workOrderId = jdbcTemplate.queryForObject(sql, Integer.class, workOrder.isAllCompleted(), workOrder.getTimeCompleted(), workOrder.isPaid());
         } catch (DataAccessException e) {
             return false;
         }
@@ -76,8 +76,8 @@ public class JdbcWorkOrderDao implements WorkOrderDao {
 
     @Override
     public void updateWorkOrder(WorkOrder workOrder) {
-        String sql = "UPDATE public.work_orders SET work_order_id=?, employee_id=?, all_completed=?, time_completed=? WHERE work_order_id = ?";
-        jdbcTemplate.update(sql, workOrder.getWorkOrderId(), workOrder.getEmployeeId(), workOrder.isAllCompleted(), workOrder.getTimeCompleted(), workOrder.getWorkOrderId());
+        String sql = "UPDATE public.work_orders SET work_order_id=?, all_completed=?, time_completed=?, paid =? WHERE work_order_id = ?";
+        jdbcTemplate.update(sql, workOrder.getWorkOrderId(), workOrder.isAllCompleted(), workOrder.getTimeCompleted(), workOrder.isPaid(), workOrder.getWorkOrderId());
     }
 
     @Override
@@ -104,9 +104,9 @@ public class JdbcWorkOrderDao implements WorkOrderDao {
     private WorkOrder mapRowToWorkOrder(SqlRowSet rowSet) {
         WorkOrder workorder = new WorkOrder();
         workorder.setWorkOrderId(rowSet.getInt("work_order_id"));
-        workorder.setEmployeeId(rowSet.getInt("employee_id"));
         workorder.setAllCompleted(rowSet.getBoolean("all_completed"));
         workorder.setTimeCompleted(rowSet.getTimestamp("time_completed").toLocalDateTime());
+        workorder.setPaid(rowSet.getBoolean("paid"));
         return workorder;
     }
 

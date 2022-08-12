@@ -23,12 +23,12 @@ name: "WorkOrders",
   },
   created() {
 
-    // WorkOrderService.getWorkOrders().then((response) => {
-    //   this.workOrders = response.data;
-    // });
- WorkOrderService.getWorkOrdersByUserId(this.$store.state.activeEmployee.userId).then((response) => {
+    WorkOrderService.getWorkOrders().then((response) => {
       this.workOrders = response.data;
     });
+//  WorkOrderService.getWorkOrdersByUserId(this.$store.state.activeEmployee.userId).then((response) => {
+//       this.workOrders = response.data;
+//     });
   },
 }
 </script>

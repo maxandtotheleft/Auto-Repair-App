@@ -51,11 +51,10 @@ CREATE TABLE requests (
 
 CREATE TABLE work_orders (
     work_order_id SERIAL,
-    employee_id int NOT NULL,
     all_completed boolean NOT NULL,
-    time_completed timestamp NOT NULL,
-    CONSTRAINT PK_work_order_work_order_id PRIMARY KEY (work_order_id),
-    CONSTRAINT FK_work_order_employee_id FOREIGN KEY (employee_id) REFERENCES employees(employee_id)
+    time_completed timestamp,
+    paid boolean NOT NULL,
+    CONSTRAINT PK_work_order_work_order_id PRIMARY KEY (work_order_id)
 );
 
 CREATE TABLE repair_items (

@@ -21,8 +21,8 @@ INSERT INTO vehicles(vehicle_id, customer_id, make, model, year, color) VALUES (
 INSERT INTO requests (request_id, customer_id, vehicle_id, description) VALUES (1, 1, 1, 'my car is broke');
 INSERT INTO requests (request_id, customer_id, vehicle_id, description) VALUES (2, 1, 1, 'wheels dont turn');
 
-INSERT INTO work_orders (work_order_id, employee_id, all_completed, time_completed) VALUES (1, 1, true, '2022-08-08 01:01:01');
-INSERT INTO work_orders (work_order_id, employee_id, all_completed, time_completed) VALUES (2, 1, true, '2022-08-09 01:01:01');
+INSERT INTO work_orders (work_order_id, all_completed, time_completed, paid) VALUES (1, false, '2022-08-08 01:01:01', false);
+INSERT INTO work_orders (work_order_id, all_completed, time_completed, paid) VALUES (2, true, '2022-08-09 01:01:01', true);
 
 INSERT INTO repair_items (repair_id, work_order_id, repair_name, parts_cost, labor_cost, completed) VALUES (1, 1, 'Oil Change', 120.00, 80.00, false);
 INSERT INTO repair_items (repair_id, work_order_id, repair_name, parts_cost, labor_cost, completed) VALUES (2, 1, 'Tire Rotation', 90.00, 55.00, false);

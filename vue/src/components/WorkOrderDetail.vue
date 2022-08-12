@@ -20,7 +20,7 @@ name: "WorkOrderDetails",
     };
   },
   created() {
-    WorkOrderService.getWorkOrdersByUserId(this.$store.state.activeEmployee.userId).then((response) => {
+    WorkOrderService.getWorkOrders().then((response) => {
       this.workOrder = response.data.find (element => element.workOrderId === this.$route.params.id);
     });
   },
