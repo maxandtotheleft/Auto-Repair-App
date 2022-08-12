@@ -1,31 +1,37 @@
 <template>
   <div class="big">
     <!-- <div class="container"> -->
-       <div class="logo"><img src="@/assets/AAMKLogoBlue.png" /></div>
-  <div class="nav-and-hours">    
-  <div class="hours">
-            <p>Operating Hours</p>
-            <p>Monday-Friday | 8am-5pm</p>
-            <p>Saturday | 10am-4pm</p>
-            <p>Sunday | Closed</p>
-            <p>Holiday Hours May Vary</p>
-          </div>
-
-      <div class="nav-center">
-          <ul class="navigation-bar">
-            <router-link v-bind:to="{ name: 'customer' }" class="hov">Home</router-link>
-            <router-link v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''" class="hov">Logout</router-link>
-          </ul>
+    <div class="logo"><img src="@/assets/AAMKLogoBlue.png" /></div>
+    <div class="nav-and-hours">
+      <div class="hours">
+        <p>Operating Hours</p>
+        <p>Monday-Friday | 8am-5pm</p>
+        <p>Saturday | 10am-4pm</p>
+        <p>Sunday | Closed</p>
+        <p>Holiday Hours May Vary</p>
       </div>
-   </div>
-        
-         <!-- <div class="loginout" id="nav">
+
+      <div>
+        <ul class="navigation-bar">
+          <router-link v-bind:to="{ name: 'customer' }" class="hov"
+            >Home</router-link
+          >
+          <router-link
+            v-bind:to="{ name: 'logout' }"
+            v-if="$store.state.token != ''"
+            class="hov"
+            >Logout</router-link
+          >
+        </ul>
+      </div>
+    </div>
+
+    <!-- <div class="loginout" id="nav">
            <ul class="navigation-bar">
       <router-link v-bind:to="{ name: 'customer' }">Home</router-link>
       <router-link v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link>
            </ul>
     </div> -->
-   
   </div>
 </template>
 <script>
@@ -72,9 +78,7 @@ export default {
   /* float: left; */
   background-repeat: no-repeat;
   flex-wrap: no-wrap;
-
 }
-
 
 /* .container2 {
   background-image: url("https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1332&q=80");
@@ -94,44 +98,36 @@ export default {
   width: 200px;
 }
 
-.loginout{
+/* .loginout{
   font-family: Arial, Helvetica, sans-serif;
   display: flex;
   background-color: white;
   float: right;
-} 
+}  */
 
-.navigation-bar{
-   list-style-type: none;
-  margin: 0;
-  padding: 0;
+.navigation-bar {
+  display: flex;
+  justify-content: space-between;
+  list-style-type: none;
+  max-width: 100%;
+  margin: 10px;
   overflow: hidden;
   background-color: #333;
+  border: solid 0px black;
+  border-radius: 30px;
 }
 
-.nav-center{
-  /* float: left; */
-  display: block;
-  text-align: center;
-  padding: 16px;
-  text-decoration: none;
-
-}
-
-.hov:hover{
+.hov:hover {
   background: #00008b;
 }
 
-.hov{
+.hov {
   color: white;
   padding: 20px;
-  float: left;
   border: 1px solid black;
-
 }
 
-.nav-and-hours{
+.nav-and-hours {
   margin: auto;
 }
-
 </style>

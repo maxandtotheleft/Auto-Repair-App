@@ -1,6 +1,10 @@
 <template>
   <div>
-      <div v-for="repair in repairs" v-bind:key="repair.id">{{repair.partsCost}}</div>
+    <div class="repair" v-for="repair in repairs" v-bind:key="repair.id">
+      Repair Name: {{ repair.repairName }}
+      Parts Cost: {{ repair.partsCost }} 
+      Labor Cost: {{ repair.laborCost }}
+    </div>
   </div>
 </template>
 
@@ -24,4 +28,7 @@ export default {
 </script>
 
 <style>
+.repair {
+  
+} 
 </style>

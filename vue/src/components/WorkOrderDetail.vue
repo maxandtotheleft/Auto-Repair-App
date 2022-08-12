@@ -1,22 +1,24 @@
 <template>
-  <div>
-      {{ this.workOrder.timeCompleted}}
-      </div>
+<div>
+  <h1></h1>
+  <div>Completed: {{ this.workOrder.allCompleted }}</div>
+  <div>Time Completed: {{ this.workOrder.timeCompleted }}</div>
+  </div>
 </template>
 
 <script>
 import WorkOrderService from "@/services/WorkOrderService";
 
 export default {
-name: "WorkOrderDetails",
+  name: "WorkOrderDetails",
   data() {
     return {
-    workOrder: {
+      workOrder: {
         workOrderId: "",
         employeeId: "",
         allCompleted: false,
-        timeCompleted: ""  
-    } 
+        timeCompleted: "",
+      },
     };
   },
   created() {
@@ -24,9 +26,8 @@ name: "WorkOrderDetails",
       this.workOrder = response.data.find (element => element.workOrderId === this.$route.params.id);
     });
   },
-}
+};
 </script>
 
 <style>
-
 </style>
