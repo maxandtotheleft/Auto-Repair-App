@@ -24,4 +24,14 @@ public class WorkOrderController {
     @RequestMapping(path = "/repairs/{workOrderId}", method = RequestMethod.GET)
     public List<Repair> getRepairsByWorkOrderId(@PathVariable int workOrderId){return this.workOrderDao.getRepairsByWorkOrderId(workOrderId); }
 
+    @RequestMapping(path = "/workorders", method = RequestMethod.POST)
+    public boolean create(@RequestBody WorkOrder workOrder) {
+        return workOrderDao.createWorkOrder(workOrder);
+    }
+
+    @RequestMapping(path = "/repairs", method = RequestMethod.POST)
+    public boolean createRepair(@RequestBody Repair repair) {
+        return workOrderDao.createRepair(repair);
+    }
+
 }

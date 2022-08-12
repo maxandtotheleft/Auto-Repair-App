@@ -10,7 +10,7 @@ import EmployeeHome from '../views/EmployeeHome.vue'
 import RequestView from '../views/RequestView.vue'
 import RegisterEmployee from '../views/RegisterEmployee'
 import WorkOrders from '../views/WorkOrders'
-import WorkOrderDetail from '../components/WorkOrderDetail'
+import WorkOrderView from '../views/WorkOrderView'
 
 Vue.use(Router)
 
@@ -101,8 +101,8 @@ const router = new Router({
     },
     {
       path: '/workorders/:id',
-      name: 'workOrderDetail',
-      component: WorkOrderDetail,
+      name: 'workOrderView',
+      component: WorkOrderView,
       meta: {
         requiresAuth: true
       }

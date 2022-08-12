@@ -3,10 +3,28 @@ package com.techelevator.model;
 public class Repair {
     private int repairItemId;
     private int workOrderId;
+    private String repairName;
     private double partsCost;
     private double laborCost;
+    private boolean completed;
 
     public Repair() {
+    }
+
+    public String getRepairName() {
+        return repairName;
+    }
+
+    public void setRepairName(String repairName) {
+        this.repairName = repairName;
+    }
+
+    public boolean isCompleted() {
+        return completed;
+    }
+
+    public void setCompleted(boolean completed) {
+        this.completed = completed;
     }
 
     public int getRepairItemId() {

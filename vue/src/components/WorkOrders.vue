@@ -1,6 +1,6 @@
 <template>
    <div class="workOrders">
-    <div v-for="order in workOrders" v-bind:key="order.id"><router-link :to="{ name: 'workOrderDetail', params: {id: order.workOrderId} }">{{order.workOrderId}}</router-link>
+    <div v-for="order in workOrders" v-bind:key="order.id"><router-link :to="{ name: 'workOrderView', params: {id: order.workOrderId} }">{{order.workOrderId}}</router-link>
     </div>
   </div>
 </template>

@@ -24,5 +24,7 @@ INSERT INTO requests (request_id, customer_id, vehicle_id, description) VALUES (
 INSERT INTO work_orders (work_order_id, employee_id, all_completed, time_completed) VALUES (1, 1, true, '2022-08-08 01:01:01');
 INSERT INTO work_orders (work_order_id, employee_id, all_completed, time_completed) VALUES (2, 1, true, '2022-08-09 01:01:01');
 
-INSERT INTO repair_items (repair_item_id, work_order_id, parts_cost, labor_cost) VALUES (1, 1, 120.00, 80.00);
+INSERT INTO repair_items (repair_id, work_order_id, repair_name, parts_cost, labor_cost, completed) VALUES (1, 1, 'Oil Change', 120.00, 80.00, false);
+INSERT INTO repair_items (repair_id, work_order_id, repair_name, parts_cost, labor_cost, completed) VALUES (2, 1, 'Tire Rotation', 90.00, 55.00, false);
+
 COMMIT TRANSACTION;

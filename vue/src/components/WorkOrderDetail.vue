@@ -1,27 +1,32 @@
 <template>
   <div>
-      <div v-for="repair in repairs" v-bind:key="repair.id">{{repair.repairId}}</div>
-  </div>
+      {{ this.workOrder.timeCompleted}}
+      </div>
 </template>
 
 <script>
-import WorkOrderService from "../services/WorkOrderService";
+import WorkOrderService from "@/services/WorkOrderService";
+
 export default {
-  name: "workOrderDetail",
+name: "WorkOrderDetails",
   data() {
     return {
-      repairs: [],
+    workOrder: {
+        workOrderId: "",
+        employeeId: "",
+        allCompleted: false,
+        timeCompleted: ""  
+    } 
     };
   },
   created() {
-    WorkOrderService.getRepairsByWorkOrderId(this.$route.params.id).then(
-      (response) => {
-        this.repairs = response.data;
-      }
-    );
+    WorkOrderService.getWorkOrdersByUserId(this.$store.state.activeEmployee.userId).then((response) => {
+      this.workOrder = response.data.find (element => element.workOrderId === this.$route.params.id);
+    });
   },
-};
+}
 </script>
 
 <style>
+
 </style>

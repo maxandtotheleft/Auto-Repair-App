@@ -12,4 +12,12 @@ public interface WorkOrderDao {
     List<WorkOrder> getWorkOrdersByUserId(int userId);
 
     List<Repair> getRepairsByWorkOrderId(int workOrderId);
+
+    boolean createWorkOrder(WorkOrder workOrder);
+
+    void updateWorkOrder(WorkOrder workOrder);
+
+    boolean createRepair(Repair repair);
+
+    void updateRepair(Repair repair);
 }

@@ -4,20 +4,17 @@
 <div class="orders">
   <h1>Your Work Orders</h1>
   <work-orders />
-  <work-order-detail />
   </div>
   </div>
 </template>
 
 <script>
 import Heading from '../components/Heading.vue'
-import WorkOrderDetail from '../components/WorkOrderDetail.vue'
 import WorkOrders from '../components/WorkOrders.vue'
 export default {
   components: { 
       WorkOrders,
-    Heading,
-    WorkOrderDetail 
+    Heading
       },
 
 }

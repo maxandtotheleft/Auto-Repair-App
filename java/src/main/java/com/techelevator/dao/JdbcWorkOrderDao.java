@@ -3,6 +3,7 @@ package com.techelevator.dao;
 import com.techelevator.model.Repair;
 import com.techelevator.model.Request;
 import com.techelevator.model.WorkOrder;
+import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
@@ -58,6 +59,46 @@ public class JdbcWorkOrderDao implements WorkOrderDao {
         return result;
     }
 
+    @Override
+    public boolean createWorkOrder(WorkOrder workOrder) {
+        String sql = "INSERT INTO work_orders (employee_id, all_completed, time_completed) VALUES (?, ?, ?) " +
+                "RETURNING work_order_id;";
+        Integer workOrderId;
+
+        try {
+            workOrderId = jdbcTemplate.queryForObject(sql, Integer.class, workOrder.getEmployeeId(), workOrder.isAllCompleted(), workOrder.getTimeCompleted());
+        } catch (DataAccessException e) {
+            return false;
+        }
+
+        return true;
+    }
+
+    @Override
+    public void updateWorkOrder(WorkOrder workOrder) {
+
+    }
+
+    @Override
+    public boolean createRepair(Repair repair) {
+        String sql = "INSERT INTO repair_items (work_order_id, repair_name, parts_cost, labor_cost, completed) VALUES (?, ?, ?, ?, ?) " +
+                "RETURNING repair_id;";
+        Integer repairId;
+
+        try {
+            repairId = jdbcTemplate.queryForObject(sql, Integer.class, repair.getWorkOrderId(), repair.getRepairName(), repair.getPartsCost(), repair.getLaborCost(), repair.isCompleted());
+        } catch (DataAccessException e) {
+            return false;
+        }
+
+        return true;
+    }
+
+    @Override
+    public void updateRepair(Repair repair) {
+
+    }
+
     private WorkOrder mapRowToWorkOrder(SqlRowSet rowSet) {
         WorkOrder workorder = new WorkOrder();
         workorder.setWorkOrderId(rowSet.getInt("work_order_id"));
@@ -69,10 +110,12 @@ public class JdbcWorkOrderDao implements WorkOrderDao {
 
     private Repair mapRowToRepair(SqlRowSet rowSet) {
         Repair repair = new Repair();
-        repair.setRepairItemId(rowSet.getInt("repair_item_id"));
+        repair.setRepairItemId(rowSet.getInt("repair_id"));
         repair.setWorkOrderId(rowSet.getInt("work_order_id"));
+        repair.setRepairName(rowSet.getString("repair_name"));
         repair.setPartsCost(rowSet.getDouble("parts_cost"));
         repair.setLaborCost(rowSet.getDouble("labor_cost"));
+        repair.setCompleted(rowSet.getBoolean("completed"));
         return repair;
     }
 

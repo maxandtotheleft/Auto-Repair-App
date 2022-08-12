@@ -59,11 +59,13 @@ CREATE TABLE work_orders (
 );
 
 CREATE TABLE repair_items (
-    repair_item_id SERIAL,
+    repair_id SERIAL,
     work_order_id int NOT NULL,
+    repair_name varchar(150) NOT NULL,
     parts_cost decimal(13, 2) NOT NULL,
     labor_cost decimal(13, 2) NOT NULL,
-    CONSTRAINT PK_repair_item_repair_item_id PRIMARY KEY (repair_item_id),
+    completed boolean NOT NULL,
+    CONSTRAINT PK_repair_item_repair_id PRIMARY KEY (repair_id),
     CONSTRAINT FK_repair_item_work_order_id FOREIGN KEY (work_order_id) REFERENCES work_orders(work_order_id)
 );
 
