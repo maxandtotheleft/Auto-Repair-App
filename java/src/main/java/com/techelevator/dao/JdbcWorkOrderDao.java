@@ -1,5 +1,6 @@
 package com.techelevator.dao;
 
+import com.techelevator.model.Repair;
 import com.techelevator.model.Request;
 import com.techelevator.model.WorkOrder;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -31,6 +32,32 @@ public class JdbcWorkOrderDao implements WorkOrderDao {
         return result;
     }
 
+    @Override
+    public List<WorkOrder> getWorkOrdersByUserId(int userId) {
+        List<WorkOrder> result = new ArrayList<>();
+        String sql = "SELECT work_order_id, employees.employee_id, all_completed, time_completed\n" +
+                "\tFROM work_orders \n" +
+                "\tJoin employees on \n" +
+                "\temployees.employee_id = work_orders.employee_id where user_id = ?";
+        SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql, userId);
+        while (rowSet.next()) {
+            WorkOrder workOrder = mapRowToWorkOrder(rowSet);
+            result.add(workOrder);
+        }
+        return result;    }
+
+    @Override
+    public List<Repair> getRepairsByWorkOrderId(int workOrderId) {
+        List<Repair> result = new ArrayList<>();
+        String sql = "SELECT * from repair_items where work_order_id = ?";
+        SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql, workOrderId);
+        while (rowSet.next()){
+            Repair repair = mapRowToRepair(rowSet);
+            result.add(repair);
+        }
+        return result;
+    }
+
     private WorkOrder mapRowToWorkOrder(SqlRowSet rowSet) {
         WorkOrder workorder = new WorkOrder();
         workorder.setWorkOrderId(rowSet.getInt("work_order_id"));
@@ -40,5 +67,13 @@ public class JdbcWorkOrderDao implements WorkOrderDao {
         return workorder;
     }
 
+    private Repair mapRowToRepair(SqlRowSet rowSet) {
+        Repair repair = new Repair();
+        repair.setRepairItemId(rowSet.getInt("repair_item_id"));
+        repair.setWorkOrderId(rowSet.getInt("work_order_id"));
+        repair.setPartsCost(rowSet.getDouble("parts_cost"));
+        repair.setLaborCost(rowSet.getDouble("labor_cost"));
+        return repair;
+    }
 
 }

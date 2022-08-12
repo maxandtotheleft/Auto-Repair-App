@@ -1,6 +1,6 @@
 <template>
    <div class="workOrders">
-    <div v-for="order in workOrders" v-bind:key="order.id">{{order.workOrderId}}
+    <div v-for="order in workOrders" v-bind:key="order.id"><router-link :to="{ name: 'workOrderDetail', params: {id: order.workOrderId} }">{{order.workOrderId}}</router-link>
     </div>
   </div>
 </template>
@@ -9,7 +9,7 @@
 import WorkOrderService from "@/services/WorkOrderService";
 
 export default {
-name: "WorkOrder",
+name: "WorkOrders",
   data() {
     return {
     workOrders: [],
@@ -23,10 +23,12 @@ name: "WorkOrder",
   },
   created() {
 
-    WorkOrderService.getWorkOrders().then((response) => {
+    // WorkOrderService.getWorkOrders().then((response) => {
+    //   this.workOrders = response.data;
+    // });
+ WorkOrderService.getWorkOrdersByUserId(this.$store.state.activeEmployee.userId).then((response) => {
       this.workOrders = response.data;
     });
-
   },
 }
 </script>

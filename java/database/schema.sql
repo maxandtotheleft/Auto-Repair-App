@@ -63,7 +63,6 @@ CREATE TABLE repair_items (
     work_order_id int NOT NULL,
     parts_cost decimal(13, 2) NOT NULL,
     labor_cost decimal(13, 2) NOT NULL,
-    duration int NOT NULL,
     CONSTRAINT PK_repair_item_repair_item_id PRIMARY KEY (repair_item_id),
     CONSTRAINT FK_repair_item_work_order_id FOREIGN KEY (work_order_id) REFERENCES work_orders(work_order_id)
 );

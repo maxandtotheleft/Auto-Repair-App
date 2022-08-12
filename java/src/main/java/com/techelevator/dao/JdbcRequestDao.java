@@ -73,6 +73,8 @@ public class JdbcRequestDao implements RequestDao {
         return employee;
     }
 
+    //TODO addEmployee and addCustomer from front end
+
     private Request mapRowToRequest(SqlRowSet rs) {
         Request request = new Request();
         request.setRequestId(rs.getInt("request_id"));
