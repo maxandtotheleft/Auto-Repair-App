@@ -56,7 +56,8 @@ CREATE TABLE work_orders (
     time_completed timestamp,
     paid boolean NOT NULL,
     approved boolean NOT NULL,
-    CONSTRAINT PK_work_order_work_order_id PRIMARY KEY (work_order_id)
+    CONSTRAINT PK_work_order_work_order_id PRIMARY KEY (work_order_id),
+    CONSTRAINT FK_work_orders_request_id FOREIGN KEY (request_id) REFERENCES requests(request_id)
 );
 
 CREATE TABLE repair_items (
