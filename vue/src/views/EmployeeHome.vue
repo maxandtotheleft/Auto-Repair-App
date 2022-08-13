@@ -1,9 +1,9 @@
 <template>
   <div>
     <heading />
-    <!-- <div class="greeting">
+    <div class="greeting">
       Hello {{ this.$store.state.user.firstName }}
-    </div> -->
+    </div>
     <div class="greeting">
       Your Employee ID is: {{ this.$store.state.activeEmployee.employeeId }}
     </div>

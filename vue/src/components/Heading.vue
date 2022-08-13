@@ -11,9 +11,9 @@
         <p>Holiday Hours May Vary</p>
       </div>
 
-      <div>
-        <ul class="navigation-bar">
-          <router-link v-bind:to="{ name: 'customer' }" class="hov"
+      <div class="navigation-bar">
+        
+          <router-link @click="routeHomeButton()" class="hov"
             >Home</router-link
           >
           <router-link
@@ -22,22 +22,26 @@
             class="hov"
             >Logout</router-link
           >
-        </ul>
+        
       </div>
     </div>
 
-    <!-- <div class="loginout" id="nav">
-           <ul class="navigation-bar">
-      <router-link v-bind:to="{ name: 'customer' }">Home</router-link>
-      <router-link v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link>
-           </ul>
-    </div> -->
   </div>
 </template>
 <script>
 export default {
   name: "heading",
-};
+  methods: {
+    routeHomeButton(){
+       if (this.$store.state.user.authorities.some(authority => authority.name === "ROLE_ADMIN") 
+              || this.$store.state.user.authorities.some(authority => authority.name === "ROLE_EMPLOYEE")) {
+              this.$router.push("/employee");
+            } else {
+              this.$router.push("/customer");
+            }
+      } 
+    }
+  }
 </script>
 
 
@@ -98,16 +102,10 @@ export default {
   width: 200px;
 }
 
-/* .loginout{
-  font-family: Arial, Helvetica, sans-serif;
-  display: flex;
-  background-color: white;
-  float: right;
-}  */
 
 .navigation-bar {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   list-style-type: none;
   max-width: 100%;
   margin: 10px;
@@ -122,9 +120,11 @@ export default {
 }
 
 .hov {
+  font-family: Arial, Helvetica, sans-serif;
   color: white;
   padding: 20px;
-  border: 1px solid black;
+  border: 0px solid black;
+  text-decoration: none;
 }
 
 .nav-and-hours {

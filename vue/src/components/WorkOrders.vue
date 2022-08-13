@@ -15,9 +15,11 @@ name: "WorkOrders",
     workOrders: [],
     workOrder: {
         workOrderId: "",
-        employeeId: "",
+        requestId: "",
         allCompleted: false,
-        timeCompleted: ""  
+        timeCompleted: "",
+        approved: false,
+        paid: false 
     } 
     };
   },

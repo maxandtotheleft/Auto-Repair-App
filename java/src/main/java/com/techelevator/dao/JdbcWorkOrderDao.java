@@ -24,7 +24,7 @@ public class JdbcWorkOrderDao implements WorkOrderDao {
     @Override
     public List<WorkOrder> getWorkOrders() {
         List<WorkOrder> result = new ArrayList<>();
-        String sql = "SELECT work_order_id, all_completed, time_completed, paid FROM work_orders";
+        String sql = "SELECT work_order_id, request_id, all_completed, time_completed, approved, paid FROM work_orders";
         SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql);
         while (rowSet.next()) {
             WorkOrder workOrder = mapRowToWorkOrder(rowSet);
@@ -61,12 +61,12 @@ public class JdbcWorkOrderDao implements WorkOrderDao {
 
     @Override
     public boolean createWorkOrder(WorkOrder workOrder) {
-        String sql = "INSERT INTO work_orders (all_completed, time_completed, paid) VALUES (?, ?, ?) " +
+        String sql = "INSERT INTO work_orders (request_id, all_completed, time_completed, approved, paid) VALUES (?, ?, ?, ?, ?) " +
                 "RETURNING work_order_id;";
         Integer workOrderId;
 
         try {
-            workOrderId = jdbcTemplate.queryForObject(sql, Integer.class, workOrder.isAllCompleted(), workOrder.getTimeCompleted(), workOrder.isPaid());
+            workOrderId = jdbcTemplate.queryForObject(sql, Integer.class, workOrder.getRequestId(), workOrder.isAllCompleted(), workOrder.getTimeCompleted(), workOrder.isApproved(), workOrder.isPaid());
         } catch (DataAccessException e) {
             return false;
         }
@@ -76,8 +76,8 @@ public class JdbcWorkOrderDao implements WorkOrderDao {
 
     @Override
     public void updateWorkOrder(WorkOrder workOrder) {
-        String sql = "UPDATE public.work_orders SET work_order_id=?, all_completed=?, time_completed=?, paid =? WHERE work_order_id = ?";
-        jdbcTemplate.update(sql, workOrder.getWorkOrderId(), workOrder.isAllCompleted(), workOrder.getTimeCompleted(), workOrder.isPaid(), workOrder.getWorkOrderId());
+        String sql = "UPDATE public.work_orders SET work_order_id=?, request_id=?, all_completed=?, time_completed=?, approved=?, paid =? WHERE work_order_id = ?";
+        jdbcTemplate.update(sql, workOrder.getWorkOrderId(), workOrder.getRequestId(), workOrder.isAllCompleted(), workOrder.getTimeCompleted(), workOrder.isApproved(), workOrder.isPaid(), workOrder.getWorkOrderId());
     }
 
     @Override
@@ -104,8 +104,10 @@ public class JdbcWorkOrderDao implements WorkOrderDao {
     private WorkOrder mapRowToWorkOrder(SqlRowSet rowSet) {
         WorkOrder workorder = new WorkOrder();
         workorder.setWorkOrderId(rowSet.getInt("work_order_id"));
+        workorder.setRequestId(rowSet.getInt("request_id"));
         workorder.setAllCompleted(rowSet.getBoolean("all_completed"));
         workorder.setTimeCompleted(rowSet.getTimestamp("time_completed").toLocalDateTime());
+        workorder.setApproved(rowSet.getBoolean("approved"));
         workorder.setPaid(rowSet.getBoolean("paid"));
         return workorder;
     }

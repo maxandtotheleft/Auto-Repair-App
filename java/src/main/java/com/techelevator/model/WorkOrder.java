@@ -6,11 +6,29 @@ import java.util.Date;
 public class WorkOrder {
 
     private int workOrderId;
+    private int requestId;
     private boolean allCompleted;
     private LocalDateTime timeCompleted;
+    private boolean approved;
     private boolean paid;
 
     public WorkOrder() {
+    }
+
+    public int getRequestId() {
+        return requestId;
+    }
+
+    public void setRequestId(int requestId) {
+        this.requestId = requestId;
+    }
+
+    public boolean isApproved() {
+        return approved;
+    }
+
+    public void setApproved(boolean approved) {
+        this.approved = approved;
     }
 
     public int getWorkOrderId() {

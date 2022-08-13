@@ -1,5 +1,6 @@
 <template>
   <div>
+    <heading />
     <div class="wod"><work-order-detail /></div>
     <div class="rd"><repair-list /></div>
   </div>
@@ -8,12 +9,14 @@
 <script>
 import RepairList from "@/components/RepairList";
 import WorkOrderDetail from "../components/WorkOrderDetail.vue";
+import Heading from "../components/Heading.vue";
 
 export default {
   name: "work-order-view",
   components: {
     RepairList,
     WorkOrderDetail,
+    Heading
   },
 };
 </script>

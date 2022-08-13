@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="repair" v-for="repair in repairs" v-bind:key="repair.id">
-      Repair Name: {{ repair.repairName }}
+      Repair: {{ repair.repairName }}
       Parts Cost: {{ repair.partsCost }} 
       Labor Cost: {{ repair.laborCost }}
     </div>
@@ -28,7 +28,7 @@ export default {
 </script>
 
 <style>
-/* .repair {
-  
-}  */
+ .repair {
+font-family: Arial, Helvetica, sans-serif;
+}  
 </style>

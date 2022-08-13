@@ -51,9 +51,11 @@ CREATE TABLE requests (
 
 CREATE TABLE work_orders (
     work_order_id SERIAL,
+    request_id int NOT NULL,
     all_completed boolean NOT NULL,
     time_completed timestamp,
     paid boolean NOT NULL,
+    approved boolean NOT NULL,
     CONSTRAINT PK_work_order_work_order_id PRIMARY KEY (work_order_id)
 );
 
