@@ -11,6 +11,7 @@ import RequestView from '../views/RequestView.vue'
 import RegisterEmployee from '../views/RegisterEmployee'
 import WorkOrders from '../views/WorkOrders'
 import WorkOrderView from '../views/WorkOrderView'
+import AddVehicle from '../views/AddVehicle'
 
 Vue.use(Router)
 
@@ -79,6 +80,14 @@ const router = new Router({
       path: '/requests',
       name: 'requests', 
       component: RequestView,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: '/addVehicle',
+      name: 'add-vehicle',
+      component: AddVehicle,
       meta: {
         requiresAuth: true
       }

@@ -4,6 +4,7 @@
     <div class="vehicle-stuff">
       <h1>Your Vehicles</h1>
       <vehicle />
+      <button @click="viewAddVehiclePage">Add Vehicle</button>
     </div>
     <div class="request-stuff">
       <h1>Requests</h1>
@@ -28,6 +29,11 @@ export default {
     Heading,
     Vehicle,
   },
+  methods: {
+    viewAddVehiclePage() {
+      this.$router.push({name: 'add-vehicle'});
+    }
+  }
 };
 </script>
 

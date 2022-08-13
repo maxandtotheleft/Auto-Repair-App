@@ -7,5 +7,6 @@ export default {
             const vehicle = response;
             return vehicle;
         }))
-    }
+    },
+    
 }
