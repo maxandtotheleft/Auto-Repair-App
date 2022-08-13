@@ -10,7 +10,7 @@
     <div class="work-order">
       <router-link :to="{ name: 'WorkOrders' }">View Work Orders</router-link>
     </div>
-    <router-link
+    <router-link class="reg"
       :to="{ name: 'registerEmployee' }"
       v-if="
         this.$store.state.user.authorities.some(
@@ -72,4 +72,20 @@ export default {
   padding: 25px;
   margin-top: 25px;
 }
+
+.reg { 
+   font-family: Arial, Helvetica, sans-serif;
+  background: rgb(255, 255, 255);
+  border: 0px solid rgb(184, 176, 176);
+  border-radius: 15px 35px;
+  text-align: center;
+  width: 400px;
+  height: auto;
+  overflow: hidden;
+  /* margin: left;  */
+  margin: auto;
+  /* margin: 20 0 0 450px;   */
+  padding: 25px;
+  margin-top: 25px;
+  } 
 </style>

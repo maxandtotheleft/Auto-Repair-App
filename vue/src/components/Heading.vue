@@ -13,8 +13,8 @@
 
       <div class="navigation-bar">
         
-          <router-link @click="routeHomeButton()" class="hov"
-            >Home</router-link
+          <div @click="routeHomeButton()" class="hov"
+            >Home</div
           >
           <router-link
             v-bind:to="{ name: 'logout' }"

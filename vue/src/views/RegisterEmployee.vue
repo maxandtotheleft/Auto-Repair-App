@@ -1,4 +1,6 @@
 <template>
+<div>
+  <heading />
   <div id="register" class="text-center">
     <form class="form-register" @submit.prevent="register">
       <h1 class="h3 mb-3 font-weight-normal">Register Employee Account</h1>
@@ -74,11 +76,13 @@
       <router-link :to="{ name: 'login' }" id="link-create-account">Have an account?</router-link>
     
     </form>
+    </div>
   </div>
 </template>
 
 <script>
 import authService from '../services/AuthService';
+import Heading from '../components/Heading.vue';
 
 export default {
   name: 'register-employee',
@@ -97,6 +101,9 @@ export default {
       registrationErrors: false,
       registrationErrorMsg: 'There were problems registering this user.',
     };
+  },
+  components: {
+    Heading
   },
   methods: {
     register() {
