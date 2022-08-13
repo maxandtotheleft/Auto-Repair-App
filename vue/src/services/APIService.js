@@ -11,8 +11,15 @@ const options = {
 
 export default {
 
+    // addVehicle(vehicle) {
+    //     return axios.post('/requests/', request).then((response => {
+    //         const request = response;
+    //         return request;
+    //     }))
+    // },
+
     getVehicleYears() {
-        return axios.request(options).then((response) => {
+        axios.request(options).then((response) => {
             return response.data;
 
         }

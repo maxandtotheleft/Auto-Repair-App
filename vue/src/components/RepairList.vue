@@ -28,7 +28,7 @@ export default {
 </script>
 
 <style>
-.repair {
+/* .repair {
   
-} 
+}  */
 </style>
