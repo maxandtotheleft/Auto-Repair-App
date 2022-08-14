@@ -12,8 +12,8 @@ import java.util.List;
 
 @RestController
 @CrossOrigin
-//@PreAuthorize("isAuthenticated() && hasRole('ROLE_EMPLOYEE')")
-//@RequestMapping(path = "/employee/workorders")
+@PreAuthorize("isAuthenticated() && hasRole('ROLE_EMPLOYEE')")
+@RequestMapping(path = "/employee/workorders")
 public class EmployeeWorkOrderController {
 
     private WorkOrderDao workOrderDao;
@@ -35,7 +35,7 @@ public class EmployeeWorkOrderController {
         return this.userDao.findByUsername(username);
     }
 
-    @RequestMapping(path = "/workorders", method = RequestMethod.GET)
+    @RequestMapping(method = RequestMethod.GET)
     public List<WorkOrder> getWorkOrders()
     {
         return this.workOrderDao.getWorkOrders();
@@ -44,10 +44,12 @@ public class EmployeeWorkOrderController {
 //    @RequestMapping(path = "/workorders/{userId}", method = RequestMethod.GET)
 //    public List<WorkOrder> getWorkOrdersByUser(@PathVariable int userId){return this.workOrderDao.getWorkOrdersByUserId(userId);}
 
-    @RequestMapping(path = "/repairs/{workOrderId}", method = RequestMethod.GET)
-    public List<Repair> getRepairsByWorkOrderId(@PathVariable int workOrderId){return this.workOrderDao.getRepairsByWorkOrderId(workOrderId); }
+    @RequestMapping(path = "/{workOrderId}/repairs", method = RequestMethod.GET)
+    public List<Repair> getRepairsByWorkOrderId(@PathVariable int workOrderId){
+        return this.workOrderDao.getRepairsByWorkOrderId(workOrderId);
+    }
 
-    @RequestMapping(path = "/workorders", method = RequestMethod.POST)
+    @RequestMapping(method = RequestMethod.POST)
     public WorkOrder create(@RequestBody WorkOrder workOrder) {
         int workOrderId = workOrderDao.createWorkOrder(workOrder);
         workOrder.setWorkOrderId(workOrderId);
@@ -60,8 +62,9 @@ public class EmployeeWorkOrderController {
         return workOrderDao.createRepair(repair);
     }
 
-    @RequestMapping(path = "/changeorder/{workOrderId}", method = RequestMethod.PUT)
+    @RequestMapping(path = "/{workOrderId}", method = RequestMethod.PUT)
     public void updateWorkOrder(@PathVariable int workOrderId, @RequestBody WorkOrder workOrder){
+        workOrder.setWorkOrderId(workOrderId);
         workOrderDao.updateWorkOrder(workOrder);
     }
 

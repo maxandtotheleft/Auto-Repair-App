@@ -4,7 +4,7 @@ export default {
 
    
     getWorkOrders() {
-        return axios.get('/workorders').then((response => {
+        return axios.get('/employee/workorders').then((response => {
             const workOrder = response;
             return workOrder;
         }))
@@ -16,20 +16,20 @@ export default {
     //     }))
     // },
     getRepairsByWorkOrderId(workOrderId){
-        return axios.get(`/repairs/${workOrderId}`).then((response => {
+        return axios.get(`/employee/workorders/${workOrderId}/repairs`).then((response => {
             const repairs = response;
             return repairs; 
         }))
     },
 
     addWorkOrder(workOrder) {
-        return axios.post('/workorders', workOrder).then((response => {
+        return axios.post('/employee/workorders', workOrder).then((response => {
             const workOrder = response;
             return workOrder;
         }))
     },
     updateWorkOrder(workOrderId, workOrder){
-        return axios.put(`/changeorder/${workOrderId}`, workOrder).then((response => {
+        return axios.put(`/employee/workorders/${workOrderId}`, workOrder).then((response => {
             const workOrder = response;
             return workOrder;
         }))

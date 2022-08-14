@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriBuilder;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import javax.validation.Valid;
 import java.io.IOException;
 import java.net.URI;
 import java.net.http.HttpClient;
@@ -53,7 +54,7 @@ public class VehicleController {
         return vehicleDao.getVehicleByCustomerId(loggedInUser.getId());}
 
     @RequestMapping(method = RequestMethod.POST)
-    public Vehicle create(@RequestBody Vehicle vehicle, Principal principal) {
+    public Vehicle create(@Valid @RequestBody Vehicle vehicle, Principal principal) {
         User loggedInUser = getLoggedInUser(principal.getName());
 
         int id = vehicleDao.addVehicle(loggedInUser.getId(), vehicle);
