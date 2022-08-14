@@ -1,6 +1,7 @@
 <template>
   <div class="requests">
-    <div class="individual" v-for="request in this.$store.state.requests" v-bind:key="request.id">{{request.description}}
+    <div class="individual" v-for="request in this.$store.state.requests" v-bind:key="request.id">
+      <router-link :to="{ name: 'workOrderView', params: {id: request.requestId} }">{{request.description}}</router-link>
     </div>
   </div>
 </template>

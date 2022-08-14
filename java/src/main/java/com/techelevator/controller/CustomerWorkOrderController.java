@@ -13,7 +13,7 @@ import java.util.List;
 
 @RestController
 @CrossOrigin
-@PreAuthorize("isAuthenticated() && hasRole('ROLE_USER')")
+@PreAuthorize("isAuthenticated()")
 @RequestMapping(path = "/customer/workorders", method = RequestMethod.GET)
 public class CustomerWorkOrderController {
 
@@ -41,10 +41,28 @@ public class CustomerWorkOrderController {
      * @param principal The spring security principal.
      * @return The list of work orders for logged-in user.
      */
-    @RequestMapping(method = RequestMethod.GET)
+    @RequestMapping(path = "/current", method = RequestMethod.GET)
     public List<WorkOrder> getCustomerWorkOrders(Principal principal)
     {
         User loggedInUser = getLoggedInUser(principal.getName());
         return this.workOrderDao.getWorkOrdersByUserId(loggedInUser.getId());
+    }
+
+    @RequestMapping(method = RequestMethod.GET)
+    public List<WorkOrder> getWorkOrders()
+    {
+        return this.workOrderDao.getWorkOrders();
+    }
+
+
+    @RequestMapping(path = "/{workOrderId}/repairs", method = RequestMethod.GET)
+    public List<Repair> getRepairsByWorkOrderId(@PathVariable int workOrderId){
+        return this.workOrderDao.getRepairsByWorkOrderId(workOrderId);
+    }
+
+    @RequestMapping(path = "/{workOrderId}", method = RequestMethod.PUT)
+    public void updateWorkOrder(@PathVariable int workOrderId, @RequestBody WorkOrder workOrder){
+        workOrder.setWorkOrderId(workOrderId);
+        workOrderDao.updateWorkOrder(workOrder);
     }
 }

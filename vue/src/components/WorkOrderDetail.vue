@@ -1,12 +1,11 @@
 <template>
   <div>
-    <div>
-      <form @submit.prevent="updateDate">
-      <h1>Work Order #{{ workOrder.workOrderId }}</h1>
+      <form @submit.prevent="updateWorkOrder">
+      <h1>Work Order #{{ this.workOrder.workOrderId }}</h1>
       <div>Completed: {{ this.workOrder.allCompleted }}  <input class="checker" type="checkbox" v-model="workOrder.allCompleted" @click="flipCompletedStatus"
         /></div>
       <div>Time Completed: {{ this.workOrder.timeCompleted }} <input type="datetime-local" v-model="workOrder.timeCompleted">
-</div>
+      </div>
       <div>
         Approved: {{ this.workOrder.approved }}
         <input class="checker" type="checkbox" v-model="workOrder.approved" @click="flipApprovedStatus"
@@ -19,7 +18,6 @@
       </div>
       <input  type="submit" value="Save" />
       </form>
-    </div>
   </div>
 </template>
 
@@ -53,7 +51,7 @@ export default {
       }
     
     },
-    updateDate(){
+    updateWorkOrder(){
 
         WorkOrderService.updateWorkOrder(
         this.workOrder.workOrderId,

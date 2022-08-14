@@ -20,6 +20,9 @@ export default new Vuex.Store({
   state: {
     token: currentToken || '',
     user: currentUser || {},
+    isAdmin: false,
+    isCustomer: false,
+    isEmployee: false,
     // activeCustomer: {
     //   customerId: '',
     //   userId: ''
@@ -54,6 +57,9 @@ export default new Vuex.Store({
       state.requests = [],
       state.workOrders = []
       axios.defaults.headers.common = {};
+      state.isAdmin = false;
+      state.isCustomer = false;
+      state.isEmployee = false;
     },
     // SET_CUSTOMER(state, customer) {
     //   state.activeCustomer = customer;
@@ -69,6 +75,15 @@ export default new Vuex.Store({
     },
     SET_WORKORDERS(state, data) {
       state.workOrders = data;
+    },
+    SET_ADMIN(state, data) {
+      state.isAdmin = data;
+    },
+    SET_CUSTOMER(state, data) {
+      state.isCustomer = data;
+    },
+    SET_EMPLOYEE(state, data) {
+      state.isEmployee = data;
     }
   }
 })
