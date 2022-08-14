@@ -1,22 +1,45 @@
 package com.techelevator.controller;
 
+import com.techelevator.dao.UserDao;
 import com.techelevator.dao.WorkOrderDao;
 import com.techelevator.model.Repair;
+import com.techelevator.model.User;
 import com.techelevator.model.WorkOrder;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 @CrossOrigin
-public class WorkOrderController {
+@PreAuthorize("isAuthenticated() && hasRole('ROLE_EMPLOYEE')")
+@RequestMapping(path = "/employee/workorders", method = RequestMethod.GET)
+public class EmployeeWorkOrderController {
 
     private WorkOrderDao workOrderDao;
 
-    public WorkOrderController(WorkOrderDao workOrderDao) {this.workOrderDao = workOrderDao; }
+    private UserDao userDao;
 
-    @RequestMapping(path = "/workorders", method = RequestMethod.GET)
-    public List<WorkOrder> getWorkOrders(){return this.workOrderDao.getWorkOrders();}
+    public EmployeeWorkOrderController(WorkOrderDao workOrderDao, UserDao userDao) {
+        this.workOrderDao = workOrderDao;
+        this.userDao = userDao;
+    }
+
+    /**
+     * Returns the current logged-in user.
+     * @param username The principal username,.
+     * @return The current logged-in user.
+     */
+    public User getLoggedInUser(String username)
+    {
+        return this.userDao.findByUsername(username);
+    }
+
+    @RequestMapping(method = RequestMethod.GET)
+    public List<WorkOrder> getWorkOrders()
+    {
+        return this.workOrderDao.getWorkOrders();
+    }
 
 //    @RequestMapping(path = "/workorders/{userId}", method = RequestMethod.GET)
 //    public List<WorkOrder> getWorkOrdersByUser(@PathVariable int userId){return this.workOrderDao.getWorkOrdersByUserId(userId);}

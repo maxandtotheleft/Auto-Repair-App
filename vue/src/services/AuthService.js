@@ -6,8 +6,12 @@ export default {
     return axios.post('/login', user)
   },
 
-  register(user) {
-    return axios.post('/register', user)
+  registerCustomer(user) {
+    return axios.post('/register-customer', user)
+  },
+
+  registerEmployee(user) {
+    return axios.post('/register-employee', user)
   }
 
 }

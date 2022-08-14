@@ -88,7 +88,7 @@ export default {
         username: '',
         password: '',
         confirmPassword: '',
-        role: 'user',
+        // role: 'user',
         firstName: '',
         lastName: '',
         emailAddress: '',
@@ -105,7 +105,7 @@ export default {
         this.registrationErrorMsg = 'Password & Confirm Password do not match.';
       } else {
         authService
-          .register(this.user)
+          .registerCustomer(this.user)
           .then((response) => {
             if (response.status == 201) {
               this.$router.push({

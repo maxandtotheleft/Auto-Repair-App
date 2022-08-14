@@ -9,7 +9,7 @@ public interface WorkOrderDao {
 
     List<WorkOrder> getWorkOrders();
 
-//    List<WorkOrder> getWorkOrdersByUserId(int userId);
+    List<WorkOrder> getWorkOrdersByUserId(int userId);
 
     List<Repair> getRepairsByWorkOrderId(int workOrderId);
 

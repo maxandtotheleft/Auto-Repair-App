@@ -1,7 +1,5 @@
 package com.techelevator.dao;
 
-import com.techelevator.model.Customer;
-import com.techelevator.model.Employee;
 import com.techelevator.model.Request;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
@@ -31,6 +29,18 @@ public class JdbcRequestDao implements RequestDao {
     }
 
     @Override
+    public List<Request> getAllRequests() {
+        List<Request> result = new ArrayList<>();
+        String sql = "SELECT request_id, customer_id, vehicle_id, description FROM requests";
+        SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql);
+        while (rowSet.next()) {
+            Request request = mapRowToRequest(rowSet);
+            result.add(request);
+        }
+        return result;
+    }
+
+    @Override
     public List<Request> getAllRequests(int customerId) {
         List<Request> result = new ArrayList<>();
         String sql = "SELECT request_id, customer_id, vehicle_id, description FROM requests WHERE customer_id = ?";
@@ -43,34 +53,10 @@ public class JdbcRequestDao implements RequestDao {
     }
 
     @Override
-    public int addRequest(Request request) {
+    public int addRequest(int customerId, Request request) {
         String sql = "INSERT INTO requests (customer_id, vehicle_id, description) VALUES (?, ?, ?) RETURNING request_id";
-        int id = jdbcTemplate.queryForObject(sql, Integer.class, request.getCustomerId(), request.getVehicleId(), request.getDescription());
+        int id = jdbcTemplate.queryForObject(sql, Integer.class, customerId, request.getVehicleId(), request.getDescription());
         return id;
-    }
-
-    @Override
-    public Customer getCustomerByUserId(int userId) {
-        Customer customer = new Customer();
-        String sql = "SELECT customer_id, user_id FROM customers WHERE user_id = ?";
-        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, userId);
-        if (results.next()) {
-            customer.setCustomerId(results.getInt("customer_id"));
-            customer.setUserId(results.getInt("user_id"));
-        }
-        return customer;
-    }
-
-    @Override
-    public Employee getEmployeeByUserId(int userId) {
-        Employee employee = new Employee();
-        String sql = "SELECT employee_id, user_id FROM employees WHERE user_id = ?";
-        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, userId);
-        if (results.next()) {
-            employee.setEmployeeId(results.getInt("employee_id"));
-            employee.setUserId(results.getInt("user_id"));
-        }
-        return employee;
     }
 
     //TODO addEmployee and addCustomer from front end

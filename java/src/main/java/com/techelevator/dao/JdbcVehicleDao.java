@@ -1,6 +1,5 @@
 package com.techelevator.dao;
 
-import com.techelevator.model.Request;
 import com.techelevator.model.Vehicle;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
@@ -29,6 +28,13 @@ public class JdbcVehicleDao implements VehicleDao{
             vehicles.add(vehicle);
         }
         return vehicles;    }
+
+    @Override
+    public int addVehicle(int customerId, Vehicle vehicle) {
+        String sql = "INSERT INTO vehicles (customer_id, make, model, year, color) VALUES (?, ?, ?, ?, ?) RETURNING vehicle_id";
+        int id = jdbcTemplate.queryForObject(sql, Integer.class, customerId, vehicle.getMake(), vehicle.getModel(), vehicle.getYear(), vehicle.getColor());
+        return id;
+    }
 
     private Vehicle mapRowToVehicle(SqlRowSet results) {
         Vehicle vehicle = new Vehicle();
