@@ -28,4 +28,10 @@ export default {
             return workOrder;
         }))
     },
+    updateWorkOrder(workOrderId, workOrder){
+        return axios.put(`/changeorder/${workOrderId}`, workOrder).then((response => {
+            const workOrder = response;
+            return workOrder;
+        }))
+    }
 }
