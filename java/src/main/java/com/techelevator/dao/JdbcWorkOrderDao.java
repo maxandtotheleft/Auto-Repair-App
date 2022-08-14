@@ -8,6 +8,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -63,7 +64,8 @@ public class JdbcWorkOrderDao implements WorkOrderDao {
     public int createWorkOrder(WorkOrder workOrder) {
         String sql = "INSERT INTO work_orders (request_id, all_completed, time_completed, approved, paid) VALUES (?, ?, ?, ?, ?) " +
                 "RETURNING work_order_id;";
-        int workOrderId = jdbcTemplate.queryForObject(sql, Integer.class, workOrder.getRequestId(), workOrder.isAllCompleted(), workOrder.getTimeCompleted(), workOrder.isApproved(), workOrder.isPaid());
+        LocalDateTime currentTime = LocalDateTime.now().withNano(0).withSecond(0);
+        int workOrderId = jdbcTemplate.queryForObject(sql, Integer.class, workOrder.getRequestId(), workOrder.isAllCompleted(), currentTime, workOrder.isApproved(), workOrder.isPaid());
 
         return workOrderId;
 

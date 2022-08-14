@@ -5,7 +5,7 @@
       <h1>Work Order #{{ workOrder.workOrderId }}</h1>
       <div>Completed: {{ this.workOrder.allCompleted }}  <input class="checker" type="checkbox" v-model="workOrder.allCompleted" @click="flipCompletedStatus"
         /></div>
-      <div>Time Completed: {{ this.workOrder.timeCompleted }} <input type="datetime-local" v-model="this.workOrder.timeCompleted">
+      <div>Time Completed: {{ this.workOrder.timeCompleted }} <input type="datetime-local" v-model="workOrder.timeCompleted">
 </div>
       <div>
         Approved: {{ this.workOrder.approved }}
@@ -35,10 +35,7 @@ export default {
       } else if (this.workOrder.approved == false) {
         this.workOrder.approved = true;
       }
-      WorkOrderService.updateWorkOrder(
-        this.workOrder.workOrderId,
-        this.workOrder
-      );
+      
     },
     flipPaidStatus() {
       if (this.workOrder.paid == true) {
@@ -46,10 +43,7 @@ export default {
       } else if (this.workOrder.paid == false) {
         this.workOrder.paid = true;
       }
-      WorkOrderService.updateWorkOrder(
-        this.workOrder.workOrderId,
-        this.workOrder
-      );
+    
     },
     flipCompletedStatus() {
       if (this.workOrder.allCompleted == true) {
@@ -57,10 +51,7 @@ export default {
       } else if (this.workOrder.allCompleted == false) {
         this.workOrder.allCompleted = true;
       }
-      WorkOrderService.updateWorkOrder(
-        this.workOrder.workOrderId,
-        this.workOrder
-      );
+    
     },
     updateDate(){
 

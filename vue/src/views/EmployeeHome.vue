@@ -2,7 +2,7 @@
   <div>
     <heading />
     <div class="greeting">
-      Hello {{ this.$store.state.user.name }}
+      Hello {{ this.$store.state.user.firstName }}
     </div>
     <div class="greeting">
       Your Employee ID is: {{ this.$store.state.user.id }}
@@ -10,15 +10,17 @@
     <div class="work-order">
       <router-link :to="{ name: 'WorkOrders' }">View Work Orders</router-link>
     </div>
-    <router-link class="reg"
-      :to="{ name: 'registerEmployee' }"
-      v-if="
-        this.$store.state.user.authorities.some(
-          (authority) => authority.name === 'ROLE_ADMIN'
-        )
-      "
-      >Register an Employee</router-link
-    >
+    <div class="reg">
+      <router-link
+        :to="{ name: 'registerEmployee' }"
+        v-if="
+          this.$store.state.user.authorities.some(
+            (authority) => authority.name === 'ROLE_ADMIN'
+          )
+        "
+        >Register an Employee</router-link
+      >
+    </div>
   </div>
 </template>
 
