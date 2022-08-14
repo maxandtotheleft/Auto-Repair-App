@@ -52,7 +52,7 @@ public class EmployeeWorkOrderController {
         int workOrderId = workOrderDao.createWorkOrder(workOrder);
         workOrder.setWorkOrderId(workOrderId);
 
-        return workOrder;
+        return workOrderDao.getWorkOrder(workOrderId);
     }
 
     @RequestMapping(path = "/repairs", method = RequestMethod.POST)

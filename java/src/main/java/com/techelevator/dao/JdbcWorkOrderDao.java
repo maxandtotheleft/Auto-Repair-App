@@ -35,6 +35,17 @@ public class JdbcWorkOrderDao implements WorkOrderDao {
     }
 
     @Override
+    public WorkOrder getWorkOrder(int workOrderId) {
+        WorkOrder workOrder = null;
+        String sql = "SELECT * FROM work_orders WHERE work_order_id = ?";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, workOrderId);
+        if (results.next()) {
+            workOrder = mapRowToWorkOrder(results);
+        }
+        return workOrder;
+    }
+
+    @Override
     public List<WorkOrder> getWorkOrdersByUserId(int userId) {
         List<WorkOrder> result = new ArrayList<>();
         String sql = "SELECT * FROM work_orders" +
