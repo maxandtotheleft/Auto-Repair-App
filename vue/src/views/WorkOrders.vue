@@ -6,7 +6,6 @@
   <work-orders />
   </div>
   <div class="submit">
-   <work-order-request />
    <repair-request />
    </div>
   </div>
@@ -15,13 +14,13 @@
 <script>
 import Heading from '../components/Heading.vue'
 import RepairRequest from '../components/RepairRequest.vue'
-import WorkOrderRequest from '../components/WorkOrderRequest.vue'
+// import WorkOrderRequest from '../components/WorkOrderRequest.vue'
 import WorkOrders from '../components/WorkOrders.vue'
 export default {
   components: { 
       WorkOrders,
     Heading,
-    WorkOrderRequest,
+    // WorkOrderRequest,
     RepairRequest
       },
 

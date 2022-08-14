@@ -12,6 +12,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @Component
 public class JdbcWorkOrderDao implements WorkOrderDao {
@@ -73,10 +74,10 @@ public class JdbcWorkOrderDao implements WorkOrderDao {
 
     @Override
     public int createWorkOrder(WorkOrder workOrder) {
-        String sql = "INSERT INTO work_orders (request_id, all_completed, time_completed, approved, paid) VALUES (?, ?, ?, ?, ?) " +
+        String sql = "INSERT INTO work_orders (request_id, all_completed, approved, paid) VALUES (?, ?, ?, ?) " +
                 "RETURNING work_order_id;";
-        LocalDateTime currentTime = LocalDateTime.now().withNano(0).withSecond(0);
-        int workOrderId = jdbcTemplate.queryForObject(sql, Integer.class, workOrder.getRequestId(), workOrder.isAllCompleted(), currentTime, workOrder.isApproved(), workOrder.isPaid());
+//        LocalDateTime currentTime = LocalDateTime.now().withNano(0).withSecond(0);
+        int workOrderId = jdbcTemplate.queryForObject(sql, Integer.class, workOrder.getRequestId(), workOrder.isAllCompleted(), workOrder.isApproved(), workOrder.isPaid());
 
         return workOrderId;
 
@@ -114,7 +115,10 @@ public class JdbcWorkOrderDao implements WorkOrderDao {
         workorder.setWorkOrderId(rowSet.getInt("work_order_id"));
         workorder.setRequestId(rowSet.getInt("request_id"));
         workorder.setAllCompleted(rowSet.getBoolean("all_completed"));
-        workorder.setTimeCompleted(rowSet.getTimestamp("time_completed").toLocalDateTime());
+
+        if (rowSet.getTimestamp("time_completed") != null) {
+            workorder.setTimeCompleted(rowSet.getTimestamp("time_completed").toLocalDateTime());
+        }
         workorder.setApproved(rowSet.getBoolean("approved"));
         workorder.setPaid(rowSet.getBoolean("paid"));
         return workorder;
