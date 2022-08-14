@@ -92,7 +92,7 @@ export default {
         username: '',
         password: '',
         confirmPassword: '',
-        role: 'employee',
+        // role: 'employee',
         firstName: '',
         lastName: '',
         emailAddress: '',
@@ -112,11 +112,11 @@ export default {
         this.registrationErrorMsg = 'Password & Confirm Password do not match.';
       } else {
         authService
-          .register(this.user)
+          .registerEmployee(this.user)
           .then((response) => {
             if (response.status == 201) {
               this.$router.push({
-                path: '/employees',
+                path: '/employee',
                 query: { registration: 'success' },
               });
             }

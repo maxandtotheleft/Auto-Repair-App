@@ -1,16 +1,15 @@
 <template>
   <div>
     <heading />
-    <div class="vehicle-stuff">
+    <div class="styled-box">
       <h1>Your Vehicles</h1>
       <vehicle />
       <button @click="viewAddVehiclePage">Add Vehicle</button>
     </div>
-    <div class="request-stuff">
+    <div class="styled-box">
       <h1>Requests</h1>
       <request />
     </div>
-
     <submit-request />
   </div>
 </template>
@@ -31,42 +30,12 @@ export default {
   },
   methods: {
     viewAddVehiclePage() {
-      this.$router.push({name: 'add-vehicle'});
-    }
-  }
+      this.$router.push({ name: "add-vehicle" });
+    },
+  },
 };
 </script>
 
 <style scoped>
-.request-stuff {
-  font-family: Arial, Helvetica, sans-serif;
-  background: rgb(255, 255, 255);
-  border: 0px solid rgb(184, 176, 176);
-  border-radius: 15px 35px;
-  text-align: center;
-  width: 400px;
-    height: auto;  
-    overflow: hidden;  
-    /* margin: left;  */
-    margin: auto;
-    /* margin: 20 0 0 450px;   */
-    padding: 25px;
-    margin-top: 25px;
-}
 
-.vehicle-stuff {
-  font-family: Arial, Helvetica, sans-serif;
-  background: rgb(255, 255, 255);
-  border: 0px solid rgb(184, 176, 176);
-  border-radius: 15px 35px;
-  text-align: center;
-  width: 400px;
-    height: auto;  
-    overflow: hidden;  
-    /* margin: left;  */
-    margin: auto;
-    /* margin: 20 0 0 450px;   */
-    padding: 25px;
-    margin-top: 25px;
-}
 </style>

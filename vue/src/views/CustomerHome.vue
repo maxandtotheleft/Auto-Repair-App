@@ -3,14 +3,15 @@
     <heading />
     <div>This is a customer page. Hello {{this.$store.state.user.firstName }}</div>
     <!-- <div>This is a customer page. Hello {{this.$store.state.activeCustomer.customerId}}</div> -->
-    <router-link v-bind:to="{name : 'requests'}">View Requests</router-link>
+    <router-link v-bind:to="{name : 'requests'}"><div class="styled-box"><h3>View Requests</h3></div></router-link>
+    <router-link v-bind:to="{name : 'requests'}"><div class="styled-box"><h3>View Repair Estimates</h3></div></router-link>
     <!-- <add-vehicle /> -->
   </div>
 </template>
 
 <script>
 import Heading from "@/components/Heading.vue";
-import RequestService from "@/services/RequestService";
+// import RequestService from "@/services/RequestService";
 // import AddVehicle from '../components/AddVehicle.vue';
 
 export default {
@@ -20,12 +21,13 @@ export default {
     // AddVehicle,
   },
   created() {
-    RequestService.getCustomerByUserId(this.$store.state.user.id).then( response => {
-      this.$store.commit("SET_CUSTOMER", response.data);
-    })
+    // RequestService.getLoggedInUser().then( response => {
+    //   this.$store.commit("SET_USER", response.data);
+    // })
   }
 };
 </script>
 
 <style>
+
 </style>

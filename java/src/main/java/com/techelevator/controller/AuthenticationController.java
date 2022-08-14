@@ -5,6 +5,7 @@ import javax.validation.Valid;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.core.Authentication;
@@ -24,6 +25,9 @@ import com.techelevator.security.jwt.TokenProvider;
 @RestController
 @CrossOrigin
 public class AuthenticationController {
+
+    public static String ROLE_USER = "USER";
+    public static String ROLE_EMPLOYEE = "EMPLOYEE";
 
     private final TokenProvider tokenProvider;
     private final AuthenticationManagerBuilder authenticationManagerBuilder;
@@ -53,13 +57,43 @@ public class AuthenticationController {
     }
 
     @ResponseStatus(HttpStatus.CREATED)
-    @RequestMapping(value = "/register", method = RequestMethod.POST)
-    public void register(@Valid @RequestBody RegisterUserDTO newUser) {
+    @RequestMapping(value = "/register-customer", method = RequestMethod.POST)
+    public void registerCustomer(@Valid @RequestBody RegisterUserDTO newUser) {
         try {
             User user = userDao.findByUsername(newUser.getUsername());
             throw new UserAlreadyExistsException();
         } catch (UsernameNotFoundException e) {
-            userDao.create(newUser.getUsername(),newUser.getPassword(), newUser.getRole(), newUser.getFirstName(), newUser.getLastName(), newUser.getEmailAddress(), newUser.getPhoneNumber());
+
+            //TODO: Check if the logged-in user has the ADMIN ROLE when adding a user with EMPLOYEE ROLE.
+            userDao.create(
+                    newUser.getUsername(),
+                    newUser.getPassword(),
+                    ROLE_USER,
+                    newUser.getFirstName(),
+                    newUser.getLastName(),
+                    newUser.getEmailAddress(),
+                    newUser.getPhoneNumber());
+        }
+    }
+
+    @ResponseStatus(HttpStatus.CREATED)
+    @RequestMapping(value = "/register-employee", method = RequestMethod.POST)
+    @PreAuthorize("isAuthenticated() && hasRole('ROLE_ADMIN')")
+    public void registerEmployee(@Valid @RequestBody RegisterUserDTO newUser) {
+        try {
+            User user = userDao.findByUsername(newUser.getUsername());
+            throw new UserAlreadyExistsException();
+        } catch (UsernameNotFoundException e) {
+
+            //TODO: Check if the logged-in user has the ADMIN ROLE when adding a user with EMPLOYEE ROLE.
+            userDao.create(
+                    newUser.getUsername(),
+                    newUser.getPassword(),
+                    ROLE_EMPLOYEE,
+                    newUser.getFirstName(),
+                    newUser.getLastName(),
+                    newUser.getEmailAddress(),
+                    newUser.getPhoneNumber());
         }
     }
 

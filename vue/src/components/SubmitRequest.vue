@@ -3,9 +3,18 @@
     <form class="submitForm" v-on:submit.prevent="addRequest">
       <!-- <label for="">Customer Id</label>
        <input type="" class="" id="" v-model="request.customerId" />  -->
-      <label class="request-form-label">Vehicle Id</label>
-
-      <input class="input" v-model="request.vehicleId" />
+      <label class="request-form-label">Vehicle
+        <select v-model="request.vehicleId">
+          <option
+            v-for="vehicle in this.$store.state.vehicles"
+            v-bind:key="vehicle.vehicleId"
+            :value="vehicle.vehicleId"
+          >
+          {{vehicle.year}} {{vehicle.make}} {{vehicle.model}} {{ vehicle.color }}
+          </option>
+        </select>
+      </label>
+      <!-- <input class="input" v-model="request.vehicleId" /> -->
       <label class="request-form-label">Description</label>
       <textarea class="input-text-area" v-model="request.description"></textarea>
 
@@ -16,15 +25,16 @@
 
 <script>
 import RequestService from "@/services/RequestService";
+// import VehicleService from "@/services/VehicleService";
+
 export default {
   data() {
     return {
       request: {
-        requestId: "",
-        customerId: "",
         vehicleId: "",
         description: "",
       },
+      customerVehicles: []
     };
   },
   name: "SubmitRequest",
@@ -32,13 +42,21 @@ export default {
     addRequest() {
       RequestService.addRequest(this.request).then((response) => {
         if (response.status === 201 || response.status === 200) {
-          this.$router.push("/customer");
+          // this.$router.go()
+
+          // Adds repair request to vue store
+          const requests = [...this.$store.state.requests]
+          requests.push(response.data);
+          this.$store.commit("SET_REQUESTS", requests);
+
+          // reset the form
+          this.request = {}
         }
       });
     },
   },
   created() {
-    this.request.customerId = this.$store.state.activeCustomer.customerId;
+    // this.request.customerId = this.$store.state.activeCustomer.customerId;
   },
 };
 </script>

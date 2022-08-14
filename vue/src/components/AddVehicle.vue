@@ -3,71 +3,73 @@
     <!-- <div v-for="(option, index) in years" v-bind:key="index">
       {{ option }}
     </div> -->
-    <label for="year">Year</label>
+    <form class="submitForm" v-on:submit.prevent="addVehicle">
+        <label for="year">Year</label>
+        <select v-model="vehicle.year">
+          <option
+            v-for="(option, index) in years.slice().sort()"
+            v-bind:key="index"
+            :value="option"
+          >
+            {{ option }}
+          </option>
+        </select>
+        <div>{{ this.vehicle.year }}</div>
 
-    <select v-model="vehicle.year">
-      <option
-        v-for="(option, index) in years.slice().sort()"
-        v-bind:key="index"
-        :value="option"
-      >
-        {{ option }}
-      </option>
-    </select>
-    <div>{{ this.vehicle.year }}</div>
+        <label for="make">Make</label>
 
-    <label for="make">Make</label>
+        <select v-model="vehicle.make" v-show="this.makes != ''">
+          <option
+            v-for="(option, index) in makes.slice().sort()"
+            v-bind:key="index"
+            :value="option"
+          >
+            {{ option }}
+          </option>
+        </select>
 
-    <select v-model="vehicle.make" v-show="this.makes != ''">
-      <option
-        v-for="(option, index) in makes.slice().sort()"
-        v-bind:key="index"
-        :value="option"
-      >
-        {{ option }}
-      </option>
-    </select>
+        <div>{{ this.vehicle.make }}</div>
+        <label for="model">Model</label>
+        <select v-model="vehicle.model" v-show="this.models != ''">
+          <option
+            v-for="(option, index) in models.slice().sort((a, b) => (a.model > b.model) ? 1 : ((b.model > a.model) ? -1 : 0))"
+            v-bind:key="index"
+            :value="option.model"
+          >
+            {{ option.model }}
+          </option>
+        </select>
 
-    <div>{{ this.vehicle.make }}</div>
-    <label for="model">Model</label>
-    <select v-model="vehicle.model" v-show="this.models != ''">
-      <option
-        v-for="(option, index) in models.slice().sort((a, b) => (a.model > b.model) ? 1 : ((b.model > a.model) ? -1 : 0))"
-        v-bind:key="index"
-        :value="option.model"
-      >
-        {{ option.model }}
-      </option>
-    </select>
+        <div>{{ this.vehicle.model }}</div>
 
-    <div>{{ this.vehicle.model }}</div>
+        <label for="color">Color</label>
+        <select v-model="vehicle.color" v-show="this.vehicle.model != ''">
+          <option
+            v-for="color in colors"
+            v-bind:key="color.id"
+            :value="color"
+          >
+            {{ color }}
+          </option>
+        </select>
 
-    <label for="color">Color</label>
-    <select v-model="vehicle.color" v-show="this.vehicle.model != ''">
-      <option
-        v-for="color in colors"
-        v-bind:key="color.id"
-        :value="color"
-      >
-        {{ color }}
-      </option>
-    </select>
+        <div>{{ this.vehicle.color }}</div>
 
-    <div>{{ this.vehicle.color }}</div>
-
-    <input class="submitB" type="submit" value="Save" />
-  </div>
+        <button class="submitB" type="submit" value="Save" />
+      </form>
+    </div>
 </template>
 
 <script>
 import APIService from "@/services/APIService";
+import VehicleService from "@/services/VehicleService";
 
 export default {
   name: "AddVehicle",
   data() {
     return {
       vehicle: {
-        customerId: this.$store.state.activeCustomer.customerId,
+        // customerId: this.$store.state.activeCustomer.customerId,
         make: "",
         model: "",
         year: "",
@@ -92,6 +94,15 @@ export default {
         "Yellow",
       ]
     };
+  },
+  methods: {
+    addVehicle() {
+      VehicleService.addVehicle(this.vehicle).then((response) => {
+        if (response.status === 201 || response.status === 200) {
+          this.$router.push("/requests");
+        }
+      });
+    },
   },
   watch: {
     "vehicle.year": function () {

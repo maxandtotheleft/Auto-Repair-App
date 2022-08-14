@@ -25,7 +25,7 @@ export default {
     };
   },
   created() {
-    VehicleService.getVehicleById(this.$store.state.activeCustomer.customerId).then((response) => {
+    VehicleService.getVehicles().then((response) => {
       this.$store.commit("SET_VEHICLES", response.data);
     });
   },

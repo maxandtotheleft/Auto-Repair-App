@@ -14,20 +14,6 @@ CREATE TABLE users (
 	CONSTRAINT PK_user PRIMARY KEY (user_id)
 );
 
-CREATE TABLE employees (
-    employee_id SERIAL,
-    user_id int NOT NULL,
-    CONSTRAINT PK_employee_employee_id PRIMARY KEY (employee_id),
-    CONSTRAINT FK_employee_user_id FOREIGN KEY (user_id) REFERENCES users(user_id)
-);
-
-CREATE TABLE customers (
-    customer_id SERIAL,
-    user_id int NOT NULL,
-    CONSTRAINT PK_customer_customer_id PRIMARY KEY (customer_id),
-    CONSTRAINT FK_customer_user_id FOREIGN KEY (user_id) REFERENCES users(user_id)
-);
-
 CREATE TABLE vehicles (
     vehicle_id SERIAL,
     customer_id int NOT NULL,
@@ -36,7 +22,7 @@ CREATE TABLE vehicles (
     year int NOT NULL,
     color varchar(50) NOT NULL,
     CONSTRAINT PK_vehicle_vehicle_id PRIMARY KEY (vehicle_id),
-    CONSTRAINT FK_vehicle_customer_id FOREIGN KEY (customer_id) REFERENCES customers(customer_id)
+    CONSTRAINT FK_vehicle_customer_id FOREIGN KEY (customer_id) REFERENCES users(user_id)
 );
 
 CREATE TABLE requests (
@@ -45,7 +31,7 @@ CREATE TABLE requests (
     vehicle_id int NOT NULL,
     description varchar(150) NOT NULL,
     CONSTRAINT PK_request_request_id PRIMARY KEY (request_id),
-    CONSTRAINT FK_request_customer_id FOREIGN KEY (customer_id) REFERENCES customers(customer_id),
+    CONSTRAINT FK_request_customer_id FOREIGN KEY (customer_id) REFERENCES users(user_id),
     CONSTRAINT FK_request_vehicle_id FOREIGN KEY (vehicle_id) REFERENCES vehicles(vehicle_id)
 );
 
@@ -56,8 +42,10 @@ CREATE TABLE work_orders (
     time_completed timestamp,
     paid boolean NOT NULL,
     approved boolean NOT NULL,
+    employee_id int NOT NULL,
     CONSTRAINT PK_work_order_work_order_id PRIMARY KEY (work_order_id),
-    CONSTRAINT FK_work_orders_request_id FOREIGN KEY (request_id) REFERENCES requests(request_id)
+    CONSTRAINT FK_work_orders_request_id FOREIGN KEY (request_id) REFERENCES requests(request_id),
+    CONSTRAINT FK_request_customer_id FOREIGN KEY (employee_id) REFERENCES users(user_id)
 );
 
 CREATE TABLE repair_items (

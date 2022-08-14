@@ -2,10 +2,10 @@
   <div>
     <heading />
     <div class="greeting">
-      Hello {{ this.$store.state.user.firstName }}
+      Hello {{ this.$store.state.user.name }}
     </div>
     <div class="greeting">
-      Your Employee ID is: {{ this.$store.state.activeEmployee.employeeId }}
+      Your Employee ID is: {{ this.$store.state.user.id }}
     </div>
     <div class="work-order">
       <router-link :to="{ name: 'WorkOrders' }">View Work Orders</router-link>
@@ -24,7 +24,7 @@
 
 <script>
 import Heading from "@/components/Heading.vue";
-import RequestService from "@/services/RequestService";
+// import RequestService from "@/services/RequestService";
 
 export default {
   name: "employee-home",
@@ -32,11 +32,11 @@ export default {
     Heading,
   },
   created() {
-    RequestService.getEmployeeByUserId(this.$store.state.user.id).then(
-      (response) => {
-        this.$store.commit("SET_EMPLOYEE", response.data);
-      }
-    );
+    // RequestService.getEmployeeByUserId(this.$store.state.user.id).then(
+    //   (response) => {
+    //     this.$store.commit("SET_EMPLOYEE", response.data);
+    //   }
+    // );
   },
 };
 </script>

@@ -20,15 +20,16 @@ export default new Vuex.Store({
   state: {
     token: currentToken || '',
     user: currentUser || {},
-    activeCustomer: {
-      customerId: '',
-      userId: ''
-    },
-    activeEmployee: {
-      employeeId: '',
-      userId: ''
-    },
-    vehicles: []
+    // activeCustomer: {
+    //   customerId: '',
+    //   userId: ''
+    // },
+    // activeEmployee: {
+    //   employeeId: '',
+    //   userId: ''
+    // },
+    vehicles: [],
+    requests: []
   },
   mutations: {
     SET_AUTH_TOKEN(state, token) {
@@ -47,14 +48,17 @@ export default new Vuex.Store({
       state.user = {};
       axios.defaults.headers.common = {};
     },
-    SET_CUSTOMER(state, customer) {
-      state.activeCustomer = customer;
-    },
-    SET_EMPLOYEE(state, employee){
-      state.activeEmployee = employee;
-    },
+    // SET_CUSTOMER(state, customer) {
+    //   state.activeCustomer = customer;
+    // },
+    // SET_EMPLOYEE(state, employee){
+    //   state.activeEmployee = employee;
+    // },
     SET_VEHICLES(state, data) {
       state.vehicles = data;
+    },
+    SET_REQUESTS(state, data) {
+      state.requests = data;
     }
   }
 })

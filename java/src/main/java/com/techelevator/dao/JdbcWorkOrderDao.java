@@ -33,19 +33,19 @@ public class JdbcWorkOrderDao implements WorkOrderDao {
         return result;
     }
 
-//    @Override
-//    public List<WorkOrder> getWorkOrdersByUserId(int userId) {
-//        List<WorkOrder> result = new ArrayList<>();
-//        String sql = "SELECT work_order_id, employees.employee_id, all_completed, time_completed\n" +
-//                "\tFROM work_orders \n" +
-//                "\tJoin employees on \n" +
-//                "\temployees.employee_id = work_orders.employee_id where user_id = ?";
-//        SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql, userId);
-//        while (rowSet.next()) {
-//            WorkOrder workOrder = mapRowToWorkOrder(rowSet);
-//            result.add(workOrder);
-//        }
-//        return result;    }
+    @Override
+    public List<WorkOrder> getWorkOrdersByUserId(int userId) {
+        List<WorkOrder> result = new ArrayList<>();
+        String sql = "SELECT * FROM work_orders" +
+                " JOIN requests ON work_orders.request_id = requests.request_id" +
+                " JOIN users ON requests.user_id = users.user_id " +
+                " WHERE users.user_id = ?";
+        SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql, userId);
+        while (rowSet.next()) {
+            WorkOrder workOrder = mapRowToWorkOrder(rowSet);
+            result.add(workOrder);
+        }
+        return result;    }
 
     @Override
     public List<Repair> getRepairsByWorkOrderId(int workOrderId) {
