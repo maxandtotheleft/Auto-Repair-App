@@ -1,6 +1,6 @@
 BEGIN TRANSACTION;
 
-DROP TABLE IF EXISTS repair_items, work_orders, requests, vehicles, customers, employees, users;
+DROP TABLE IF EXISTS repair_items, work_orders, requests, vehicles, users;
 
 CREATE TABLE users (
 	user_id SERIAL,
@@ -42,10 +42,8 @@ CREATE TABLE work_orders (
     time_completed timestamp,
     paid boolean NOT NULL,
     approved boolean NOT NULL,
-    employee_id int NOT NULL,
     CONSTRAINT PK_work_order_work_order_id PRIMARY KEY (work_order_id),
-    CONSTRAINT FK_work_orders_request_id FOREIGN KEY (request_id) REFERENCES requests(request_id),
-    CONSTRAINT FK_request_customer_id FOREIGN KEY (employee_id) REFERENCES users(user_id)
+    CONSTRAINT FK_work_orders_request_id FOREIGN KEY (request_id) REFERENCES requests(request_id)
 );
 
 CREATE TABLE repair_items (

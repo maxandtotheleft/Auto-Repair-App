@@ -13,7 +13,7 @@ public interface WorkOrderDao {
 
     List<Repair> getRepairsByWorkOrderId(int workOrderId);
 
-    boolean createWorkOrder(WorkOrder workOrder);
+    int createWorkOrder(WorkOrder workOrder);
 
     void updateWorkOrder(WorkOrder workOrder);
 

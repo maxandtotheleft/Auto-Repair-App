@@ -12,8 +12,8 @@ import java.util.List;
 
 @RestController
 @CrossOrigin
-@PreAuthorize("isAuthenticated() && hasRole('ROLE_EMPLOYEE')")
-@RequestMapping(path = "/employee/workorders", method = RequestMethod.GET)
+//@PreAuthorize("isAuthenticated() && hasRole('ROLE_EMPLOYEE')")
+//@RequestMapping(path = "/employee/workorders")
 public class EmployeeWorkOrderController {
 
     private WorkOrderDao workOrderDao;
@@ -35,7 +35,7 @@ public class EmployeeWorkOrderController {
         return this.userDao.findByUsername(username);
     }
 
-    @RequestMapping(method = RequestMethod.GET)
+    @RequestMapping(path = "/workorders", method = RequestMethod.GET)
     public List<WorkOrder> getWorkOrders()
     {
         return this.workOrderDao.getWorkOrders();
@@ -48,8 +48,11 @@ public class EmployeeWorkOrderController {
     public List<Repair> getRepairsByWorkOrderId(@PathVariable int workOrderId){return this.workOrderDao.getRepairsByWorkOrderId(workOrderId); }
 
     @RequestMapping(path = "/workorders", method = RequestMethod.POST)
-    public boolean create(@RequestBody WorkOrder workOrder) {
-        return workOrderDao.createWorkOrder(workOrder);
+    public WorkOrder create(@RequestBody WorkOrder workOrder) {
+        int workOrderId = workOrderDao.createWorkOrder(workOrder);
+        workOrder.setWorkOrderId(workOrderId);
+
+        return workOrder;
     }
 
     @RequestMapping(path = "/repairs", method = RequestMethod.POST)

@@ -60,18 +60,13 @@ public class JdbcWorkOrderDao implements WorkOrderDao {
     }
 
     @Override
-    public boolean createWorkOrder(WorkOrder workOrder) {
+    public int createWorkOrder(WorkOrder workOrder) {
         String sql = "INSERT INTO work_orders (request_id, all_completed, time_completed, approved, paid) VALUES (?, ?, ?, ?, ?) " +
                 "RETURNING work_order_id;";
-        Integer workOrderId;
+        int workOrderId = jdbcTemplate.queryForObject(sql, Integer.class, workOrder.getRequestId(), workOrder.isAllCompleted(), workOrder.getTimeCompleted(), workOrder.isApproved(), workOrder.isPaid());
 
-        try {
-            workOrderId = jdbcTemplate.queryForObject(sql, Integer.class, workOrder.getRequestId(), workOrder.isAllCompleted(), workOrder.getTimeCompleted(), workOrder.isApproved(), workOrder.isPaid());
-        } catch (DataAccessException e) {
-            return false;
-        }
+        return workOrderId;
 
-        return true;
     }
 
     @Override

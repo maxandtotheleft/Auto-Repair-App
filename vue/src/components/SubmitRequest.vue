@@ -25,6 +25,7 @@
 
 <script>
 import RequestService from "@/services/RequestService";
+import WorkOrderService from "@/services/WorkOrderService";
 // import VehicleService from "@/services/VehicleService";
 
 export default {
@@ -34,11 +35,24 @@ export default {
         vehicleId: "",
         description: "",
       },
+      workOrder: {
+        requestId: "",
+        allCompleted: false,
+        timeCompleted: "2022-08-08T01:01:01",
+        approved: false,
+        paid: false,
+      },
       customerVehicles: []
     };
   },
   name: "SubmitRequest",
   methods: {
+    // getNow: function() {
+    //                 const today = new Date().getTimezoneOffset();
+    //                 // const time = new Date().toLocalTimeString();
+    //                 // const dateTime = today +'T'+ time;
+    //                 this.workOrder.timeCompleted = today;
+    //             },
     addRequest() {
       RequestService.addRequest(this.request).then((response) => {
         if (response.status === 201 || response.status === 200) {
@@ -49,15 +63,35 @@ export default {
           requests.push(response.data);
           this.$store.commit("SET_REQUESTS", requests);
 
+          this.workOrder.requestId = response.data.requestId;
+
           // reset the form
           this.request = {}
+          this.addWorkOrder();
+        }
+      });
+    },
+    addWorkOrder() {
+      WorkOrderService.addWorkOrder(this.workOrder).then((response) => {
+        if (response.status === 201 || response.status === 200) {
+          // this.$router.go()
+
+          // Adds repair request to vue store
+          const listWorkOrders = [...this.$store.state.workOrders]
+          listWorkOrders.push(response.data);
+          this.$store.commit("SET_WORKORDERS", listWorkOrders);
+
+
+          // reset the form
+          this.workOrder = {}
         }
       });
     },
   },
-  created() {
-    // this.request.customerId = this.$store.state.activeCustomer.customerId;
-  },
+  // created() {
+  //   this.getNow;
+  //     // this.workOrder.timeCompleted = Date.now();
+  // }
 };
 </script>
 

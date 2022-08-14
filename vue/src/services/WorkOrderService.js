@@ -20,5 +20,12 @@ export default {
             const repairs = response;
             return repairs; 
         }))
-    } 
+    },
+
+    addWorkOrder(workOrder) {
+        return axios.post('/workorders', workOrder).then((response => {
+            const workOrder = response;
+            return workOrder;
+        }))
+    },
 }
