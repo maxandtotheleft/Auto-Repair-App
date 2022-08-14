@@ -1,12 +1,20 @@
 package com.techelevator.model;
 
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+
 public class Vehicle {
 
     private int vehicleId;
     private int customerId;
+
+    @NotEmpty
     private String make;
+    @NotEmpty
     private String model;
-    private int year;
+    @NotNull
+    private Integer year;
+    @NotEmpty
     private String color;
 
     public Vehicle() {
@@ -44,7 +52,7 @@ public class Vehicle {
         this.model = model;
     }
 
-    public int getYear() {
+    public Integer getYear() {
         return year;
     }
 
