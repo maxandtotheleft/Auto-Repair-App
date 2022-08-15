@@ -50,7 +50,7 @@
         v-model="user.lastName"
         required
       />
-       <label id="account-label" for="username" class="sr-only">Email Address</label>
+       <label id="account-label-email-phone" for="username" class="sr-only">Email Address</label>
       <input
         type="text"
         id="emailAddress"
@@ -59,7 +59,7 @@
         v-model="user.emailAddress"
         required
       />
-       <label id="account-label" for="username" class="sr-only">Phone Number</label>
+       <label id="account-label-email-phone" for="username" class="sr-only">Phone Number</label>
       <input
         type="text"
         id="phoneNumber"
@@ -132,41 +132,31 @@ export default {
 </script>
 
 <style>
-#register{  
-        width: 350px;
-        height: 750px;  
-        overflow: hidden;  
-        /* margin: left;  */
-        margin: auto;
-        /* margin: 20 0 0 450px;   */
-        padding: 12px;
-        margin-top: 25px;
-        background:rgb(255, 255, 255);  
-         /* background:grey; */
-        /* border-radius: 15px 60px; */
-        border: 1.5px solid  rgb(184, 176, 176);
-        border-radius: 5px 35px;
-        text-align: center;
-}
-
 #create-account {
   padding: 10px;
   margin-left: 111px;
-  margin-top: 30px;
+  margin-top: 35px;
   margin-right: 108px;
-  margin-bottom: 15px;
+  margin-bottom: 25px;
   font-weight: bold;
-  border-block: 2px;
-  
+  color: #00008b;
 }
 
 #account-label {
-  margin-left: 58px;
+  margin-left: 65px;
   margin-top: 10px;
   text-align: center;
   font-size: 17px;
   color: #00008b;
-  /* color: white; */
+  font-weight: bold;
+}
+
+#account-label-email-phone {
+  margin-left: 54px;
+  margin-top: 10px;
+  text-align: center;
+  font-size: 17px;
+  color: #00008b;
   font-weight: bold;
 }
 
@@ -180,8 +170,8 @@ input[type="text"]{
   height: 30px;
 }
 input{
-  border: 2px solid silver;
-  border-radius: 10px 10px;
+  border: 1.5px solid silver;
+  border-radius: 10px;
 }
 
 input[type="password"]{
