@@ -47,6 +47,17 @@ public class JdbcWorkOrderDao implements WorkOrderDao {
     }
 
     @Override
+    public Repair getRepair(int repairId) {
+        Repair repair = null;
+        String sql = "SELECT * FROM repair_items WHERE repair_id = ?";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, repairId);
+        if (results.next()) {
+            repair = mapRowToRepair(results);
+        }
+        return repair;
+    }
+
+    @Override
     public List<WorkOrder> getWorkOrdersByUserId(int userId) {
         List<WorkOrder> result = new ArrayList<>();
         String sql = "SELECT * FROM work_orders" +
@@ -90,18 +101,12 @@ public class JdbcWorkOrderDao implements WorkOrderDao {
     }
 
     @Override
-    public boolean createRepair(Repair repair) {
+    public int createRepair(Repair repair) {
         String sql = "INSERT INTO repair_items (work_order_id, repair_name, parts_cost, labor_cost, completed) VALUES (?, ?, ?, ?, ?) " +
                 "RETURNING repair_id;";
-        Integer repairId;
+        int repairId = jdbcTemplate.queryForObject(sql, Integer.class, repair.getWorkOrderId(), repair.getRepairName(), repair.getPartsCost(), repair.getLaborCost(), repair.isCompleted());
 
-        try {
-            repairId = jdbcTemplate.queryForObject(sql, Integer.class, repair.getWorkOrderId(), repair.getRepairName(), repair.getPartsCost(), repair.getLaborCost(), repair.isCompleted());
-        } catch (DataAccessException e) {
-            return false;
-        }
-
-        return true;
+        return repairId;
     }
 
     @Override

@@ -11,6 +11,8 @@ public interface WorkOrderDao {
 
     WorkOrder getWorkOrder(int workOrderId);
 
+    Repair getRepair(int repairId);
+
     List<WorkOrder> getWorkOrdersByUserId(int userId);
 
     List<Repair> getRepairsByWorkOrderId(int workOrderId);
@@ -19,7 +21,7 @@ public interface WorkOrderDao {
 
     void updateWorkOrder(WorkOrder workOrder);
 
-    boolean createRepair(Repair repair);
+    int createRepair(Repair repair);
 
     void updateRepair(Repair repair);
 }

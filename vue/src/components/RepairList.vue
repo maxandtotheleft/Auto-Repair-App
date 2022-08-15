@@ -3,7 +3,7 @@
     <ul>
       <li
         class="repair"
-        v-for="repair in this.$store.state.repairs"
+        v-for="repair in $store.state.repairs"
         v-bind:key="repair.id"
       >
         Repair: {{ repair.repairName }}
@@ -12,15 +12,18 @@
         <p></p>
         Labor Cost: {{ repair.laborCost }}
         <p></p>
+        <span>
         Completed: {{ repair.completed }}
-        <span v-if="($store.state.isEmployee) || ($store.state.isAdmin)">
-          <input
+          <input v-if="($store.state.isEmployee) || ($store.state.isAdmin)"
             class="checker"
             type="checkbox"
             v-model="repair.completed"
-            @click="updateRepair(repair)"
           />
         </span>
+        <p></p>
+        <div v-if="($store.state.isEmployee) || ($store.state.isAdmin)">
+        <button @click="updateRepair(repair)">Edit</button>
+        </div>
       </li>
     </ul>
   </div>
@@ -44,7 +47,15 @@ export default {
   },
   methods: {
     updateRepair(repair) {
-      WorkOrderService.updateRepair(repair.repairItemId, repair);
+      const updatedRepair = {
+        repairItemId: repair.repairItemId,
+        workOrderId: repair.workOrderId,
+        repairName: repair.repairName,
+        partsCost: repair.partsCost,
+        laborCost: repair.laborCost,
+        completed: repair.completed
+      };
+      WorkOrderService.updateRepair(repair.repairItemId, updatedRepair);
     },
   },
   created() {

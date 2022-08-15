@@ -58,8 +58,12 @@ public class EmployeeWorkOrderController {
     }
 
     @RequestMapping(path = "/repairs", method = RequestMethod.POST)
-    public boolean createRepair(@RequestBody Repair repair) {
-        return workOrderDao.createRepair(repair);
+    public Repair createRepair(@RequestBody Repair repair) {
+
+        int repairId = workOrderDao.createRepair(repair);
+        repair.setRepairItemId(repairId);
+
+        return workOrderDao.getRepair(repairId);
     }
 
 //    @RequestMapping(path = "/{workOrderId}", method = RequestMethod.PUT)
