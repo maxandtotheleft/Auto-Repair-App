@@ -17,13 +17,13 @@
           <input v-if="($store.state.isEmployee) || ($store.state.isAdmin)"
             class="checker"
             type="checkbox"
-            v-model="repair.completed"
+            v-model="repair.completed" v-on:click="updateRepair(repair)"
           />
         </span>
         <p></p>
-        <div v-if="($store.state.isEmployee) || ($store.state.isAdmin)">
+        <!-- <div v-if="($store.state.isEmployee) || ($store.state.isAdmin)">
         <button @click="updateRepair(repair)">Edit</button>
-        </div>
+        </div> -->
       </li>
     </ul>
   </div>
@@ -47,15 +47,20 @@ export default {
   },
   methods: {
     updateRepair(repair) {
-      const updatedRepair = {
-        repairItemId: repair.repairItemId,
-        workOrderId: repair.workOrderId,
-        repairName: repair.repairName,
-        partsCost: repair.partsCost,
-        laborCost: repair.laborCost,
-        completed: repair.completed
-      };
-      WorkOrderService.updateRepair(repair.repairItemId, updatedRepair);
+      if (repair.completed == true) {
+        repair.completed = false
+      } else if (repair.completed == false) {
+        repair.completed = true
+      }
+      // const updatedRepair = {
+      //   repairItemId: repair.repairItemId,
+      //   workOrderId: repair.workOrderId,
+      //   repairName: repair.repairName,
+      //   partsCost: repair.partsCost,
+      //   laborCost: repair.laborCost,
+      //   completed: repair.completed
+      // };
+      WorkOrderService.updateRepair(repair.repairItemId, repair);
     },
   },
   created() {
