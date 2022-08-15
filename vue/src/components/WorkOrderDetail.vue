@@ -2,19 +2,27 @@
   <div>
       <form @submit.prevent="updateWorkOrder">
       <h1>Work Order #{{ this.workOrder.workOrderId }}</h1>
-      <div>Completed: {{ this.workOrder.allCompleted }}  <input class="checker" type="checkbox" v-model="workOrder.allCompleted" @click="flipCompletedStatus"
-        /></div>
-      <div>Time Completed: {{ this.workOrder.timeCompleted }} <input type="datetime-local" v-model="workOrder.timeCompleted">
+      <div>Completed: {{ this.workOrder.allCompleted }}
+        <span v-if="($store.state.isEmployee) || ($store.state.isAdmin)">  
+          <input class="checker" type="checkbox" v-model="workOrder.allCompleted" @click="flipCompletedStatus" />
+        </span>
+      </div>
+      <div v-if="($store.state.isEmployee) || ($store.state.isAdmin) || (this.workOrder.timeCompleted) ">Time Completed: {{ this.workOrder.timeCompleted }}
+        <span v-if="($store.state.isEmployee) || ($store.state.isAdmin)">
+          <input type="datetime-local" v-model="workOrder.timeCompleted">
+        </span>
       </div>
       <div>
         Approved: {{ this.workOrder.approved }}
-        <input class="checker" type="checkbox" v-model="workOrder.approved" @click="flipApprovedStatus"
-        />
+        <span v-if="$store.state.isCustomer">
+          <input class="checker" type="checkbox" v-model="workOrder.approved" @click="flipApprovedStatus" />
+        </span>
       </div>
       <div>
         Paid: {{ this.workOrder.paid }}
-        <input class="checker" type="checkbox" v-model="workOrder.paid" @click="flipPaidStatus"
-        />
+        <span v-if="($store.state.isEmployee) || ($store.state.isAdmin)">
+          <input class="checker" type="checkbox" v-model="workOrder.paid" @click="flipPaidStatus"/>
+        </span>
       </div>
       <input  type="submit" value="Save" />
       </form>

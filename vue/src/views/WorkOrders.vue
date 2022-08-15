@@ -1,13 +1,14 @@
 <template>
 <div>
   <heading />
-<div class="orders">
-  <h1>Your Work Orders</h1>
-  <work-orders />
+  <div class="orders">
+    <h1>Open Work Orders</h1>
+    <work-orders />
   </div>
-  <div class="submit">
-   </div>
+  <div class="orders">
+    <h1>Closed Work Orders</h1>
   </div>
+</div>
 </template>
 
 <script>

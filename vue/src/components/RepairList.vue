@@ -12,12 +12,14 @@
         <p></p>
         Labor Cost: {{ repair.laborCost }}
         <p></p>
-        Completed: {{ repair.Completed }}
-        <input
-          class="checker"
-          type="checkbox"
-          v-model="repair.completed"
-        />
+        Completed: {{ repair.completed }}
+        <span v-if="($store.state.isEmployee) || ($store.state.isAdmin)">
+          <input
+            class="checker"
+            type="checkbox"
+            v-model="repair.completed"
+          />
+        </span>
         <!-- dont forget to put @ click back-->
       </li>
     </ul>
