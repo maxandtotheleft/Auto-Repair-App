@@ -18,9 +18,9 @@
             class="checker"
             type="checkbox"
             v-model="repair.completed"
+            @click="updateRepair(repair)"
           />
         </span>
-        <!-- dont forget to put @ click back-->
       </li>
     </ul>
   </div>
@@ -43,8 +43,8 @@ export default {
     };
   },
   methods: {
-    updateRepair() {
-      WorkOrderService.updateRepair(this.repair.repairId, this.repair);
+    updateRepair(repair) {
+      WorkOrderService.updateRepair(repair.repairItemId, repair);
     },
   },
   created() {

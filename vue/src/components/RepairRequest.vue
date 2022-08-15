@@ -1,6 +1,6 @@
 <template>
   <div>
-    <form class="orderForm" @submit="addRepair">
+    <form class="orderForm" @submit.prevent="addRepair">
       <label>Repair Name</label>
       <input type="text" v-model="repair.repairName" />
       <p></p>
@@ -40,7 +40,7 @@ export default {
         if (response.status === 201 || response.status === 200) {
          
            const repairs = [...this.$store.state.repairs]
-           repairs.push(response.data);
+           repairs.push(this.repair);
            this.$store.commit("SET_REPAIRS", repairs);
 
           this.repair = {};
