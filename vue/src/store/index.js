@@ -23,14 +23,6 @@ export default new Vuex.Store({
     isAdmin: false,
     isCustomer: false,
     isEmployee: false,
-    // activeCustomer: {
-    //   customerId: '',
-    //   userId: ''
-    // },
-    // activeEmployee: {
-    //   employeeId: '',
-    //   userId: ''
-    // },
     users:[],
     vehicles: [],
     requests: [],
@@ -65,12 +57,6 @@ export default new Vuex.Store({
       state.isCustomer = false;
       state.isEmployee = false;
     },
-    // SET_CUSTOMER(state, customer) {
-    //   state.activeCustomer = customer;
-    // },
-    // SET_EMPLOYEE(state, employee){
-    //   state.activeEmployee = employee;
-    // },
     SET_USERS(state, data) {
       state.users = data;
     },
