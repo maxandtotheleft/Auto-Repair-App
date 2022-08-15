@@ -12,7 +12,7 @@ import java.util.List;
 
 @RestController
 @CrossOrigin
-@PreAuthorize("isAuthenticated() && (hasRole('ROLE_EMPLOYEE') || hasRole('ROLE_ADMIN')")
+@PreAuthorize("isAuthenticated() && (hasRole('ROLE_EMPLOYEE') || hasRole('ROLE_ADMIN'))")
 @RequestMapping(path = "/employee/workorders")
 public class EmployeeWorkOrderController {
 

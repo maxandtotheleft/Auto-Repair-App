@@ -4,6 +4,7 @@
       {{ option }}
     </div> -->
     <form class="submitForm" v-on:submit.prevent="addVehicle">
+      <div>
         <label for="year">Year</label>
         <select v-model="vehicle.year">
           <option
@@ -14,8 +15,8 @@
             {{ option }}
           </option>
         </select>
-        <div>{{ this.vehicle.year }}</div>
-
+      </div>
+      <div>
         <label for="make">Make</label>
 
         <select v-model="vehicle.make" v-show="this.makes != ''">
@@ -27,8 +28,8 @@
             {{ option }}
           </option>
         </select>
-
-        <div>{{ this.vehicle.make }}</div>
+      </div>
+      <div>
         <label for="model">Model</label>
         <select v-model="vehicle.model" v-show="this.models != ''">
           <option
@@ -39,9 +40,8 @@
             {{ option.model }}
           </option>
         </select>
-
-        <div>{{ this.vehicle.model }}</div>
-
+      </div>
+      <div>
         <label for="color">Color</label>
         <select v-model="vehicle.color" v-show="this.vehicle.model != ''">
           <option
@@ -52,10 +52,9 @@
             {{ color }}
           </option>
         </select>
+      </div>
 
-        <div>{{ this.vehicle.color }}</div>
-
-        <button class="submitB" type="submit" value="Save" />
+        <button class="submitB" type="submit" value="Save">Save</button>
       </form>
     </div>
 </template>

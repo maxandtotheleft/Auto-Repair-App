@@ -8,5 +8,7 @@ public interface VehicleDao {
 
     List<Vehicle> getVehicleByCustomerId(int customerId);
 
+    List<Vehicle> getAllVehicles();
+
     int addVehicle(int customerId, Vehicle vehicle);
 }

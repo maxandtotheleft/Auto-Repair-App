@@ -30,6 +30,21 @@ public class JdbcVehicleDao implements VehicleDao{
         return vehicles;    }
 
     @Override
+    public List<Vehicle> getAllVehicles() {
+        List<Vehicle> vehicles = new ArrayList<>();
+        Vehicle vehicle = null;
+
+        String sql = "SELECT * FROM vehicles;";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
+        while (results.next()) {
+            vehicle = mapRowToVehicle(results);
+            vehicles.add(vehicle);
+        }
+
+        return vehicles;
+    }
+
+    @Override
     public int addVehicle(int customerId, Vehicle vehicle) {
         String sql = "INSERT INTO vehicles (customer_id, make, model, year, color) VALUES (?, ?, ?, ?, ?) RETURNING vehicle_id";
         int id = jdbcTemplate.queryForObject(sql, Integer.class, customerId, vehicle.getMake(), vehicle.getModel(), vehicle.getYear(), vehicle.getColor());

@@ -12,6 +12,14 @@ export default {
 
   registerEmployee(user) {
     return axios.post('/register-employee', user)
+  },
+
+  getUser(id){
+    return axios.get(`/account/${id}`);
+  },
+
+  getAllUsers(){
+    return axios.get('/account');
   }
 
 }

@@ -2,6 +2,10 @@ import axios from 'axios';
 
 export default {
 
+    getAllVehicles(){
+        return axios.get('/vehicle/all');
+    },
+
     /** Get vehicles of logged in user */
     getVehicles() {
         return axios.get(`/vehicle`).then((response => {

@@ -31,6 +31,7 @@ export default new Vuex.Store({
     //   employeeId: '',
     //   userId: ''
     // },
+    users:[],
     vehicles: [],
     requests: [],
     workOrders: []
@@ -48,11 +49,13 @@ export default new Vuex.Store({
     LOGOUT(state) {
       localStorage.removeItem('token');
       localStorage.removeItem('user');
+      localStorage.removeItem('users');
       localStorage.removeItem('vehicles');
       localStorage.removeItem('requests');
       localStorage.removeItem('workOrders');
       state.token = '';
       state.user = {};
+      state.users = [],
       state.vehicles = [],
       state.requests = [],
       state.workOrders = []
@@ -67,6 +70,9 @@ export default new Vuex.Store({
     // SET_EMPLOYEE(state, employee){
     //   state.activeEmployee = employee;
     // },
+    SET_USERS(state, data) {
+      state.users = data;
+    },
     SET_VEHICLES(state, data) {
       state.vehicles = data;
     },
