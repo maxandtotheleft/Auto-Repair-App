@@ -33,5 +33,17 @@ export default {
             const workOrder = response;
             return workOrder;
         }))
-    }
+    },
+    updateRepair(repairItemId, repair){
+        return axios.put(`/employee/workorders/changerepair/${repairItemId}`, repair).then((response => {
+            const repair = response;
+            return repair;
+        }))
+    }, 
+    addRepair(repair) {
+        return axios.post('/employee/workorders/repairs', repair).then((response => {
+            const repair = response;
+            return repair;
+        }))
+    },
 }

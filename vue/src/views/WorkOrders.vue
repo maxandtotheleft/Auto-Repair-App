@@ -6,14 +6,12 @@
   <work-orders />
   </div>
   <div class="submit">
-   <repair-request />
    </div>
   </div>
 </template>
 
 <script>
 import Heading from '../components/Heading.vue'
-import RepairRequest from '../components/RepairRequest.vue'
 // import WorkOrderRequest from '../components/WorkOrderRequest.vue'
 import WorkOrders from '../components/WorkOrders.vue'
 export default {
@@ -21,7 +19,6 @@ export default {
       WorkOrders,
     Heading,
     // WorkOrderRequest,
-    RepairRequest
       },
 
 }

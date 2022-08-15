@@ -4,7 +4,6 @@
     <div class="greeting"> Hello {{this.$store.state.user.firstName }}</div>
     <!-- <div>This is a customer page. Hello {{this.$store.state.activeCustomer.customerId}}</div> -->
     <router-link v-bind:to="{name : 'requests'}"><div class="styled-box"><h3>View Your Repair Requests</h3></div></router-link>
-    <router-link v-bind:to="{name : 'workOrderView'}"><div class="styled-box"><h3>View Your Work Order Estimates</h3></div></router-link>
 
     <!-- <router-link v-bind:to="{name : 'requests'}"><div class="styled-box"><h3>View Your Repair Estimates</h3></div></router-link> -->
     <!-- <add-vehicle /> -->

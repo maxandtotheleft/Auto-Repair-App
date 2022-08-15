@@ -1,7 +1,7 @@
 <template>
    <div class="workOrders">
     <div v-for="order in workOrders" v-bind:key="order.id">
-      <router-link :to="{ name: 'workOrderView', params: {id: order.workOrderId} }">
+      <router-link :to="{ name: 'workOrderView', params: {id: order.workOrderId} }"> Work Order #
       {{order.workOrderId}}
       <!-- {{customer(request(order.requestId).customerId).lastName}}
       {{vehicle(request(order.requestId).vehicleId).color}}

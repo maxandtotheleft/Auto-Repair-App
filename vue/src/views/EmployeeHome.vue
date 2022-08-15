@@ -10,7 +10,11 @@
     <div class="work-order">
       <router-link :to="{ name: 'WorkOrders' }">View Work Orders</router-link>
     </div>
-    <div class="reg">
+    <div class="reg"  v-if="
+          this.$store.state.user.authorities.some(
+            (authority) => authority.name === 'ROLE_ADMIN'
+          )
+        ">
       <router-link
         :to="{ name: 'registerEmployee' }"
         v-if="

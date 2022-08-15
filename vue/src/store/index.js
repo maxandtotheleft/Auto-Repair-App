@@ -34,7 +34,8 @@ export default new Vuex.Store({
     users:[],
     vehicles: [],
     requests: [],
-    workOrders: []
+    workOrders: [],
+    repairs: []
   },
   mutations: {
     SET_AUTH_TOKEN(state, token) {
@@ -78,6 +79,9 @@ export default new Vuex.Store({
     },
     SET_REQUESTS(state, data) {
       state.requests = data;
+    },
+    SET_REPAIRS(state, data) {
+      state.repairs = data;
     },
     SET_WORKORDERS(state, data) {
       state.workOrders = data;
