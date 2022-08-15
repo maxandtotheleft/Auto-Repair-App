@@ -26,7 +26,7 @@ export default {
     // RequestService.getRequestById(1).then((response) => {
     //   this.request = response.data;
     // });
-    RequestService.getAllRequests().then((response) => {
+    RequestService.getAllRequests(this.$store.state.user.id).then((response) => {
         this.$store.commit("SET_REQUESTS", response.data);
     });
   },

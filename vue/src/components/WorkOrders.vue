@@ -3,11 +3,11 @@
     <div v-for="order in workOrders" v-bind:key="order.id">
       <router-link :to="{ name: 'workOrderView', params: {id: order.workOrderId} }">
       {{order.workOrderId}}
-      {{customer(request(order.requestId).customerId).lastName}}
+      <!-- {{customer(request(order.requestId).customerId).lastName}}
       {{vehicle(request(order.requestId).vehicleId).color}}
       {{vehicle(request(order.requestId).vehicleId).year}}
       {{vehicle(request(order.requestId).vehicleId).make}}
-      {{vehicle(request(order.requestId).vehicleId).model}}
+      {{vehicle(request(order.requestId).vehicleId).model}} -->
       </router-link>
     </div>
   </div>
@@ -57,15 +57,15 @@ name: "WorkOrders",
 //     });
   },
   methods: {
-    request(requestId){
-      return this.$store.state.requests.find(request => request.requestId === requestId);
-    },
-    customer(customerId) {
-      return this.$store.state.users.find(customer => customer.id = customerId);
-    },
-    vehicle(vehicleId) {
-      return this.$store.state.vehicles.find(vehicle => vehicle.vehicleId = vehicleId);
-    }
+    // request(requestId){
+    //   return this.$store.state.requests.find(request => request.requestId === requestId);
+    // },
+    // customer(customerId) {
+    //   return this.$store.state.users.find(customer => customer.id = customerId);
+    // },
+    // vehicle(vehicleId) {
+    //   return this.$store.state.vehicles.find(vehicle => vehicle.vehicleId = vehicleId);
+    // }
   },
   // methods: {
   //   getCustomerInfo(requestId) {

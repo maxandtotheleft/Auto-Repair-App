@@ -26,9 +26,9 @@
 
 <script>
 import Heading from "@/components/Heading.vue";
-import AuthService from "@/services/AuthService";
-import RequestService from "@/services/RequestService";
-import VehicleService from "@/services/VehicleService";
+// import AuthService from "@/services/AuthService";
+// import RequestService from "@/services/RequestService";
+// import VehicleService from "@/services/VehicleService";
 
 export default {
   name: "employee-home",
@@ -36,15 +36,15 @@ export default {
     Heading,
   },
   created() {
-    AuthService.getAllUsers().then((response) => {
-      this.$store.commit("SET_USERS", response.data);
-    });
-    RequestService.getAllRequests().then((response) => {
-      this.$store.commit("SET_REQUESTS", response.data);
-    });
-    VehicleService.getAllVehicles().then((response) => {
-      this.$store.commit("SET_VEHICLES", response.data);
-    })
+    // AuthService.getAllUsers().then((response) => {
+    //   this.$store.commit("SET_USERS", response.data);
+    // });
+    // RequestService.getAllRequests().then((response) => {
+    //   this.$store.commit("SET_REQUESTS", response.data);
+    // });
+    // VehicleService.getAllVehicles().then((response) => {
+    //   this.$store.commit("SET_VEHICLES", response.data);
+    // })
     // RequestService.getEmployeeByUserId(this.$store.state.user.id).then(
     //   (response) => {
     //     this.$store.commit("SET_EMPLOYEE", response.data);

@@ -6,7 +6,7 @@ export default {
         return axios.get(`/customer/requests/${id}`)
     },
     getAllRequests() {
-        return axios.get('/employee/requests')
+        return axios.get('/customer/requests')
     },
     addRequest(request) {
         return axios.post('/customer/requests/', request).then((response => {
