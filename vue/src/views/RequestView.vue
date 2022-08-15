@@ -7,7 +7,7 @@
       <button @click="viewAddVehiclePage">Add Vehicle</button>
     </div>
     <div class="styled-box">
-      <h1>Requests</h1>
+      <h1>Your Repair Requests</h1>
       <request />
     </div>
     <submit-request />

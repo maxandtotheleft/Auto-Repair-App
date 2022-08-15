@@ -1,10 +1,14 @@
 <template>
   <div>
-    <div class="repair" v-for="repair in repairs" v-bind:key="repair.id">
+    <ul>
+    <li class="repair" v-for="repair in repairs" v-bind:key="repair.id">
       Repair: {{ repair.repairName }}
+      <p></p>
       Parts Cost: {{ repair.partsCost }} 
+      <p></p>
       Labor Cost: {{ repair.laborCost }}
-    </div>
+    </li>
+    </ul>
   </div>
 </template>
 
@@ -29,6 +33,12 @@ export default {
 
 <style>
  .repair {
-font-family: Arial, Helvetica, sans-serif;
+   display: flex;
+   flex-direction: column;
+  font-family: Arial, Helvetica, sans-serif;
+  border: solid 1px black;
+  margin: 10px;
+  padding: 10px;
+  border-radius: 15px 35px;
 }  
 </style>
