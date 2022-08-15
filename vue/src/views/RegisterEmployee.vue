@@ -52,7 +52,7 @@
         v-model="user.lastName"
         required
       />
-       <label id="account-label" for="username" class="sr-only">Email Address</label>
+       <label id="account-label-email-phone" for="username" class="sr-only">Email Address</label>
       <input
         type="text"
         id="emailAddress"
@@ -61,7 +61,7 @@
         v-model="user.emailAddress"
         required
       />
-       <label id="account-label" for="username" class="sr-only">Phone Number</label>
+       <label id="account-label-email-phone" for="username" class="sr-only">Phone Number</label>
       <input
         type="text"
         id="phoneNumber"
@@ -141,17 +141,13 @@ export default {
 <style>
 #register{  
         width: 350px;
-        height: 785px;
+        height: 100%;
         overflow: hidden;  
-        /* margin: left;  */
         margin: auto;
-        /* margin: 20 0 0 450px;   */
-        padding: 20px;
+        padding: 20px 20px 40px 20px;
         margin-top: 25px;
         background:rgb(255, 255, 255);  
-         /* background:grey; */
-        /* border-radius: 15px 60px; */
-        border: 1px solid  rgb(184, 176, 176);
+        border: 0px solid  rgb(184, 176, 176);
         border-radius: 15px 35px;
         text-align: center;
 }
@@ -166,16 +162,6 @@ export default {
   border: 1px solid silver;
   border-radius: 10px;
   
-}
-
-#account-label {
-  margin-left: 58px;
-  margin-top: 10px;
-  text-align: center;
-  font-size: 17px;
-  color: #00008b;
-  /* color: white; */
-  font-weight: bold;
 }
 
 label {

@@ -13,7 +13,7 @@
         class="alert alert-success"
         role="alert"
         v-if="this.$route.query.registration"
-      >Thank you for registering, please sign in.</div>
+      >Thanks for registering, please sign in.</div>
       <label id="label-login" for="username" class="sr-only">Username</label>
       <input
         type="text"
@@ -36,7 +36,7 @@
        <button class="sign-in" type="submit">Sign in</button>
 
       <router-link :to="{ name: 'register' }" class="link-need-account">Need an account?</router-link>
-      <!-- <button type="submit">Sign in</button> -->
+      
     </form>
   </div>
   </div>
@@ -102,27 +102,15 @@ export default {
 <style>
 #login{  
         width: 250px;
-        height: 350px;  
+        height: 100%;  
         overflow: hidden;  
         margin: auto;
-        padding-bottom: 12px;
+        padding: 10px 20px 30px 20px;
         margin-top: 25px;
         background:rgb(255, 255, 255);  
-        border: 1.5px solid  rgb(184, 176, 176);
         border-radius: 15px 35px;
-        text-align: center;
-        
+        text-align: center;      
 }
-
-/* .password{
-    width: 300px;  
-    height: 30px;  
-    border: none;  
-    border-radius: 3px;  
-    padding-left: 8px; 
-    padding-top: 8px;
-    display: flex;  
- }  */
 
 .sr-only {
   display: flex;
@@ -130,32 +118,36 @@ export default {
   height: 30px;  
   border-radius: 3px;
   padding-top: 8px;  
-  padding-left: 70px; 
+  padding-left: 70px;
+  font-size: 17px;
+  color: #00008b;
+  font-weight: bold;
+  margin-left: 16px; 
 }
 
 .sign-in{
   display: flex;
-  margin-top: 20px;
+  margin-top: 15px;
   margin-left: 90px;
   margin-bottom: 15px;
-  padding: 8px;
+  padding: 12px;
   font-weight: bold;
-  border: 1px solid silver;
+  border: 0px solid silver;
   border-radius: 10px;
+  color: #00008b;
+
+  
 }
 
 #label-login{
   font-size: 17px;
   color: #00008b;
-  /* color: white; */
   font-weight: bold;
-  margin-left: 16px;
-
-}
+  margin-left: 16px; 
+} 
 
 h1 {
   color: #00008b;
-  /* color: white; */
 }
 
 

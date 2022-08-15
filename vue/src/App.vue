@@ -24,9 +24,7 @@ body {
   width: 400px;
   height: auto;
   overflow: hidden;
-  /* margin: left;  */
   margin: auto;
-  /* margin: 20 0 0 450px;   */
   padding: 25px;
   margin-top: 25px;
 }
