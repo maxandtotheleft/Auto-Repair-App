@@ -39,7 +39,7 @@ export default {
       workOrder: {
         requestId: "",
         allCompleted: false,
-        timeCompleted: "2022-08-08T01:01:01",
+        timeCompleted: "",
         approved: false,
         paid: false,
       },

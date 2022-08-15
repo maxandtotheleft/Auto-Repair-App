@@ -14,7 +14,7 @@ import java.util.List;
 @RestController
 @CrossOrigin
 @PreAuthorize("isAuthenticated()")
-@RequestMapping(path = "/customer/workorders", method = RequestMethod.GET)
+@RequestMapping(path = "/customer/workorders")
 public class CustomerWorkOrderController {
 
     private WorkOrderDao workOrderDao;
@@ -64,5 +64,13 @@ public class CustomerWorkOrderController {
     public void updateWorkOrder(@PathVariable int workOrderId, @RequestBody WorkOrder workOrder){
         workOrder.setWorkOrderId(workOrderId);
         workOrderDao.updateWorkOrder(workOrder);
+    }
+
+    @RequestMapping(method = RequestMethod.POST)
+    public WorkOrder create(@RequestBody WorkOrder workOrder) {
+        int workOrderId = workOrderDao.createWorkOrder(workOrder);
+        workOrder.setWorkOrderId(workOrderId);
+
+        return workOrderDao.getWorkOrder(workOrderId);
     }
 }

@@ -23,7 +23,7 @@ export default {
     },
 
     addWorkOrder(workOrder) {
-        return axios.post('/employee/workorders', workOrder).then((response => {
+        return axios.post('/customer/workorders', workOrder).then((response => {
             const workOrder = response;
             return workOrder;
         }))

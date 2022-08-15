@@ -35,9 +35,9 @@ public class EmployeeRequestController {
         return this.userDao.findByUsername(username);
     }
 
-//    @RequestMapping(method = RequestMethod.GET)
-//    public List<Request> getAllRequests() {
-//
-//        return requestDao.getAllRequests();
-//    }
+    @RequestMapping(method = RequestMethod.GET)
+    public List<Request> getAllRequests() {
+
+        return requestDao.getAllRequests();
+    }
 }

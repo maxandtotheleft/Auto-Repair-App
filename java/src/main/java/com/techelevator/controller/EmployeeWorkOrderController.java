@@ -49,13 +49,13 @@ public class EmployeeWorkOrderController {
 //        return this.workOrderDao.getRepairsByWorkOrderId(workOrderId);
 //    }
 
-    @RequestMapping(method = RequestMethod.POST)
-    public WorkOrder create(@RequestBody WorkOrder workOrder) {
-        int workOrderId = workOrderDao.createWorkOrder(workOrder);
-        workOrder.setWorkOrderId(workOrderId);
-
-        return workOrderDao.getWorkOrder(workOrderId);
-    }
+//    @RequestMapping(method = RequestMethod.POST)
+//    public WorkOrder create(@RequestBody WorkOrder workOrder) {
+//        int workOrderId = workOrderDao.createWorkOrder(workOrder);
+//        workOrder.setWorkOrderId(workOrderId);
+//
+//        return workOrderDao.getWorkOrder(workOrderId);
+//    }
 
     @RequestMapping(path = "/repairs", method = RequestMethod.POST)
     public Repair createRepair(@RequestBody Repair repair) {
