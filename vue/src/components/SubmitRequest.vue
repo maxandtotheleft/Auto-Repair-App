@@ -14,8 +14,9 @@
           </option>
         </select>
       </label>
+      <p></p>
       <!-- <input class="input" v-model="request.vehicleId" /> -->
-      <label class="request-form-label">Description</label>
+      <label class="request-form-label">Description of Issues:</label>
       <textarea class="input-text-area" v-model="request.description"></textarea>
 
       <input class="submitB" type="submit" value="Save" />
@@ -96,32 +97,6 @@ export default {
 </script>
 
 <style>
-.submitForm {
-    font-family: Arial, Helvetica, sans-serif;
-    width: 400px;
-    height: 300px;  
-    overflow: hidden;  
-    /* margin: left;  */
-    margin: auto;
-    /* margin: 20 0 0 450px;   */
-    padding: 25px;
-    margin-top: 25px;
-    background:rgb(255, 255, 255);  
-    /* background:grey; */
-    /* border-radius: 15px 60px; */
-    border: 1px solid  rgb(184, 176, 176);
-    border-radius: 15px 35px;
-    text-align: center;
-  /* display: flex;
-  flex-direction: column;
-  color: white;
-  width: 500px;
-  text-align: center;
- padding: 20px;
- background-color: grey;
- border-radius: 5px 25px; 
- font-family: Arial, Helvetica, sans-serif; */
-}
 
 .request-form-label{
   margin-right: 24px;

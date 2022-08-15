@@ -10,7 +10,10 @@
       <h1>Your Repair Requests</h1>
       <request />
     </div>
-    <submit-request />
+    <div class="styled-box">
+      <h1>Create a Repair Request</h1>
+      <submit-request />
+    </div>
   </div>
 </template>
 
