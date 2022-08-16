@@ -67,12 +67,11 @@ export default {
     },
   },
   created() {
-    WorkOrderService.getRepairsByWorkOrderId(this.$route.params.id).then(
-      (response) => {
-        this.$store.commit("SET_REPAIRS", response.data);
-      }
-    );
+    
   },
+  // deactivated() {
+  //   this.$store.state.repairs = [];
+  // }
 };
 </script>
 

@@ -1,8 +1,5 @@
 <template>
   <div>
-    <!-- <div v-for="(option, index) in years" v-bind:key="index">
-      {{ option }}
-    </div> -->
     <form class="submitForm" v-on:submit.prevent="addVehicle">
       <div>
         <label for="year">Year</label>
