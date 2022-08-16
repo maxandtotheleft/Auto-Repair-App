@@ -3,7 +3,7 @@
 <heading />
   <div id="login" class="text-center">
     <form class="form-signin" @submit.prevent="login">
-      <h1 class="h3 mb-3 font-weight-normal">Sign In</h1>
+      <h1 id="signin">Sign In</h1>
       <div
         class="alert alert-danger"
         role="alert"
@@ -140,15 +140,25 @@ export default {
 }
 
 #label-login{
-  font-size: 17px;
+  font-family: 'Assistant', Arial, Helvetica, sans-serif;
+
+font-size: 17px;
   color: #00008b;
   font-weight: bold;
   margin-left: 16px; 
 } 
 
-h1 {
-  color: #00008b;
+h1{
+    color: hsl(240, 100%, 27%);
+
+}
+#signin {
+  font-family: 'Racing Sans One', Arial, Helvetica, sans-serif;
 }
 
+.link-need-account {
+    font-family: 'Assistant', Arial, Helvetica, sans-serif;
+
+} 
 
 </style>

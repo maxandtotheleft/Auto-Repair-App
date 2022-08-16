@@ -8,9 +8,9 @@
       >
         Repair: {{ repair.repairName }}
         <p></p>
-        Parts Cost: {{ repair.partsCost }}
+        Parts Cost: ${{ repair.partsCost }}
         <p></p>
-        Labor Cost: {{ repair.laborCost }}
+        Labor Cost: ${{ repair.laborCost }}
         <p></p>
         <span>
         Completed: {{ repair.completed }}
@@ -20,7 +20,7 @@
             v-model="repair.completed" v-on:click="updateRepair(repair)"
           />
         </span>
-        <p></p>
+    
         <!-- <div v-if="($store.state.isEmployee) || ($store.state.isAdmin)">
         <button @click="updateRepair(repair)">Edit</button>
         </div> -->
@@ -77,7 +77,7 @@ export default {
 .repair {
   display: flex;
   flex-direction: column;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Assistant', Arial, Helvetica, sans-serif;
   border: solid 1px black;
   margin: 10px;
   padding: 10px;

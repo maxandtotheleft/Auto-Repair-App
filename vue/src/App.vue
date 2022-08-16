@@ -16,7 +16,9 @@ body {
 }
 
 .styled-box {
-  font-family: Arial, Helvetica, sans-serif;
+  /* font-family: Arial, Helvetica, sans-serif; */
+  font-family: 'Assistant', Arial, Helvetica, sans-serif;
+
   background: rgb(255, 255, 255);
   border: 0px solid rgb(184, 176, 176);
   border-radius: 15px 35px;

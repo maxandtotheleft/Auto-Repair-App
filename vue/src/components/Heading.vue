@@ -67,7 +67,7 @@ export default {
   border-radius: 30px;
   color: #00008b;
   text-align: center;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Assistant', Arial, Helvetica, sans-serif;
 }
 
 .container {
@@ -105,7 +105,7 @@ export default {
 }
 
 .hov {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Assistant', Arial, Helvetica, sans-serif;
   color: white;
   padding: 20px;
   border: 0px solid black;

@@ -8,13 +8,13 @@ INSERT INTO users (username,password_hash,role, first_name, last_name, email_add
     VALUES ('employee','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_EMPLOYEE', 'Employee', 'Employee', 'employee@techelevator.com', '555-5555');
 
 
-INSERT INTO vehicles(customer_id, make, model, year, color) VALUES (1, 'Honda', 'Accord', 2012, 'blue');
-INSERT INTO vehicles(customer_id, make, model, year, color) VALUES (1, 'Ford', 'F150', 2018, 'black');
-INSERT INTO vehicles(customer_id, make, model, year, color) VALUES (2, 'Toyota', 'Hilux', 1990, 'tan');
+INSERT INTO vehicles(customer_id, make, model, year, color) VALUES (1, 'Honda', 'Accord', 2012, 'Blue');
+INSERT INTO vehicles(customer_id, make, model, year, color) VALUES (1, 'Ford', 'F150', 2018, 'Black');
+INSERT INTO vehicles(customer_id, make, model, year, color) VALUES (2, 'Toyota', 'Hilux', 1990, 'Tan');
 
 
-INSERT INTO requests (customer_id, vehicle_id, description) VALUES (1, 1, 'my car is broke');
-INSERT INTO requests (customer_id, vehicle_id, description) VALUES (1, 1, 'wheels dont turn');
+INSERT INTO requests (customer_id, vehicle_id, description) VALUES (1, 1, 'My car is broke');
+INSERT INTO requests (customer_id, vehicle_id, description) VALUES (1, 1, 'Wheels do not turn');
 
 INSERT INTO work_orders (request_id, all_completed, time_completed, approved, paid) VALUES (2, false, '2022-08-08 01:01:00', false, false);
 INSERT INTO work_orders (request_id, all_completed, time_completed, approved, paid) VALUES (2, false, null, false, false);
