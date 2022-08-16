@@ -1,6 +1,6 @@
 <template>
    <div class="workOrders">
-    <div v-for="order in activeWorkOrders" v-bind:key="order.id">
+    <div v-for="order in inactiveWorkOrders" v-bind:key="order.id">
       <router-link :to="{ name: 'workOrderView', params: {id: order.workOrderId} }">
       #{{order.workOrderId}}: 
       {{customer(request(order.requestId).customerId).lastName}}, 
@@ -34,15 +34,14 @@ name: "WorkOrders",
     }
   },
   computed: {
-    activeWorkOrders() {
+     inactiveWorkOrders() {
       return this.$store.state.workOrders.filter(
         workOrder => {
-          return !(workOrder.allCompleted);
+          return workOrder.allCompleted;
         }
       )
-
-    },
-}
+    }
+  }
 }
 </script>
 
