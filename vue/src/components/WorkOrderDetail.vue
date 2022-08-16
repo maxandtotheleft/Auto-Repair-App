@@ -7,7 +7,7 @@
           <input class="checker" type="checkbox" v-model="workOrder.allCompleted" @click="flipCompletedStatus" />
         </span>
       </div>
-      <div v-if="($store.state.isEmployee) || ($store.state.isAdmin) || (this.workOrder.timeCompleted) ">Time Completed: {{ this.workOrder.timeCompleted }}
+      <div v-if="($store.state.isEmployee) || ($store.state.isAdmin) || (this.workOrder.timeCompleted) ">Pick-up Time: {{ displayDate(this.workOrder.timeCompleted)}}
         <span v-if="($store.state.isEmployee) || ($store.state.isAdmin)">
           <input type="datetime-local" v-model="workOrder.timeCompleted">
         </span>
@@ -35,6 +35,11 @@ import WorkOrderService from "@/services/WorkOrderService";
 export default {
   name: "WorkOrderDetails",
   methods: {
+    displayDate(timestamp) {
+      if (timestamp) {
+        return new Date(timestamp).toLocaleString();
+      }
+    },
     flipApprovedStatus() {
       if (this.workOrder.approved == true) {
         this.workOrder.approved = false;
