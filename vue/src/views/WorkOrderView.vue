@@ -1,10 +1,10 @@
 <template>
   <div>
     <heading />
+    <div class="styled-box"><customer-vehicle-info /></div>
     <div class="styled-box"><work-order-detail /></div>
     <div class="styled-box"><repair-list /></div>
     <div class="styled-box"><repair-request /></div>
-
   </div>
 </template>
 
@@ -12,7 +12,8 @@
 import RepairList from "@/components/RepairList";
 import WorkOrderDetail from "../components/WorkOrderDetail.vue";
 import Heading from "../components/Heading.vue";
-import RepairRequest from '../components/RepairRequest.vue'
+import RepairRequest from "../components/RepairRequest.vue";
+import CustomerVehicleInfo from "../components/CustomerVehicleInfo.vue";
 
 export default {
   name: "work-order-view",
@@ -20,7 +21,8 @@ export default {
     RepairList,
     WorkOrderDetail,
     Heading,
-    RepairRequest
+    RepairRequest,
+    CustomerVehicleInfo
   },
 };
 </script>
