@@ -1,7 +1,7 @@
 <template>
 <div>
 <heading />
-  <div id="login" class="text-center">
+  <div id="login">
     <form class="form-signin" @submit.prevent="login">
       <h1 id="signin">Sign In</h1>
       <div
@@ -135,16 +135,13 @@ export default {
   border: 0px solid silver;
   border-radius: 10px;
   color: #00008b;
-
-  
 }
 
 #label-login{
   font-family: 'Assistant', Arial, Helvetica, sans-serif;
-
-font-size: 17px;
+  font-size: 17px;
   color: #00008b;
-  font-weight: bold;
+  /* font-weight: bold; */
   margin-left: 16px; 
 } 
 
@@ -158,8 +155,7 @@ h1, h2 {
 }
 
 .link-need-account {
-    font-family: 'Assistant', Arial, Helvetica, sans-serif;
-
+  font-family: 'Assistant', Arial, Helvetica, sans-serif;
 } 
 
 </style>

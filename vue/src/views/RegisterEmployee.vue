@@ -1,7 +1,7 @@
 <template>
 <div>
   <heading />
-  <div id="register" class="text-center">
+  <div id="register">
     <form class="form-register" @submit.prevent="register">
       <h1 class="h3 mb-3 font-weight-normal">Register Employee Account</h1>
       <div class="alert alert-danger" role="alert" v-if="registrationErrors">
@@ -150,6 +150,7 @@ export default {
         border: 0px solid  rgb(184, 176, 176);
         border-radius: 15px 35px;
         text-align: center;
+        font-family: "Assistant", Arial, Helvetica, sans-serif;
 }
 
 #create-account {
@@ -161,7 +162,8 @@ export default {
   font-weight: bold;
   border: 1px solid silver;
   border-radius: 10px;
-  
+  font-family: "Assistant", Arial, Helvetica, sans-serif;
+
 }
 
 label {
@@ -171,6 +173,7 @@ label {
 
 #link-create-account{
 margin-left: -2px;
+font-family: "Assistant", Arial, Helvetica, sans-serif;
 }
 
 
