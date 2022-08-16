@@ -15,11 +15,11 @@ export default {
   },
 
   getUser(id){
-    return axios.get(`/account/${id}`);
+    return axios.get(`/customer/requests/account/${id}`);
   },
 
   getAllUsers(){
-    return axios.get('/account');
+    return axios.get('/employee/requests/account');
   }
 
 }

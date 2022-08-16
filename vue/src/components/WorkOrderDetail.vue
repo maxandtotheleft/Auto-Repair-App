@@ -81,11 +81,7 @@ export default {
     };
   },
   created() {
-    WorkOrderService.getWorkOrders().then((response) => {
-      this.workOrder = response.data.find(
-        (element) => element.workOrderId === this.$route.params.id
-      );
-    });
+    this.workOrder = this.$store.state.workOrders.find(element => element.workOrderId === this.$route.params.id)
   },
 };
 </script>

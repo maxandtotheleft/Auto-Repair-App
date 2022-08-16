@@ -35,6 +35,12 @@ public class EmployeeWorkOrderController {
         return this.userDao.findByUsername(username);
     }
 
+    @RequestMapping(method = RequestMethod.GET)
+    public List<WorkOrder> getWorkOrders()
+    {
+        return this.workOrderDao.getWorkOrders();
+    }
+
 //    @RequestMapping(method = RequestMethod.GET)
 //    public List<WorkOrder> getWorkOrders()
 //    {

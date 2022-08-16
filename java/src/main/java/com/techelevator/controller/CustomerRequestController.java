@@ -35,19 +35,20 @@ public class CustomerRequestController {
         return this.userDao.findByUsername(username);
     }
 
+    @RequestMapping(value = "/account/{userId}", method = RequestMethod.GET)
+    public User getUser(@PathVariable int userId)
+    {
+        return userDao.getUserById(userId);
+    }
+
     @RequestMapping(method = RequestMethod.GET)
-    public List<Request> getAllRequests(Principal principal) {
+    public List<Request> getAllRequestsForLoggedInUser(Principal principal) {
 
         User loggedInUser = getLoggedInUser(principal.getName());
 
         return requestDao.getAllRequests(loggedInUser.getId());
     }
 
-    @RequestMapping(path = "/all", method = RequestMethod.GET)
-    public List<Request> getAllRequests() {
-
-        return requestDao.getAllRequests();
-    }
 
     @RequestMapping(path = "/{requestId}", method = RequestMethod.GET)
     public Request getRequestById(@PathVariable int requestId)

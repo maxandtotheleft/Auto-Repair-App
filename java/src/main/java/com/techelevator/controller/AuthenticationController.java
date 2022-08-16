@@ -1,7 +1,13 @@
 package com.techelevator.controller;
 
-import javax.validation.Valid;
-
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.techelevator.dao.UserDao;
+import com.techelevator.model.LoginDTO;
+import com.techelevator.model.RegisterUserDTO;
+import com.techelevator.model.User;
+import com.techelevator.model.UserAlreadyExistsException;
+import com.techelevator.security.jwt.JWTFilter;
+import com.techelevator.security.jwt.TokenProvider;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,16 +19,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.*;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.techelevator.dao.UserDao;
-import com.techelevator.model.LoginDTO;
-import com.techelevator.model.RegisterUserDTO;
-import com.techelevator.model.User;
-import com.techelevator.model.UserAlreadyExistsException;
-import com.techelevator.security.jwt.JWTFilter;
-import com.techelevator.security.jwt.TokenProvider;
-
-import java.util.List;
+import javax.validation.Valid;
 
 @RestController
 @CrossOrigin
@@ -41,14 +38,6 @@ public class AuthenticationController {
         this.userDao = userDao;
     }
 
-    @RequestMapping(value = "/account/{userId}", method = RequestMethod.GET)
-    public User getUser(@PathVariable int userId)
-    {
-        return userDao.getUserById(userId);
-    }
-
-    @RequestMapping(value = "/account", method = RequestMethod.GET)
-    public List<User> getAllUsers() {return userDao.findAll();}
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public ResponseEntity<LoginResponse> login(@Valid @RequestBody LoginDTO loginDto) {

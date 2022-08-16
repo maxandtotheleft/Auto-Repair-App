@@ -48,12 +48,6 @@ public class CustomerWorkOrderController {
         return this.workOrderDao.getWorkOrdersByUserId(loggedInUser.getId());
     }
 
-    @RequestMapping(method = RequestMethod.GET)
-    public List<WorkOrder> getWorkOrders()
-    {
-        return this.workOrderDao.getWorkOrders();
-    }
-
 
     @RequestMapping(path = "/{workOrderId}/repairs", method = RequestMethod.GET)
     public List<Repair> getRepairsByWorkOrderId(@PathVariable int workOrderId){

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <form class="orderForm" @submit.prevent="addRepair" v-if="($store.state.isEmployee) || ($store.state.isAdmin)">
+    <form class="orderForm" @submit.prevent="addRepair">
       <label>Repair Name</label>
       <input type="text" v-model="repair.repairName" />
       <p></p>

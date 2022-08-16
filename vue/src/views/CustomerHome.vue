@@ -12,8 +12,9 @@
 
 <script>
 import Heading from "@/components/Heading.vue";
-// import RequestService from "@/services/RequestService";
-// import AddVehicle from '../components/AddVehicle.vue';
+import RequestService from "@/services/RequestService";
+import VehicleService from "@/services/VehicleService";
+import WorkOrderService from "@/services/WorkOrderService";
 
 export default {
   name: "customer-home",
@@ -22,9 +23,15 @@ export default {
     // AddVehicle,
   },
   created() {
-    // RequestService.getLoggedInUser().then( response => {
-    //   this.$store.commit("SET_USER", response.data);
-    // })
+    RequestService.getAllRequests().then((response) => {
+      this.$store.commit("SET_REQUESTS", response.data);
+    });
+    VehicleService.getVehicles().then((response) => {
+      this.$store.commit("SET_VEHICLES", response.data);
+    });
+    WorkOrderService.getWorkOrdersForUser().then((response) => {
+      this.$store.commit("SET_WORKORDERS", response.data);
+    });
   }
 };
 </script>

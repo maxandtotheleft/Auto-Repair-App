@@ -11,9 +11,7 @@
 </template>
 
 <script>
-import AuthService from "@/services/AuthService";
-import RequestService from "@/services/RequestService";
-import VehicleService from "@/services/VehicleService";
+
 export default {
   data() {
     return {
@@ -38,20 +36,14 @@ export default {
   },
 
   created(){
-       AuthService.getAllUsers().then((response) => {
-      this.$store.commit("SET_USERS", response.data);
-    });
-    RequestService.getEveryRequest().then((response) => {
-      this.$store.commit("SET_REQUESTS", response.data);
-    });
-    VehicleService.getAllVehicles().then((response) => {
-      this.$store.commit("SET_VEHICLES", response.data);
-    });
     let request = this.$store.state.requests.find(element => element.requestId === this.$route.params.id);
-    let vehicle = this.$store.state.vehicles.find(element => element.customerId === request.customerId);
+    let vehicle = this.$store.state.vehicles.find(element => element.vehicleId === request.vehicleId);
     this.vehicle = vehicle;
 
-    let customer = this.$store.state.users.find(element => element.id === request.customerId);
+    let customer = this.$store.state.user;
+    if (!(this.$store.state.isCustomer)) {
+      customer = this.$store.state.users.find(element => element.id === request.customerId);
+    }
     this.customer = customer;
 
   }

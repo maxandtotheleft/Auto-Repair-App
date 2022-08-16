@@ -4,11 +4,8 @@ import com.techelevator.dao.UserDao;
 import com.techelevator.dao.VehicleDao;
 import com.techelevator.model.User;
 import com.techelevator.model.Vehicle;
-import com.techelevator.security.SecurityUtils;
-import org.apache.catalina.security.SecurityUtil;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.util.UriBuilder;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import javax.validation.Valid;
@@ -19,7 +16,6 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.security.Principal;
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @CrossOrigin

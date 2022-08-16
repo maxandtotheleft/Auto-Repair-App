@@ -62,7 +62,7 @@ public class JdbcWorkOrderDao implements WorkOrderDao {
         List<WorkOrder> result = new ArrayList<>();
         String sql = "SELECT * FROM work_orders" +
                 " JOIN requests ON work_orders.request_id = requests.request_id" +
-                " JOIN users ON requests.user_id = users.user_id " +
+                " JOIN users ON requests.customer_id = users.user_id " +
                 " WHERE users.user_id = ?";
         SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql, userId);
         while (rowSet.next()) {

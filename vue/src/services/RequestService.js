@@ -17,23 +17,7 @@ export default {
     },
     // Get all requests
     getEveryRequest(){
-        return axios.get('/customer/requests/all')
+        return axios.get('/employee/requests/')
     }
-    // getLoggedInUser() {
-    //     return axios.get(`/account`).then((response => {
-    //         return response;
-    //     }))
-    // }
-    // getCustomerByUserId(userId) {
-    //     return axios.get(`/account/${userId}`).then((response => {
-    //         const customer = response;
-    //         return customer;
-    //     }))
-    // },
-    // getEmployeeByUserId(userId){
-    //     return axios.get(`/account/${userId}`).then((response => {
-    //         const employee = response;
-    //         return employee;
-    //     }))
-    // }
+    
 }

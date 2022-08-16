@@ -5,9 +5,11 @@ import com.techelevator.dao.UserDao;
 import com.techelevator.model.Request;
 import com.techelevator.model.User;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
-import java.security.Principal;
 import java.util.List;
 
 @RestController
@@ -34,6 +36,9 @@ public class EmployeeRequestController {
     {
         return this.userDao.findByUsername(username);
     }
+
+    @RequestMapping(value = "/account", method = RequestMethod.GET)
+    public List<User> getAllUsers() {return userDao.findAll();}
 
     @RequestMapping(method = RequestMethod.GET)
     public List<Request> getAllRequests() {
