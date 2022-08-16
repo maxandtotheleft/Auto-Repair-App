@@ -7,14 +7,14 @@
         v-for="repair in $store.state.repairs"
         v-bind:key="repair.id"
       >
-        Repair: {{ repair.repairName }}
-        <p></p>
-        Parts Cost: ${{ repair.partsCost.toFixed(2) }}
-        <p></p>
-        Labor Cost: ${{ repair.laborCost.toFixed(2) }}
-        <p></p>
-        <span>
-          Completed: {{ repair.completed }}
+        <p><span class="repBold">Repair:</span> {{ repair.repairName }}</p>
+        
+        <p><span class="repBold">Parts Cost:</span> ${{ repair.partsCost.toFixed(2) }}</p>
+        
+        <p><span class="repBold">Labor Cost:</span> ${{ repair.laborCost.toFixed(2) }}</p>
+        
+        <p>
+          <span class="repBold">Completed:</span> {{ repair.completed }}
           <input
             v-if="$store.state.isEmployee || $store.state.isAdmin"
             class="checker"
@@ -22,7 +22,7 @@
             v-model="repair.completed"
             v-on:click="updateRepair(repair)"
           />
-        </span>
+        </p>
 
         <!-- <div v-if="($store.state.isEmployee) || ($store.state.isAdmin)">
         <button @click="updateRepair(repair)">Edit</button>
@@ -85,5 +85,10 @@ export default {
   margin: 20px 25px 10px -10px;
   padding: 10px;
   border-radius: 15px 35px;
+}
+
+.repBold{
+  font-weight: bold;
+  color: hsl(240, 100%, 27%);
 }
 </style>

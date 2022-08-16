@@ -4,7 +4,7 @@
     <div class="styled-box">
       <h1>Your Vehicles</h1>
       <vehicle />
-      <button class="buttonstyle" type="submit" @click="viewAddVehiclePage">Add Vehicle</button>
+      <button @click="viewAddVehiclePage" class="buttonstyle">Add Vehicle</button>
     </div>
     <div class="styled-box">
       <h1>Your Repair Requests</h1>
