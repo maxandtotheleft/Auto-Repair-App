@@ -3,7 +3,7 @@
     <div class="logo"><img src="@/assets/AAMKLogoBlue.png" /></div>
     <div class="nav-and-hours">
       <div class="hours">
-        <h3>Operating Hours</h3>
+        <h3 class="hoo">Operating Hours</h3>
         <p><span>Monday-Friday</span> | <span>8am-5pm</span></p>
         <p>Saturday | 10am-4pm</p>
         <p>Sunday | Closed</p>
@@ -88,6 +88,10 @@ export default {
   width: 200px;
 }
 
+.hoo {
+    font-family: 'Racing Sans One', Arial, Helvetica, sans-serif;
+
+} 
 .navigation-bar {
   display: flex;
   justify-content: space-around;

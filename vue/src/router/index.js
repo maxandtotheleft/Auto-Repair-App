@@ -12,6 +12,7 @@ import RegisterEmployee from '../views/RegisterEmployee'
 import WorkOrders from '../views/WorkOrders'
 import WorkOrderView from '../views/WorkOrderView'
 import AddVehicle from '../views/AddVehicle'
+import History from '../views/History'
 
 Vue.use(Router)
 
@@ -115,6 +116,14 @@ const router = new Router({
       meta: {
         requiresAuth: true
       }
+    },
+      {
+        path: '/history/:id',
+        name: 'history',
+        component: History,
+        meta: {
+          requiresAuth: true
+        }
     }
   ]
 })

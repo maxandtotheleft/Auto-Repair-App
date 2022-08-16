@@ -145,11 +145,6 @@ export default {
   margin-left: 16px; 
 } 
 
-h1, h2 {
-    color: hsl(240, 100%, 27%);
-
-}
-
 #signin {
   font-family: 'Racing Sans One', Arial, Helvetica, sans-serif;
 }

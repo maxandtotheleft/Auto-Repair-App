@@ -1,8 +1,10 @@
 <template>
   <div class="vehicle">
+  
     <div v-for="vehicle in this.$store.state.vehicles" v-bind:key="vehicle.vehicleId" class="vehicle">
-      {{vehicle.year}} {{vehicle.make}} {{vehicle.model}} {{ vehicle.color }}
+      <router-link v-bind:to="{name : 'history', params: {id: vehicle.vehicleId}}">{{vehicle.year}} {{vehicle.make}} {{vehicle.model}} {{ vehicle.color }}</router-link>
     </div>
+    
   </div>
 </template>
 

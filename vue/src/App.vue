@@ -33,6 +33,11 @@ a {
   text-decoration: none;
 }
 
+h1, h2 {
+    color: hsl(240, 100%, 27%);
+}
+
+
 .buttonstyle {
   margin-left: 10px;
   margin-top: 10px;
