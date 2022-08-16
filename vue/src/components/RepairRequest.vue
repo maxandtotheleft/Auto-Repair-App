@@ -13,7 +13,7 @@
       <label>Completed</label>
       <input type="checkbox" v-model="repair.completed" />
       <p></p>
-      <input type="submit" value="Save" />
+      <input class="buttonstyle" type="submit" value="Save" />
     </form>
   </div>
 </template>

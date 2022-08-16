@@ -1,5 +1,4 @@
 <template>
-
   <div id="app">
     <!-- <div id="nav">
       <router-link v-bind:to="{ name: 'customer' }">Home</router-link>&nbsp;|&nbsp;
@@ -10,15 +9,13 @@
 </template>
 
 <style>
-
 body {
-  background-image: url("https://mcdn.wallpapersafari.com/medium/51/78/dltnIv.jpg")
+  background-image: url("https://mcdn.wallpapersafari.com/medium/51/78/dltnIv.jpg");
 }
 
 .styled-box {
   /* font-family: Arial, Helvetica, sans-serif; */
-  font-family: 'Assistant', Arial, Helvetica, sans-serif;
-
+  font-family: "Assistant", Arial, Helvetica, sans-serif;
   background: rgb(255, 255, 255);
   border: 0px solid rgb(184, 176, 176);
   border-radius: 15px 35px;
@@ -29,6 +26,19 @@ body {
   margin: auto;
   padding: 25px;
   margin-top: 25px;
+  text-decoration: none;
 }
 
+a {
+  text-decoration: none;
+}
+
+.buttonstyle {
+  margin-left: 10px;
+  margin-top: 10px;
+  text-align: center;
+  padding: 10px;
+  font-weight: bold;
+  /* border-block: 2px; */
+}
 </style>

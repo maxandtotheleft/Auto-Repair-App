@@ -1,16 +1,16 @@
 <template>
   <div>
     <heading />
-    <div class="greeting">
+    <div class="styled-box">
       <h1>Hello {{ this.$store.state.user.firstName }} </h1>
     </div>
-    <div class="greeting">
+    <div class="styled-box">
       Your Employee ID is: {{ this.$store.state.user.id }}
     </div>
-    <div class="work-order">
+    <div class="styled-box">
       <router-link :to="{ name: 'WorkOrders' }">View Work Orders</router-link>
     </div>
-    <div class="reg"  v-if="
+    <div class="styled-box"  v-if="
           this.$store.state.user.authorities.some(
             (authority) => authority.name === 'ROLE_ADMIN'
           )
@@ -85,17 +85,5 @@ export default {
   margin-top: 25px;
 }
 
-.reg { 
-   font-family: Arial, Helvetica, sans-serif;
-  background: rgb(255, 255, 255);
-  border: 0px solid rgb(184, 176, 176);
-  border-radius: 15px 35px;
-  text-align: center;
-  width: 400px;
-  height: auto;
-  overflow: hidden;
-  margin: auto;
-  padding: 25px;
-  margin-top: 25px;
-  } 
+
 </style>

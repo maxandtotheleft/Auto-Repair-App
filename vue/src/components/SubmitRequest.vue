@@ -19,7 +19,7 @@
       <label class="request-form-label">Description of Issues:</label>
       <textarea class="input-text-area" v-model="request.description"></textarea>
 
-      <input class="submitB" type="submit" value="Save" />
+      <input class="buttonstyle" type="submit" value="Save" />
     </form>
   </div>
 </template>
@@ -106,15 +106,6 @@ export default {
   color: #00008b;
   font-weight: bold;
   }
-
-.submitB{
-  margin-left: 10px;
-  margin-top: 10px;
-  text-align: center;
-  padding: 10px;
-  font-weight: bold;
-  border-block: 2px;
-}
 
 .input {
   display: flex;

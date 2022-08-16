@@ -54,7 +54,7 @@
         </select>
       </div>
 
-        <button class="submitB" type="submit" value="Save">Save</button>
+        <button class="buttonstyle" type="submit" value="Save">Save</button>
       </form>
     </div>
 </template>

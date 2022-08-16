@@ -1,5 +1,6 @@
 <template>
   <div>
+    <h2>Repairs</h2>
     <ul>
       <li
         class="repair"
@@ -8,19 +9,21 @@
       >
         Repair: {{ repair.repairName }}
         <p></p>
-        Parts Cost: ${{ repair.partsCost }}
+        Parts Cost: ${{ repair.partsCost.toFixed(2) }}
         <p></p>
-        Labor Cost: ${{ repair.laborCost }}
+        Labor Cost: ${{ repair.laborCost.toFixed(2) }}
         <p></p>
         <span>
-        Completed: {{ repair.completed }}
-          <input v-if="($store.state.isEmployee) || ($store.state.isAdmin)"
+          Completed: {{ repair.completed }}
+          <input
+            v-if="$store.state.isEmployee || $store.state.isAdmin"
             class="checker"
             type="checkbox"
-            v-model="repair.completed" v-on:click="updateRepair(repair)"
+            v-model="repair.completed"
+            v-on:click="updateRepair(repair)"
           />
         </span>
-    
+
         <!-- <div v-if="($store.state.isEmployee) || ($store.state.isAdmin)">
         <button @click="updateRepair(repair)">Edit</button>
         </div> -->
@@ -48,9 +51,9 @@ export default {
   methods: {
     updateRepair(repair) {
       if (repair.completed == true) {
-        repair.completed = false
+        repair.completed = false;
       } else if (repair.completed == false) {
-        repair.completed = true
+        repair.completed = true;
       }
       // const updatedRepair = {
       //   repairItemId: repair.repairItemId,
@@ -77,9 +80,9 @@ export default {
 .repair {
   display: flex;
   flex-direction: column;
-  font-family: 'Assistant', Arial, Helvetica, sans-serif;
+  font-family: "Assistant", Arial, Helvetica, sans-serif;
   border: solid 1px black;
-  margin: 10px;
+  margin: 20px 25px 10px -10px;
   padding: 10px;
   border-radius: 15px 35px;
 }

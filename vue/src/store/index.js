@@ -46,12 +46,15 @@ export default new Vuex.Store({
       localStorage.removeItem('vehicles');
       localStorage.removeItem('requests');
       localStorage.removeItem('workOrders');
+      localStorage.removeItem('repairs');
+
       state.token = '';
       state.user = {};
       state.users = [],
       state.vehicles = [],
       state.requests = [],
-      state.workOrders = []
+      state.workOrders = [],
+      state.repairs = [],
       axios.defaults.headers.common = {};
       state.isAdmin = false;
       state.isCustomer = false;

@@ -24,7 +24,7 @@
           <input class="checker" type="checkbox" v-model="workOrder.paid" @click="flipPaidStatus"/>
         </span>
       </div>
-      <input  type="submit" value="Save" />
+      <input class="buttonstyle" type="submit" value="Save" />
       </form>
   </div>
 </template>

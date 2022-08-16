@@ -33,10 +33,10 @@
         v-model="user.password"
         required
       />
-       <button class="sign-in" type="submit">Sign in</button>
-
+       <button class="buttonstyle" type="submit">Sign in</button>
+      <div>
       <router-link :to="{ name: 'register' }" class="link-need-account">Need an account?</router-link>
-      
+      </div>
     </form>
   </div>
   </div>
@@ -148,10 +148,11 @@ font-size: 17px;
   margin-left: 16px; 
 } 
 
-h1{
+h1, h2 {
     color: hsl(240, 100%, 27%);
 
 }
+
 #signin {
   font-family: 'Racing Sans One', Arial, Helvetica, sans-serif;
 }

@@ -3,7 +3,7 @@
     <heading />
     <div class="styled-box"><customer-vehicle-info /></div>
     <div class="styled-box"><work-order-detail /></div>
-    <div class="styled-box"><repair-list /></div>
+    <div class="styled-box" id="repairs"><repair-list /></div>
     <div class="styled-box"  v-if="($store.state.isEmployee) || ($store.state.isAdmin)"><repair-request /></div>
   </div>
 </template>
@@ -28,4 +28,5 @@ export default {
 </script>
 
 <style>
+
 </style>

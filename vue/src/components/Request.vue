@@ -1,7 +1,7 @@
 <template>
   <div class="requests">
-    <div class="individual" v-for="request in this.$store.state.requests" v-bind:key="request.id">
-      <router-link :to="{ name: 'workOrderView', params: {id: request.requestId} }">{{request.description}}</router-link>
+    <div  v-for="request in this.$store.state.requests" v-bind:key="request.id">
+      <router-link class="individual" :to="{ name: 'workOrderView', params: {id: request.requestId} }">{{request.description}}</router-link>
     </div>
   </div>
 </template>
@@ -35,10 +35,9 @@ export default {
 
 <style>
 
-/* .individual{
-  border: 1px solid black; 
-  padding: auto;
-  margin: 1%;
-} */
+.individual{
+   text-decoration: none;
+
+}
 
 </style>

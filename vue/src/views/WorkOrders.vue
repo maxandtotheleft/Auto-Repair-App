@@ -1,11 +1,11 @@
 <template>
 <div>
   <heading />
-  <div class="orders">
+  <div class="styled-box">
     <h1>Open Work Orders</h1>
     <work-orders />
   </div>
-  <div class="orders">
+  <div class="styled-box">
     <h1>Closed Work Orders</h1>
   </div>
 </div>
@@ -26,35 +26,9 @@ export default {
 </script>
 
 <style>
+
 h1 {
 text-align: center;
 } 
 
-.orders {
-  font-family: Arial, Helvetica, sans-serif;
-  background: rgb(255, 255, 255);
-  border: 0px solid rgb(184, 176, 176);
-  border-radius: 15px 35px;
-  text-align: center;
-  width: 400px;
-  height: auto;  
-  overflow: hidden;  
-  margin: auto;
-  padding: 25px;
-  margin-top: 25px;
-} 
-
-.submit {
-  font-family: Arial, Helvetica, sans-serif;
-  background: rgb(255, 255, 255);
-  border: 0px solid rgb(184, 176, 176);
-  border-radius: 15px 35px;
-  text-align: center;
-  width: 400px;
-  height: auto;  
-  overflow: hidden;  
-  margin: auto;
-  padding: 25px;
-  margin-top: 25px;
-}
 </style>
