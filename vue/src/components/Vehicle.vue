@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import VehicleService from "@/services/VehicleService";
+// import VehicleService from "@/services/VehicleService";
 
 export default {
   name: "Vehicle",
@@ -26,11 +26,11 @@ export default {
       // }
     };
   },
-  created() {
-    VehicleService.getVehicles().then((response) => {
-      this.$store.commit("SET_VEHICLES", response.data);
-    });
-  },
+  // created() {
+  //   VehicleService.getVehicles().then((response) => {
+  //     this.$store.commit("SET_VEHICLES", response.data);
+  //   });
+  // },
 };
 </script>
 

@@ -97,6 +97,12 @@ export default {
     addVehicle() {
       VehicleService.addVehicle(this.vehicle).then((response) => {
         if (response.status === 201 || response.status === 200) {
+          const vehicles = [...this.$store.state.vehicles]
+          vehicles.push(response.data);
+          this.$store.commit("SET_VEHICLES", vehicles);
+
+          this.vehicle = {};
+
           this.$router.push("/requests");
         }
       });
