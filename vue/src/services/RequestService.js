@@ -5,6 +5,7 @@ export default {
     getRequestById(id) {
         return axios.get(`/customer/requests/${id}`)
     },
+    // Get all requests by logged in user
     getAllRequests() {
         return axios.get('/customer/requests')
     },
@@ -14,6 +15,10 @@ export default {
             return request;
         }))
     },
+    // Get all requests
+    getEveryRequest(){
+        return axios.get('/customer/requests/all')
+    }
     // getLoggedInUser() {
     //     return axios.get(`/account`).then((response => {
     //         return response;

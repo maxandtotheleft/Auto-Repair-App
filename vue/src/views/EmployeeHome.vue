@@ -49,11 +49,6 @@ export default {
     // VehicleService.getAllVehicles().then((response) => {
     //   this.$store.commit("SET_VEHICLES", response.data);
     // })
-    // RequestService.getEmployeeByUserId(this.$store.state.user.id).then(
-    //   (response) => {
-    //     this.$store.commit("SET_EMPLOYEE", response.data);
-    //   }
-    // );
   },
 };
 </script>

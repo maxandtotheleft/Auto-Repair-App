@@ -43,6 +43,12 @@ public class CustomerRequestController {
         return requestDao.getAllRequests(loggedInUser.getId());
     }
 
+    @RequestMapping(path = "/all", method = RequestMethod.GET)
+    public List<Request> getAllRequests() {
+
+        return requestDao.getAllRequests();
+    }
+
     @RequestMapping(path = "/{requestId}", method = RequestMethod.GET)
     public Request getRequestById(@PathVariable int requestId)
     {

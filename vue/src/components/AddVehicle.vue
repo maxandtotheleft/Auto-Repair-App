@@ -68,7 +68,6 @@ export default {
   data() {
     return {
       vehicle: {
-        // customerId: this.$store.state.activeCustomer.customerId,
         make: "",
         model: "",
         year: "",

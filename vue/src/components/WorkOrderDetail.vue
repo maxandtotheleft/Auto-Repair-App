@@ -60,11 +60,12 @@ export default {
     
     },
     updateWorkOrder(){
-
-        WorkOrderService.updateWorkOrder(
-        this.workOrder.workOrderId,
-        this.workOrder
-      );
+        WorkOrderService.updateWorkOrder(this.workOrder.workOrderId, this.workOrder);
+        if (this.$store.state.isCustomer) {
+          this.$router.push({name: "requests"});
+        } else {
+          this.$router.push({name: "WorkOrders"});
+        }
     }
   },
   data() {
