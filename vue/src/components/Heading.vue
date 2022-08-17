@@ -32,8 +32,7 @@ export default {
   name: "heading",
   methods: {
     routeHomeButton(){
-       if (this.$store.state.user.authorities.some(authority => authority.name === "ROLE_ADMIN") 
-              || this.$store.state.user.authorities.some(authority => authority.name === "ROLE_EMPLOYEE")) {
+       if (this.$store.state.isAdmin || this.$store.state.isEmployee) {
               this.$router.push({name: 'WorkOrders'});
             } else {
               this.$router.push({name: 'requests'});
@@ -107,6 +106,7 @@ export default {
 
 .hov:hover {
   background: #00008b;
+  color: white;
 }
 
 .hov {

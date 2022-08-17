@@ -2,7 +2,7 @@
   <div>
       <form @submit.prevent="updateWorkOrder">
       <h1>Work Order #{{ this.workOrder.workOrderId }}</h1>
-      <div><span class="repBold">Completed:</span> {{ this.workOrder.allCompleted }}
+      <div><span class="repBold">All Complete:</span> {{ completedStatus(this.workOrder) }}
         <span v-if="($store.state.isEmployee) || ($store.state.isAdmin)">  
           <input class="checker" type="checkbox" v-model="workOrder.allCompleted" @click="flipCompletedStatus" />
         </span>
@@ -13,7 +13,7 @@
         </span>
       </div>
       <div>
-        <span class="repBold">Approved:</span> {{ this.workOrder.approved }}
+        <span class="repBold">Approved:</span> {{ approvedStatus(this.workOrder) }}
         <span v-if="$store.state.isCustomer">
           <input class="checker" type="checkbox" v-model="workOrder.approved" @click="flipApprovedStatus" />
         </span>
@@ -22,7 +22,7 @@
         <span class="repBold">Total Cost:</span> ${{totalCost().toFixed(2)}}
       </div>
       <div>
-        <span class="repBold">Paid:</span> {{ this.workOrder.paid }}
+        <span class="repBold">Paid:</span> {{ paidStatus(this.workOrder) }}
         <span v-if="(($store.state.isEmployee) || ($store.state.isAdmin) ) && (this.workOrder.approved)">
           <input class="checker" type="checkbox" v-model="workOrder.paid" @click="flipPaidStatus"/>
         </span>
@@ -38,6 +38,27 @@ import WorkOrderService from "@/services/WorkOrderService";
 export default {
   name: "WorkOrderDetails",
   methods: {
+     completedStatus(item) {
+      if (item.allCompleted) {
+        return 'Yes';
+      } else {
+        return 'Pending';
+      }
+    },
+    approvedStatus(item) {
+       if (item.approved) {
+        return 'Yes';
+      } else {
+        return 'Pending';
+      }
+    },
+    paidStatus(item) {
+       if (item.paid) {
+        return 'Yes';
+      } else {
+        return 'Pending';
+      }
+    },
     displayDate(timestamp) {
       if (timestamp) {
         return new Date(timestamp).toLocaleString();
@@ -64,6 +85,11 @@ export default {
         this.workOrder.allCompleted = false;
       } else if (this.workOrder.allCompleted == false) {
         this.workOrder.allCompleted = true;
+        this.$store.state.repairs.forEach(repair => {
+          repair.completed = true;
+
+          WorkOrderService.updateRepair(repair.repairItemId, repair);
+        })
       }
     
     },

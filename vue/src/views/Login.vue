@@ -193,7 +193,7 @@ export default {
   width: 100%;
   flex-grow: 1;
   display: flex;
-  align-items: start;
+  align-items: flex-start;
   justify-content: center;
   gap: 50px;
   

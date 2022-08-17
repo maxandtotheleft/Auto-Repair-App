@@ -30,6 +30,11 @@ body {
 
 a {
   text-decoration: none;
+  color: rgb(5, 5, 206);
+}
+
+a:hover {
+  color: hsl(240, 100%, 27%);
 }
 
 h1, h2 {
