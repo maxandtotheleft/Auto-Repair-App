@@ -2,6 +2,14 @@
 <div>
   <heading />
   <div class="styled-box">
+      <h1>Hello {{ this.$store.state.user.firstName }} {{this.$store.state.user.lastName}} </h1>
+      <p> Your Employee ID is: {{ this.$store.state.user.id }} </p>
+      <p></p>
+      <router-link
+        :to="{ name: 'registerEmployee' }"
+        >Register an Employee</router-link>
+  </div>
+  <div class="styled-box">
     <h1>Open Work Orders</h1>
     <work-orders />
   </div>

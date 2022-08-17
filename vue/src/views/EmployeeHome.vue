@@ -3,6 +3,7 @@
     <heading />
     <div class="styled-box">
       <h1>Hello {{ this.$store.state.user.firstName }} </h1>
+      <p> Your Employee ID is: {{ this.$store.state.user.id }} </p>
     </div>
     <div class="styled-box">
       Your Employee ID is: {{ this.$store.state.user.id }}

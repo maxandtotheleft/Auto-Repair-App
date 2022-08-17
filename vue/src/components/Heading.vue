@@ -34,9 +34,9 @@ export default {
     routeHomeButton(){
        if (this.$store.state.user.authorities.some(authority => authority.name === "ROLE_ADMIN") 
               || this.$store.state.user.authorities.some(authority => authority.name === "ROLE_EMPLOYEE")) {
-              this.$router.push("/employee");
+              this.$router.push({name: 'WorkOrders'});
             } else {
-              this.$router.push("/customer");
+              this.$router.push({name: 'requests'});
             }
       } 
     }
@@ -68,6 +68,7 @@ export default {
   color: #00008b;
   text-align: center;
   font-family: 'Assistant', Arial, Helvetica, sans-serif;
+  padding-bottom: 10px;
 }
 
 .container {

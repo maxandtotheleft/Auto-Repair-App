@@ -45,6 +45,9 @@
 <script>
 import Heading from '../components/Heading.vue';
 import authService from "../services/AuthService";
+import RequestService from "@/services/RequestService";
+import VehicleService from "@/services/VehicleService";
+import WorkOrderService from "@/services/WorkOrderService";
 
 export default {
   name: "login",
@@ -79,11 +82,37 @@ export default {
               this.$store.commit("SET_CUSTOMER", true);
             }
 
+            if (this.$store.state.isAdmin || this.$store.state.isEmployee){
+              authService.getAllUsers().then((response) => {
+              this.$store.commit("SET_USERS", response.data);
+              });
+              RequestService.getEveryRequest().then((response) => {
+                this.$store.commit("SET_REQUESTS", response.data);
+              });
+              VehicleService.getAllVehicles().then((response) => {
+                this.$store.commit("SET_VEHICLES", response.data);
+              });
+              WorkOrderService.getWorkOrders().then((response) => {
+                this.$store.commit("SET_WORKORDERS", response.data);
+              })
+            } else {
+              RequestService.getAllRequests().then((response) => {
+                this.$store.commit("SET_REQUESTS", response.data);
+              });
+              VehicleService.getVehicles().then((response) => {
+                this.$store.commit("SET_VEHICLES", response.data);
+              });
+              WorkOrderService.getWorkOrdersForUser().then((response) => {
+                this.$store.commit("SET_WORKORDERS", response.data);
+              });
+            }
+
+
 
             if (this.$store.state.isAdmin || this.$store.state.isEmployee) {
-              this.$router.push("/employee");
+              this.$router.push({name: 'WorkOrders'});
             } else {
-              this.$router.push("/customer");
+              this.$router.push({name: 'requests'});
             }
           }
         })

@@ -18,7 +18,7 @@
           <input class="checker" type="checkbox" v-model="workOrder.approved" @click="flipApprovedStatus" />
         </span>
       </div>
-      <div>
+      <div v-if="totalCost() > 0">
         <span class="repBold">Total Cost:</span> ${{totalCost().toFixed(2)}}
       </div>
       <div>
