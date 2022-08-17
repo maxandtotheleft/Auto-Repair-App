@@ -160,10 +160,10 @@ export default {
   margin-right: 108px;
   margin-bottom: 12px;
   font-weight: bold;
-  border: 1px solid silver;
+  border: 1.5px solid silver;
   border-radius: 10px;
   font-family: "Assistant", Arial, Helvetica, sans-serif;
-
+  border-block: 2px;
 }
 
 label {

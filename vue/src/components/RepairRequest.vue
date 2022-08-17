@@ -1,18 +1,18 @@
 <template>
   <div>
-    <form class="orderForm" @submit.prevent="addRepair">
-      <label>Repair Name</label>
+    <form @submit.prevent="addRepair">
+      <p class="orderForm">Repair Name</p>
       <input type="text" v-model="repair.repairName" />
       <p></p>
-      <label>Parts Cost</label>
+      <p class="orderForm">Parts Cost</p>
       <input type="text" v-model="repair.partsCost" />
       <p></p>
-      <label>Labor Cost</label>
+      <p class="orderForm">Labor Cost</p>
       <input type="text" v-model="repair.laborCost" />
       <p></p>
-      <label>Completed</label>
+      <p class="orderForm">Completed</p>
       <input type="checkbox" v-model="repair.completed" />
-      <p></p>
+      <p class="orderForm"></p>
       <input class="buttonstyle" type="submit" value="Save" />
     </form>
   </div>
@@ -54,5 +54,8 @@ export default {
 <style>
 .orderForm {
   text-align: center;
+  font-family: "Assistant", Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  color: hsl(240, 100%, 27%);
 }
 </style>

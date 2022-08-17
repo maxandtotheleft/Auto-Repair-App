@@ -33,7 +33,7 @@
         v-model="user.password"
         required
       />
-       <button class="buttonstyle" type="submit">Sign in</button>
+       <button class="sign-in" type="submit">Sign in</button>
       <div>
       <router-link :to="{ name: 'register' }" class="link-need-account">Need an account?</router-link>
       </div>
@@ -130,11 +130,12 @@ export default {
   margin-top: 15px;
   margin-left: 90px;
   margin-bottom: 15px;
-  padding: 12px;
+  padding: 9px 14px 9px 14px;
   font-weight: bold;
-  border: 0px solid silver;
+  border: 1.5px solid silver;
   border-radius: 10px;
-  color: #00008b;
+  font-family: "Assistant", Arial, Helvetica, sans-serif;
+  border-block: 2px;
 }
 
 #label-login{
