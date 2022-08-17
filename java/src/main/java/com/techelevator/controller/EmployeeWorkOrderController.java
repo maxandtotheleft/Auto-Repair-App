@@ -8,6 +8,7 @@ import com.techelevator.model.WorkOrder;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -64,7 +65,7 @@ public class EmployeeWorkOrderController {
 //    }
 
     @RequestMapping(path = "/repairs", method = RequestMethod.POST)
-    public Repair createRepair(@RequestBody Repair repair) {
+    public Repair createRepair(@Valid @RequestBody Repair repair) {
 
         int repairId = workOrderDao.createRepair(repair);
         repair.setRepairItemId(repairId);

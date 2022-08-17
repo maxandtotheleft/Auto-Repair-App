@@ -34,8 +34,10 @@ export default {
     routeHomeButton(){
        if (this.$store.state.isAdmin || this.$store.state.isEmployee) {
               this.$router.push({name: 'WorkOrders'});
-            } else {
+            } else if (this.$store.state.isCustomer) {
               this.$router.push({name: 'requests'});
+            } else {
+              this.$router.push({name: 'login'});
             }
       } 
     }
