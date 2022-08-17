@@ -2,27 +2,27 @@
   <div>
       <form @submit.prevent="updateWorkOrder">
       <h1>Work Order #{{ this.workOrder.workOrderId }}</h1>
-      <div>Completed: {{ this.workOrder.allCompleted }}
+      <div><span class="repBold">Completed:</span> {{ this.workOrder.allCompleted }}
         <span v-if="($store.state.isEmployee) || ($store.state.isAdmin)">  
           <input class="checker" type="checkbox" v-model="workOrder.allCompleted" @click="flipCompletedStatus" />
         </span>
       </div>
-      <div v-if="($store.state.isEmployee) || ($store.state.isAdmin) || (this.workOrder.timeCompleted) ">Pick-up Time: {{ displayDate(this.workOrder.timeCompleted)}}
+      <div v-if="($store.state.isEmployee) || ($store.state.isAdmin) || (this.workOrder.timeCompleted) "><span class="repBold">Pick-up Time:</span> {{ displayDate(this.workOrder.timeCompleted)}}
         <span v-if="($store.state.isEmployee) || ($store.state.isAdmin)">
           <input type="datetime-local" v-model="workOrder.timeCompleted">
         </span>
       </div>
       <div>
-        Approved: {{ this.workOrder.approved }}
+        <span class="repBold">Approved:</span> {{ this.workOrder.approved }}
         <span v-if="$store.state.isCustomer">
           <input class="checker" type="checkbox" v-model="workOrder.approved" @click="flipApprovedStatus" />
         </span>
       </div>
       <div>
-        Total Cost: ${{totalCost().toFixed(2)}}
+        <span class="repBold">Total Cost:</span> ${{totalCost().toFixed(2)}}
       </div>
       <div>
-        Paid: {{ this.workOrder.paid }}
+        <span class="repBold">Paid:</span> {{ this.workOrder.paid }}
         <span v-if="($store.state.isEmployee) || ($store.state.isAdmin)">
           <input class="checker" type="checkbox" v-model="workOrder.paid" @click="flipPaidStatus"/>
         </span>
