@@ -7,20 +7,20 @@
       <div class="item" v-for="orders in activeWorkOrders" v-bind:key="orders.id">
         <h2><router-link :to="{ name: 'workOrderView', params: {id: orders.workOrderId} }"> Order #{{ orders.workOrderId }}</router-link></h2>
         <div>
-          <div>Completed: {{ orders.allCompleted }}</div>
-          <div v-if="orders.timeCompleted" >Pick-up Time: {{ displayDate(orders.timeCompleted)}}</div>
-           <div>Approved: {{ orders.approved }}</div>
-            <div>Paid: {{ orders.paid }}</div>
+          <div><span class="repBold">Completed:</span> {{ orders.allCompleted }}</div>
+          <div v-if="orders.timeCompleted" ><span class="repBold">Pick-up Time:</span> {{ displayDate(orders.timeCompleted)}}</div>
+           <div><span class="repBold">Approved:</span> {{ orders.approved }}</div>
+            <div><span class="repBold">Paid:</span> {{ orders.paid }}</div>
         </div>
       </div>
       <h1>Inactive Work Orders</h1>
       <div class="item" v-for="orders in inactiveWorkOrders" v-bind:key="orders.id">
         <h2><router-link :to="{ name: 'workOrderView', params: {id: orders.workOrderId} }"> Order #{{ orders.workOrderId }}</router-link></h2>
         <div>
-          <div>Completed: {{ orders.allCompleted }}</div>
-          <div v-if="orders.timeCompleted">Pick-up Time: {{ displayDate(orders.timeCompleted)}}</div>
-           <div>Approved: {{ orders.approved }}</div>
-            <div>Paid: {{ orders.paid }}</div>
+          <div><span class="repBold">Completed:</span> {{ orders.allCompleted }}</div>
+          <div v-if="orders.timeCompleted"><span class="repBold">Pick-up Time:</span> {{ displayDate(orders.timeCompleted)}}</div>
+           <div><span class="repBold">Approved:</span> {{ orders.approved }}</div>
+            <div><span class="repBold">Paid:</span> {{ orders.paid }}</div>
         </div>
       </div>
     </div>

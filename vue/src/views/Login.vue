@@ -1,6 +1,11 @@
 <template>
 <div>
 <heading />
+<div class="aboutUs">
+<div class="styled-box2" id="about">
+  <h1>About Us</h1>
+  <p class="aboutContent">Never feel stressed about car repair again. AAMK Auto Repair shops offer a one-of-a-kind, unrivaled experience provided by our friendly, approachable and highly-trained service staff. All of our technicians are ASE (Automotive Service Excellence) certified, or factory trained, which means they have met the industry standard for excellence in automotive repair.</p>
+</div>
   <div id="login">
     <form class="form-signin" @submit.prevent="login">
       <h1 id="signin">Sign In</h1>
@@ -38,6 +43,7 @@
       <router-link :to="{ name: 'register' }" class="link-need-account">Need an account?</router-link>
       </div>
     </form>
+  </div>
   </div>
   </div>
 </template>
@@ -133,7 +139,7 @@ export default {
         width: 250px;
         height: 100%;  
         overflow: hidden;  
-        margin: auto;
+        /* margin: auto; */
         padding: 10px 20px 30px 20px;
         margin-top: 25px;
         background:rgb(255, 255, 255);  
@@ -182,5 +188,37 @@ export default {
 .link-need-account {
   font-family: 'Assistant', Arial, Helvetica, sans-serif;
 } 
+
+.aboutUs{
+  width: 100%;
+  flex-grow: 1;
+  display: flex;
+  align-items: start;
+  justify-content: center;
+  gap: 50px;
+  
+}
+
+.styled-box2{
+  font-family: 'Racing Sans One', Arial, Helvetica, sans-serif;
+  background: rgb(255, 255, 255);
+  border: 0px solid rgb(184, 176, 176);
+  border-radius: 15px 35px;
+  text-align: center;
+  width: 250px;
+  height: 100%;
+  overflow: hidden;
+  padding: 25px;
+  margin-top: 25px;
+  text-decoration: none;
+}
+
+
+.aboutContent {
+  justify-content: space-around;
+  font-family: 'Assistant', Arial, Helvetica, sans-serif;
+}
+
+
 
 </style>
