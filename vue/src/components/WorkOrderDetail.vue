@@ -23,7 +23,7 @@
       </div>
       <div>
         <span class="repBold">Paid:</span> {{ this.workOrder.paid }}
-        <span v-if="($store.state.isEmployee) || ($store.state.isAdmin)">
+        <span v-if="(($store.state.isEmployee) || ($store.state.isAdmin) ) && (this.workOrder.approved)">
           <input class="checker" type="checkbox" v-model="workOrder.paid" @click="flipPaidStatus"/>
         </span>
       </div>
