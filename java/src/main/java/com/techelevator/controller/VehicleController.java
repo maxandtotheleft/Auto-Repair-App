@@ -63,8 +63,6 @@ public class VehicleController {
         return vehicle;
     }
 
-//    @RequestMapping(path = "/vehicle/{customerId}", method = RequestMethod.GET)
-//    public List<Vehicle> getVehicleByCustomerId(@PathVariable int customerId) {return vehicleDao.getVehicleByCustomerId(customerId);}
 
     @RequestMapping(path = "/years", method = RequestMethod.GET)
     public String getVehicleYears() throws IOException, InterruptedException {

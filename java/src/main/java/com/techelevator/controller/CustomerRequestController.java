@@ -69,10 +69,5 @@ public class CustomerRequestController {
 
         return request;
     }
-//
-//    @RequestMapping(path = "/account/{userId}", method = RequestMethod.GET)
-//    public User getCustomerByUserId(@PathVariable int userId){ return requestDao.getCustomerByUserId(userId); }
-//
-//    @RequestMapping(path = "/employeeAccount/{userId}", method = RequestMethod.GET)
-//    public User getEmployeeByUserId(@PathVariable int userId){ return requestDao.getEmployeeByUserId(userId); }
+
 }

@@ -25,7 +25,7 @@ import SubmitRequest from "../components/SubmitRequest.vue";
 import Vehicle from "../components/Vehicle.vue";
 
 export default {
-  // name: '',
+  name: 'request-view',
   components: {
     Request,
     SubmitRequest,

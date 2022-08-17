@@ -12,8 +12,14 @@
 
       <div class="navigation-bar">
         
-          <div @click="routeHomeButton()" class="hov"
-            >Home</div
+          <router-link :to="{name: 'WorkOrders'}" v-if="($store.state.isAdmin || $store.state.isEmployee)" class="hov"
+            >Home</router-link
+          >
+          <router-link :to="{name: 'requests'}" v-if="$store.state.isCustomer" class="hov"
+            >Home</router-link
+          >
+          <router-link :to="{name: 'login'}" v-if="!($store.state.isAdmin || $store.state.isEmployee || $store.state.isCustomer)" class="hov"
+            >Home</router-link
           >
           <router-link
             v-bind:to="{ name: 'logout' }"
@@ -29,18 +35,7 @@
 </template>
 <script>
 export default {
-  name: "heading",
-  methods: {
-    routeHomeButton(){
-       if (this.$store.state.isAdmin || this.$store.state.isEmployee) {
-              this.$router.push({name: 'WorkOrders'});
-            } else if (this.$store.state.isCustomer) {
-              this.$router.push({name: 'requests'});
-            } else {
-              this.$router.push({name: 'login'});
-            }
-      } 
-    }
+  name: "heading"
   }
 </script>
 

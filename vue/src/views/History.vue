@@ -3,7 +3,8 @@
     <heading />
     <history-custie-vehicle />
     <div class="styled-box">
-      <h1>Active Work Orders</h1>
+      <div v-if="activeWorkOrders.length > 0">
+      <h2>Active Work Orders</h2>
       <div class="item" v-for="orders in activeWorkOrders" v-bind:key="orders.id">
         <h2><router-link :to="{ name: 'workOrderView', params: {id: orders.workOrderId} }"> Order #{{ orders.workOrderId }}</router-link></h2>
         <div>
@@ -13,7 +14,13 @@
             <div><span class="repBold">Paid:</span> {{ paidStatus(orders) }}</div>
         </div>
       </div>
-      <h1>Completed Work Orders</h1>
+      </div>
+      <div v-else>
+        <h2>Active Work Orders</h2>
+        <p>No active work orders</p>
+      </div>
+      <div v-if="inactiveWorkOrders.length > 0">
+      <h2>Completed Work Orders</h2>
       <div class="item" v-for="orders in inactiveWorkOrders" v-bind:key="orders.id">
         <h2><router-link :to="{ name: 'workOrderView', params: {id: orders.workOrderId} }"> Order #{{ orders.workOrderId }}</router-link></h2>
         <div>
@@ -22,6 +29,11 @@
            <div><span class="repBold">Approved:</span> {{ approvedStatus(orders) }}</div>
             <div><span class="repBold">Paid:</span> {{ paidStatus(orders) }}</div>
         </div>
+      </div>
+      </div>
+      <div v-else>
+        <h2>Completed Work Orders</h2>
+        <p>No vehicle history</p>
       </div>
     </div>
   </div>

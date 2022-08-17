@@ -4,7 +4,7 @@
       <h1>Work Order #{{ this.workOrder.workOrderId }}</h1>
       <div>
         <span class="repBold">Approved:</span> {{ approvedStatus(this.workOrder) }}
-        <span v-if="$store.state.isCustomer">
+        <span v-if="$store.state.isCustomer && !(this.workOrder.paid)">
           <input class="checker" type="checkbox" v-model="workOrder.approved" @click="flipApprovedStatus" />
         </span>
       </div>
