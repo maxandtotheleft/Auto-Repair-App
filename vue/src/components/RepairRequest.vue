@@ -31,7 +31,7 @@ export default {
         completed: false,
       },
       workOrder: {
-        workOrderId: "",
+        workOrderId: this.$route.params.id,
         requestId: "",
         allCompleted: "",
         timeCompleted: "",
@@ -50,7 +50,13 @@ export default {
            repairs.push(response.data);
            this.$store.commit("SET_REPAIRS", repairs);
 
-          this.repair = {};
+          this.repair = {
+            workOrderId: this.$route.params.id,
+            repairName: "",
+            partsCost: "",
+            laborCost: "",
+            completed: false,
+          };
 
           this.checkRepairListCompleted();
         }
