@@ -3,22 +3,22 @@
     <heading />
     <history-custie-vehicle />
     <div class="styled-box">
+      <h1>Active Work Orders</h1>
       <div v-for="orders in activeWorkOrders" v-bind:key="orders.id">
-        <h1>Active Work Orders</h1>
         <h2><router-link :to="{ name: 'workOrderView', params: {id: orders.workOrderId} }"> Order #{{ orders.workOrderId }}</router-link></h2>
         <div>
           <div>Completed: {{ orders.allCompleted }}</div>
-          <div>Pick-up Time: {{ displayDate(orders.timeCompleted)}}</div>
+          <div v-if="orders.timeCompleted" >Pick-up Time: {{ displayDate(orders.timeCompleted)}}</div>
            <div>Approved: {{ orders.approved }}</div>
             <div>Paid: {{ orders.paid }}</div>
         </div>
       </div>
+      <h1>Inactive Work Orders</h1>
       <div v-for="orders in inactiveWorkOrders" v-bind:key="orders.id">
-        <h1>Inactive Work Orders</h1>
         <h2><router-link :to="{ name: 'workOrderView', params: {id: orders.workOrderId} }"> Order #{{ orders.workOrderId }}</router-link></h2>
         <div>
           <div>Completed: {{ orders.allCompleted }}</div>
-          <div>Pick-up Time: {{ displayDate(orders.timeCompleted)}}</div>
+          <div v-if="orders.timeCompleted">Pick-up Time: {{ displayDate(orders.timeCompleted)}}</div>
            <div>Approved: {{ orders.approved }}</div>
             <div>Paid: {{ orders.paid }}</div>
         </div>

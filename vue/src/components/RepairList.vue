@@ -14,7 +14,7 @@
         Labor Cost: ${{ repair.laborCost.toFixed(2) }}
         <p></p>
         <span>
-          Completed: {{ repair.completed }}
+          Completed: {{ completedStatus(repair) }}
           <input
             v-if="$store.state.isEmployee || $store.state.isAdmin"
             class="checker"
@@ -55,16 +55,16 @@ export default {
       } else if (repair.completed == false) {
         repair.completed = true;
       }
-      // const updatedRepair = {
-      //   repairItemId: repair.repairItemId,
-      //   workOrderId: repair.workOrderId,
-      //   repairName: repair.repairName,
-      //   partsCost: repair.partsCost,
-      //   laborCost: repair.laborCost,
-      //   completed: repair.completed
-      // };
+
       WorkOrderService.updateRepair(repair.repairItemId, repair);
     },
+    completedStatus(item) {
+      if (item.completed) {
+        return 'Yes';
+      } else {
+        return 'Pending';
+      }
+    }
   },
   created() {
     

@@ -14,7 +14,7 @@ import java.util.List;
 
 @RestController
 @CrossOrigin
-@PreAuthorize("isAuthenticated() && hasRole('ROLE_EMPLOYEE')")
+@PreAuthorize("isAuthenticated() && (hasRole('ROLE_EMPLOYEE') || hasRole('ROLE_ADMIN'))")
 @RequestMapping("/employee/requests")
 public class EmployeeRequestController {
 

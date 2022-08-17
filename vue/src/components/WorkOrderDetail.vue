@@ -19,6 +19,9 @@
         </span>
       </div>
       <div>
+        Total Cost: ${{totalCost().toFixed(2)}}
+      </div>
+      <div>
         Paid: {{ this.workOrder.paid }}
         <span v-if="($store.state.isEmployee) || ($store.state.isAdmin)">
           <input class="checker" type="checkbox" v-model="workOrder.paid" @click="flipPaidStatus"/>
@@ -71,6 +74,14 @@ export default {
         } else {
           this.$router.push({name: "WorkOrders"});
         }
+    },
+    totalCost() {
+      let total = 0;
+      this.$store.state.repairs.forEach(repair =>
+        total += (repair.partsCost + repair.laborCost)
+      );
+
+      return total;
     }
   },
   data() {
