@@ -2,8 +2,13 @@ BEGIN TRANSACTION;
 
 DROP TABLE IF EXISTS repair_items, work_orders, requests, vehicles, users;
 
+CREATE SEQUENCE seq_user_id
+  INCREMENT BY 1
+  START WITH 2000
+  NO MAXVALUE;
+
 CREATE TABLE users (
-	user_id SERIAL,
+	user_id int NOT NULL DEFAULT nextval('seq_user_id'),
 	username varchar(50) NOT NULL UNIQUE,
 	password_hash varchar(200) NOT NULL,
 	role varchar(50) NOT NULL,
@@ -25,8 +30,13 @@ CREATE TABLE vehicles (
     CONSTRAINT FK_vehicle_customer_id FOREIGN KEY (customer_id) REFERENCES users(user_id)
 );
 
+CREATE SEQUENCE seq_request_id
+  INCREMENT BY 1
+  START WITH 1000
+  NO MAXVALUE;
+
 CREATE TABLE requests (
-    request_id SERIAL,
+    request_id int NOT NULL DEFAULT nextval('seq_request_id'),
     customer_id int NOT NULL,
     vehicle_id int NOT NULL,
     description varchar(150) NOT NULL,
@@ -34,9 +44,13 @@ CREATE TABLE requests (
     CONSTRAINT FK_request_customer_id FOREIGN KEY (customer_id) REFERENCES users(user_id),
     CONSTRAINT FK_request_vehicle_id FOREIGN KEY (vehicle_id) REFERENCES vehicles(vehicle_id)
 );
+CREATE SEQUENCE seq_work_orders_id
+  INCREMENT BY 1
+  START WITH 1000
+  NO MAXVALUE;
 
 CREATE TABLE work_orders (
-    work_order_id SERIAL,
+    work_order_id  int NOT NULL DEFAULT nextval('seq_work_orders_id'),
     request_id int NOT NULL,
     all_completed boolean NOT NULL,
     time_completed timestamp NULL,

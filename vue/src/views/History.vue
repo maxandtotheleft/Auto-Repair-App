@@ -4,7 +4,7 @@
     <history-custie-vehicle />
     <div class="styled-box">
       <h1>Active Work Orders</h1>
-      <div v-for="orders in activeWorkOrders" v-bind:key="orders.id">
+      <div class="item" v-for="orders in activeWorkOrders" v-bind:key="orders.id">
         <h2><router-link :to="{ name: 'workOrderView', params: {id: orders.workOrderId} }"> Order #{{ orders.workOrderId }}</router-link></h2>
         <div>
           <div>Completed: {{ orders.allCompleted }}</div>
@@ -14,7 +14,7 @@
         </div>
       </div>
       <h1>Inactive Work Orders</h1>
-      <div v-for="orders in inactiveWorkOrders" v-bind:key="orders.id">
+      <div class="item" v-for="orders in inactiveWorkOrders" v-bind:key="orders.id">
         <h2><router-link :to="{ name: 'workOrderView', params: {id: orders.workOrderId} }"> Order #{{ orders.workOrderId }}</router-link></h2>
         <div>
           <div>Completed: {{ orders.allCompleted }}</div>
@@ -78,4 +78,13 @@ export default {
 </script>
 
 <style>
+.item{
+   display: flex;
+  flex-direction: column;
+  font-family: "Assistant", Arial, Helvetica, sans-serif;
+  border: solid 1px black;
+  margin: auto;
+  padding: 10px;
+  border-radius: 15px 35px;
+}
 </style>

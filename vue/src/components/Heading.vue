@@ -62,8 +62,8 @@ export default {
 .hours {
   height: 200px;
   width: 400px;
-  background: rgb(255, 255, 255);
-  border: 0.2px solid rgb(255, 255, 255);
+  background: rgb(255, 255, 255, 0.9);
+  border: 0.2px solid rgb(255, 255, 255, 0.9);
   border-radius: 30px;
   color: #00008b;
   text-align: center;
