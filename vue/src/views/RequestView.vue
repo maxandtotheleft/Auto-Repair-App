@@ -1,7 +1,7 @@
 <template>
   <div>
     <heading />
-    <div class="greeting"> <h1>Hello {{this.$store.state.user.firstName }} {{this.$store.state.user.lastName}}</h1></div>
+    <div class="styled-box"> <h1>Hello {{this.$store.state.user.firstName }} {{this.$store.state.user.lastName}}</h1></div>
     <div class="styled-box">
       <h1>Your Vehicles</h1>
       <vehicle />

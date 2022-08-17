@@ -1,7 +1,7 @@
 <template>
   <div class="requests">
     <div  v-for="request in this.$store.state.requests" v-bind:key="request.id">
-      <router-link class="individual" :to="{ name: 'workOrderView', params: {id: request.requestId} }">{{request.description}}</router-link>
+      <router-link :to="{ name: 'workOrderView', params: {id: request.requestId} }">{{request.description}}</router-link>
     </div>
   </div>
 </template>
@@ -10,22 +10,9 @@
 import RequestService from "@/services/RequestService";
 
 export default {
- name: "Request",
-  data() {
-    return {
-    // requests: [],
-    // request: {
-    //     requestId: "",
-    //     customerId: "",
-    //     vehicleId: "",
-    //     description: ""    
-    // } 
-    };
-  },
+  name: "Request",
   created() {
-    // RequestService.getRequestById(1).then((response) => {
-    //   this.request = response.data;
-    // });
+    
     RequestService.getAllRequests(this.$store.state.user.id).then((response) => {
         this.$store.commit("SET_REQUESTS", response.data);
     });
@@ -34,10 +21,5 @@ export default {
 </script>
 
 <style>
-
-.individual{
-   text-decoration: none;
-
-}
 
 </style>
