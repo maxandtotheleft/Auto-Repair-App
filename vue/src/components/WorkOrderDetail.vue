@@ -3,7 +3,7 @@
       <form @submit.prevent="updateWorkOrder">
       <h1>Work Order #{{ this.workOrder.workOrderId }}</h1>
       <div><span class="repBold">All Complete:</span> {{ completedStatus(this.workOrder) }}
-        <span v-if="($store.state.isEmployee) || ($store.state.isAdmin)">  
+        <span v-if="(($store.state.isEmployee) || ($store.state.isAdmin)) && (this.workOrder.approved) ">  
           <input class="checker" type="checkbox" v-model="workOrder.allCompleted" @click="flipCompletedStatus" />
         </span>
       </div>
