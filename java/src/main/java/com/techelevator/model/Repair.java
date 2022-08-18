@@ -1,8 +1,13 @@
 package com.techelevator.model;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+
 public class Repair {
     private int repairItemId;
     private int workOrderId;
+    @NotEmpty
     private String repairName;
     private double partsCost;
     private double laborCost;

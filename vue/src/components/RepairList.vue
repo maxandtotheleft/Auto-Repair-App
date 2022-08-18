@@ -24,9 +24,6 @@
           />
         </p>
 
-        <!-- <div v-if="($store.state.isEmployee) || ($store.state.isAdmin)">
-        <button @click="updateRepair(repair)">Edit</button>
-        </div> -->
       </li>
     </ul>
   </div>
@@ -38,14 +35,14 @@ export default {
   name: "repair-list",
   data() {
     return {
-      // repair: {
-      //   workOrderId: this.$route.params.id,
-      //   repairId: "",
-      //   repairName: "",
-      //   partsCost: "",
-      //   laborCost: "",
-      //   completed: false,
-      // },
+      workOrder: {
+        workOrderId: "",
+        requestId: "",
+        allCompleted: "",
+        timeCompleted: "",
+        approved: "",
+        paid: "",
+      },
     };
   },
   methods: {
@@ -57,6 +54,20 @@ export default {
       }
 
       WorkOrderService.updateRepair(repair.repairItemId, repair);
+
+      this.checkRepairListCompleted();
+    
+
+    },
+    checkRepairListCompleted() {
+      if (this.$store.state.repairs.every(repair => {
+        return repair.completed})) {
+        this.workOrder.allCompleted = true;
+        WorkOrderService.updateWorkOrder(this.workOrder.workOrderId, this.workOrder);
+      } else {
+        this.workOrder.allCompleted = false;
+        WorkOrderService.updateWorkOrder(this.workOrder.workOrderId, this.workOrder)
+      }
     },
     completedStatus(item) {
       if (item.completed) {
@@ -67,11 +78,8 @@ export default {
     }
   },
   created() {
-    
-  },
-  // deactivated() {
-  //   this.$store.state.repairs = [];
-  // }
+    this.workOrder = this.$store.state.workOrders.find(element => element.workOrderId === this.$route.params.id);
+  }
 };
 </script>
 

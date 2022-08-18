@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>Customer Information:</h1>
+    <h2>Customer Information:</h2>
     <div>{{this.customer.firstName}} {{this.customer.lastName}}</div>
     <div>{{this.customer.phoneNumber}}</div>
     <div>{{this.customer.emailAddress}}</div>

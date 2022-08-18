@@ -2,8 +2,20 @@
   <div>
       <form @submit.prevent="updateWorkOrder">
       <h1>Work Order #{{ this.workOrder.workOrderId }}</h1>
-      <div><span class="repBold">All Complete:</span> {{ completedStatus(this.workOrder) }}
-        <span v-if="(($store.state.isEmployee) || ($store.state.isAdmin)) && (this.workOrder.approved) ">  
+      <div>
+        <span class="repBold">Approved:</span> {{ approvedStatus(this.workOrder) }}
+        <span v-if="$store.state.isCustomer && !(this.workOrder.paid)">
+          <input class="checker" type="checkbox" v-model="workOrder.approved" @click="flipApprovedStatus" />
+        </span>
+      </div>
+      <div>
+        <span class="repBold">Paid:</span> {{ paidStatus(this.workOrder) }}
+        <span v-if="(($store.state.isEmployee) || ($store.state.isAdmin) ) && (this.workOrder.approved)">
+          <input class="checker" type="checkbox" v-model="workOrder.paid" @click="flipPaidStatus"/>
+        </span>
+      </div>
+      <div><span class="repBold">All Repairs Completed:</span> {{ completedStatus(this.workOrder) }}
+        <span v-if="(($store.state.isEmployee) || ($store.state.isAdmin) ) && (this.workOrder.approved)">  
           <input class="checker" type="checkbox" v-model="workOrder.allCompleted" @click="flipCompletedStatus" />
         </span>
       </div>
@@ -12,20 +24,8 @@
           <input type="datetime-local" v-model="workOrder.timeCompleted">
         </span>
       </div>
-      <div>
-        <span class="repBold">Approved:</span> {{ approvedStatus(this.workOrder) }}
-        <span v-if="$store.state.isCustomer">
-          <input class="checker" type="checkbox" v-model="workOrder.approved" @click="flipApprovedStatus" />
-        </span>
-      </div>
       <div v-if="totalCost() > 0">
         <span class="repBold">Total Cost:</span> ${{totalCost().toFixed(2)}}
-      </div>
-      <div>
-        <span class="repBold">Paid:</span> {{ paidStatus(this.workOrder) }}
-        <span v-if="(($store.state.isEmployee) || ($store.state.isAdmin) ) && (this.workOrder.approved)">
-          <input class="checker" type="checkbox" v-model="workOrder.paid" @click="flipPaidStatus"/>
-        </span>
       </div>
       <input class="buttonstyle" type="submit" value="Save" />
       </form>
@@ -37,6 +37,18 @@ import WorkOrderService from "@/services/WorkOrderService";
 
 export default {
   name: "WorkOrderDetails",
+  data() {
+    return {
+      workOrder: {
+        workOrderId: "",
+        requestId: "",
+        allCompleted: "",
+        timeCompleted: "",
+        approved: "",
+        paid: "",
+      },
+    };
+  },
   methods: {
      completedStatus(item) {
       if (item.allCompleted) {
@@ -109,18 +121,6 @@ export default {
 
       return total;
     }
-  },
-  data() {
-    return {
-      workOrder: {
-        workOrderId: "",
-        requestId: "",
-        allCompleted: "",
-        timeCompleted: "",
-        approved: "",
-        paid: "",
-      },
-    };
   },
   created() {
     this.workOrder = this.$store.state.workOrders.find(element => element.workOrderId === this.$route.params.id)

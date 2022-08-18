@@ -3,7 +3,7 @@ BEGIN TRANSACTION;
 INSERT INTO users (username,password_hash,role, first_name, last_name, email_address, phone_number)
     VALUES ('jim','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_USER', 'Jim', 'Williams', 'jim@techmail.com', '555-5555');
 INSERT INTO users (username,password_hash,role, first_name, last_name, email_address, phone_number)
-    VALUES ('admin','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_ADMIN', 'Admin', 'Admin', 'admin@techelevator.com', '555-5555');
+    VALUES ('admin','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_ADMIN', 'Admin', 'User', 'admin@techelevator.com', '555-5555');
 INSERT INTO users (username,password_hash,role, first_name, last_name, email_address, phone_number)
     VALUES ('julie','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_EMPLOYEE', 'Julie', 'Jackson', 'employee@techelevator.com', '555-5555');
 INSERT INTO users (username,password_hash,role, first_name, last_name, email_address, phone_number)
@@ -16,7 +16,7 @@ INSERT INTO vehicles(customer_id, make, model, year, color) VALUES (2003, 'Toyot
 
 INSERT INTO requests (customer_id, vehicle_id, description) VALUES (2000, 1, 'Oil Change');
 INSERT INTO requests (customer_id, vehicle_id, description) VALUES (2000, 1, 'Wheels shaking');
-INSERT INTO requests (customer_id, vehicle_id, description) VALUES (2000, 2, 'Shattered my windshield');
+INSERT INTO requests (customer_id, vehicle_id, description) VALUES (2000, 2, 'Shattered windshield');
 INSERT INTO requests (customer_id, vehicle_id, description) VALUES (2003, 3, 'Truck will not start');
 
 
@@ -28,6 +28,7 @@ INSERT INTO work_orders (request_id, all_completed, time_completed, approved, pa
 
 INSERT INTO repair_items (work_order_id, repair_name, parts_cost, labor_cost, completed) VALUES (1000, 'Oil Change', 20.00, 50.00, true);
 INSERT INTO repair_items (work_order_id, repair_name, parts_cost, labor_cost, completed) VALUES (1001, 'Tire Rotation', 20.00, 50.00, false);
+INSERT INTO repair_items (work_order_id, repair_name, parts_cost, labor_cost, completed) VALUES (1001, 'Replace Left Front Tire', 200.00, 100.00, false);
 INSERT INTO repair_items (work_order_id, repair_name, parts_cost, labor_cost, completed) VALUES (1002, 'Windshield Replacement', 150.00, 100.00, false);
 INSERT INTO repair_items (work_order_id, repair_name, parts_cost, labor_cost, completed) VALUES (1003, 'Alternator', 200.00, 100.00, false);
 

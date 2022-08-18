@@ -92,7 +92,6 @@ export default {
         username: '',
         password: '',
         confirmPassword: '',
-        // role: 'employee',
         firstName: '',
         lastName: '',
         emailAddress: '',

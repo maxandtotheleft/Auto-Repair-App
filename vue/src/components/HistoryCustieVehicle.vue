@@ -1,6 +1,8 @@
 <template>
   <div class="styled-box">
-    <h1>Customer Information:</h1>
+    <h1>Vehicle History Report</h1>
+    <p></p>
+    <h2>Customer Information:</h2>
     <div>{{this.customer.firstName}} {{this.customer.lastName}}</div>
     <div>{{this.customer.phoneNumber}}</div>
     <div>{{this.customer.emailAddress}}</div>
@@ -36,7 +38,6 @@ export default {
   },
 
   created(){
-    // let request = this.$store.state.requests.find(element => element.requestId === this.$route.params.id);
     let vehicle = this.$store.state.vehicles.find(element => element.vehicleId === this.$route.params.id);
     this.vehicle = vehicle;
 

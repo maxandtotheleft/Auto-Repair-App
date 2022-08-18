@@ -1,8 +1,6 @@
 <template>
   <div>
     <form class="submitForm" v-on:submit.prevent="addRequest">
-      <!-- <label for="">Customer Id</label>
-       <input type="" class="" id="" v-model="request.customerId" />  -->
       <label class="request-form-label">Vehicle
         <select v-model="request.vehicleId">
           <option
@@ -15,7 +13,6 @@
         </select>
       </label>
       <p></p>
-      <!-- <input class="input" v-model="request.vehicleId" /> -->
       <label class="request-form-label">Description of Issues:</label>
       <textarea class="input-text-area" v-model="request.description"></textarea>
 
@@ -27,7 +24,7 @@
 <script>
 import RequestService from "@/services/RequestService";
 import WorkOrderService from "@/services/WorkOrderService";
-// import VehicleService from "@/services/VehicleService";
+
 
 export default {
   data() {
@@ -48,16 +45,9 @@ export default {
   },
   name: "SubmitRequest",
   methods: {
-    // getNow: function() {
-    //                 const today = new Date().getTimezoneOffset();
-    //                 // const time = new Date().toLocalTimeString();
-    //                 // const dateTime = today +'T'+ time;
-    //                 this.workOrder.timeCompleted = today;
-    //             },
     addRequest() {
       RequestService.addRequest(this.request).then((response) => {
         if (response.status === 201 || response.status === 200) {
-          // this.$router.go()
 
           // Adds repair request to vue store
           const requests = [...this.$store.state.requests]
@@ -75,7 +65,6 @@ export default {
     addWorkOrder() {
       WorkOrderService.addWorkOrder(this.workOrder).then((response) => {
         if (response.status === 201 || response.status === 200) {
-          // this.$router.go()
 
           // Adds repair request to vue store
           const listWorkOrders = [...this.$store.state.workOrders]
@@ -88,11 +77,7 @@ export default {
         }
       });
     },
-  },
-  // created() {
-  //   this.getNow;
-  //     // this.workOrder.timeCompleted = Date.now();
-  // }
+  }
 };
 </script>
 

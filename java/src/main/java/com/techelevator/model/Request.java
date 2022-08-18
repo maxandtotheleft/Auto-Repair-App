@@ -1,10 +1,13 @@
 package com.techelevator.model;
 
+import javax.validation.constraints.NotEmpty;
+
 public class Request {
 
     private int requestId;
     private int customerId;
     private int vehicleId;
+    @NotEmpty
     private String description;
 
     public Request() {

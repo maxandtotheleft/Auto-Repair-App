@@ -1,12 +1,9 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-// import Home from '../views/Home.vue'
 import Login from '../views/Login.vue'
 import Logout from '../views/Logout.vue'
 import Register from '../views/Register.vue'
 import store from '../store/index'
-import CustomerHome from '../views/CustomerHome.vue'
-import EmployeeHome from '../views/EmployeeHome.vue'
 import RequestView from '../views/RequestView.vue'
 import RegisterEmployee from '../views/RegisterEmployee'
 import WorkOrders from '../views/WorkOrders'
@@ -29,14 +26,6 @@ const router = new Router({
   mode: 'history',
   base: process.env.BASE_URL,
   routes: [
-    // {
-    //   path: '/',
-    //   name: 'home',
-    //   component: Home,
-    //   meta: {
-    //     requiresAuth: true
-    //   }
-    // },
     {
       path: "/",
       name: "login",
@@ -61,22 +50,6 @@ const router = new Router({
         requiresAuth: false
       }
     },
-    {
-      path: "/customer",
-      name: "customer",
-      component: CustomerHome,
-      meta: {
-        requiresAuth: true
-      }
-    },
-    {
-      path: "/employee",
-      name: "employee",
-      component: EmployeeHome,
-      meta: {
-        requiresAuth: true
-      }
-    }, 
     {
       path: '/requests',
       name: 'requests', 

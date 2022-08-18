@@ -9,28 +9,12 @@
 </template>
 
 <script>
-// import VehicleService from "@/services/VehicleService";
+
 
 export default {
   name: "Vehicle",
-  data() {
-    return {
-      // vehicles: [],
-      // vehicle: {
-      //   vehicleId: "",
-      //   customerId: "",
-      //   make: "",
-      //   model: "",
-      //   year: "",
-      //   color: "",
-      // }
-    };
-  },
-  // created() {
-  //   VehicleService.getVehicles().then((response) => {
-  //     this.$store.commit("SET_VEHICLES", response.data);
-  //   });
-  // },
+
+ 
 };
 </script>
 
