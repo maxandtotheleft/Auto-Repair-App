@@ -22,6 +22,7 @@ body {
   margin: auto;
   padding: 25px;
   margin-top: 25px;
+  padding-bottom: 35px;
   text-decoration: none;
 }
 

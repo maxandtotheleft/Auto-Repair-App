@@ -4,7 +4,7 @@
       <h1>Work Order #{{ this.workOrder.workOrderId }}</h1>
       <div>
         <span class="repBold">Approved:</span> {{ approvedStatus(this.workOrder) }}
-        <span v-if="$store.state.isCustomer && !(this.workOrder.paid)">
+        <span v-if="$store.state.isCustomer && !(this.workOrder.paid) && $store.state.repairs.length > 0">
           <input class="checker" type="checkbox" v-model="workOrder.approved" @click="flipApprovedStatus" />
         </span>
       </div>
@@ -27,7 +27,7 @@
       <div v-if="totalCost() > 0">
         <span class="repBold">Total Cost:</span> ${{totalCost().toFixed(2)}}
       </div>
-      <input class="buttonstyle" type="submit" value="Save" />
+      <input v-if="$store.state.isEmployee || $store.state.isAdmin || $store.state.repairs.length > 0" class="buttonstyle" type="submit" value="Save" />
       </form>
   </div>
 </template>
