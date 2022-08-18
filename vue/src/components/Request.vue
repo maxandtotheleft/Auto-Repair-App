@@ -5,6 +5,7 @@
       {{request.description}} ({{vehicle(request.vehicleId).year}} {{vehicle(request.vehicleId).make}}
       {{vehicle(request.vehicleId).model}})</router-link>
     </div>
+    <div v-if="$store.state.requests.length === 0">No Repair Request History</div>
   </div>
 </template>
 
