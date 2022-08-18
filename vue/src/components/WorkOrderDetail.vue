@@ -27,7 +27,7 @@
       <div v-if="totalCost() > 0">
         <span class="repBold">Total Cost:</span> ${{totalCost().toFixed(2)}}
       </div>
-      <input v-if="$store.state.isEmployee || $store.state.isAdmin || $store.state.repairs.length > 0" class="buttonstyle" type="submit" value="Save" />
+      <input v-if="(!($store.state.isCustomer) || $store.state.repairs.length > 0) && (!($store.state.isCustomer) || !(this.workOrder.allCompleted))" class="buttonstyle" type="submit" value="Save" />
       </form>
   </div>
 </template>
